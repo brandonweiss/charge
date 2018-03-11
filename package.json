@@ -1,0 +1,25 @@
+{
+  "name": "charge",
+  "version": "0.1.0",
+  "description": "",
+  "author": {
+    "name": "Brandon Weiss",
+    "email": "brandon@anti-pattern.com"
+  },
+  "engines": {
+    "node": ">= 9.7.1"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/brandonweiss/charge",
+  "scripts": {
+    "test": "ava --verbose"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "dedent": "^0.7.0"
+  },
+  "dependencies": {
+    "glob": "^7.1.2",
+    "node-fs-extra": "^0.8.2"
+  }
+}
