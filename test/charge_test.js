@@ -27,3 +27,41 @@ test("copies a file from source to target", (t) => {
     "index.css": "styles"
   })
 })
+
+test("copies an HTML file into a Directory Index format for clean URLs", (t) => {
+  let sourceDirectory = `${tmpPathPrefix}/source`
+  let targetDirectory = `${tmpPathPrefix}/target`
+
+  createFiles(sourceDirectory, {
+    "foobar.html": "<html></html>",
+  })
+
+  charge.build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    foobar: {
+      "index.html": "<html></html>",
+    },
+  })
+})
+
+test("does not copy the root index.html file into a Directory Index format for clean URLs", (t) => {
+  let sourceDirectory = `${tmpPathPrefix}/source`
+  let targetDirectory = `${tmpPathPrefix}/target`
+
+  createFiles(sourceDirectory, {
+    "index.html": "<html></html>",
+  })
+
+  charge.build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    "index.html": "<html></html>",
+  })
+})

@@ -32,7 +32,9 @@ export const createFiles = (sourceDirectory, files) => {
 }
 
 export const assertFiles = (t, targetDirectory, expectedTargetFilesystem) => {
-  let files = glob.sync(`${targetDirectory}/*`)
+  let files = glob.sync(`${targetDirectory}/**/*`, {
+    nodir: true,
+  })
 
   let targetFilesystem = files.reduce((filesystem, file) => {
     let fileContents = fs.readFileSync(file).toString()
