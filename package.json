@@ -19,7 +19,11 @@
     "dedent": "^0.7.0"
   },
   "dependencies": {
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
     "glob": "^7.1.2",
-    "node-fs-extra": "^0.8.2"
+    "node-fs-extra": "^0.8.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   }
 }

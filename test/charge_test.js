@@ -65,3 +65,31 @@ test("does not copy the root index.html file into a Directory Index format for c
     "index.html": "<html></html>",
   })
 })
+
+test("renders a JSX template as HTML", (t) => {
+  let sourceDirectory = `${tmpPathPrefix}/source`
+  let targetDirectory = `${tmpPathPrefix}/target`
+
+  createFiles(sourceDirectory, {
+    "index.html.jsx": dedent`
+      const React = require("react")
+
+      module.exports = class extends React.Component {
+
+        render() {
+          return <html></html>
+        }
+
+      }
+    `
+  })
+
+  charge.build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    "index.html": "<html></html>",
+  })
+})
