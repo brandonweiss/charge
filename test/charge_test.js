@@ -86,9 +86,9 @@ test("renders a JSX template as HTML", (t) => {
 
   createFiles(sourceDirectory, {
     "index.html.jsx": dedent`
-      const React = require("react")
+      import React from "react"
 
-      module.exports = class extends React.Component {
+      export default class extends React.Component {
 
         render() {
           return <html></html>
@@ -121,9 +121,9 @@ test("loads data from data files and passes it to the JSX template", (t) => {
       `
     },
     "index.html.jsx": dedent`
-      const React = require("react")
+      import React from "react"
 
-      module.exports = class extends React.Component {
+      export default class extends React.Component {
 
         render() {
           return <p>{this.props.data.stuff.foo}</p>
