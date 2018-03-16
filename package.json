@@ -24,6 +24,7 @@
     "babel-register": "^6.26.0",
     "glob": "^7.1.2",
     "node-fs-extra": "^0.8.2",
+    "object-assign-deep": "^0.3.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   }

@@ -4,7 +4,7 @@ import fs from "node-fs-extra"
 import glob from "glob"
 import path from "path"
 import charge from "../lib/charge"
-import { createFiles, assertFiles } from "./helpers/filesystem"
+import { createData, createFiles, assertFiles } from "./helpers/filesystem"
 
 let tmpPathPrefix = "tmp/tests"
 
@@ -109,17 +109,19 @@ test("renders a JSX template as HTML", (t) => {
 })
 
 test("loads data from data files and passes it to the JSX template", (t) => {
+  let dataDirectory = `${tmpPathPrefix}/data`
   let sourceDirectory = `${tmpPathPrefix}/source`
   let targetDirectory = `${tmpPathPrefix}/target`
 
+  createData(dataDirectory, {
+    stuff: dedent`
+      {
+        "foo": "bar"
+      }
+    `
+  })
+
   createFiles(sourceDirectory, {
-    data: {
-      "stuff.json": dedent`
-        {
-          "foo": "bar"
-        }
-      `
-    },
     "index.html.jsx": dedent`
       import React from "react"
 

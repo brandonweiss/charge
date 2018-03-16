@@ -1,5 +1,6 @@
 import glob from "glob"
 import fs from "node-fs-extra"
+import { noMutate as objectAssignDeep } from "object-assign-deep"
 
 let flattenFilePath = (pathPart, directoryOrFileContents) => {
   return Object.entries(directoryOrFileContents).reduce((flattenedFilePaths, [key, value]) => {
@@ -23,6 +24,12 @@ let expandFilePath = (path, fileContents) => {
   }, fileContents)
 }
 
+export const createData = (dataDirectory, data) => {
+  Object.entries(data).forEach(([namespace, contents]) => {
+    fs.outputFileSync(`${dataDirectory}/${namespace}.json`, contents)
+  })
+}
+
 export const createFiles = (sourceDirectory, files) => {
   let flattenedFilePaths = flattenFilePath(sourceDirectory, files)
 
@@ -39,7 +46,7 @@ export const assertFiles = (t, targetDirectory, expectedTargetFilesystem) => {
   let targetFilesystem = files.reduce((filesystem, file) => {
     let fileContents = fs.readFileSync(file).toString()
     let newPaths = expandFilePath(file, fileContents)
-    return Object.assign(filesystem, newPaths)
+    return objectAssignDeep(filesystem, newPaths)
   }, {})
 
   t.deepEqual(targetFilesystem, expandFilePath(targetDirectory, expectedTargetFilesystem))
