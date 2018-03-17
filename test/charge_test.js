@@ -108,6 +108,44 @@ test("renders a JSX template as HTML", (t) => {
   })
 })
 
+test("renders a JSX template as HTML with a component", (t) => {
+  let sourceDirectory = `${tmpPathPrefix}/source`
+  let targetDirectory = `${tmpPathPrefix}/target`
+
+  createFiles(sourceDirectory, {
+    "paragraph-component.html.jsx": dedent`
+      import React from "react"
+
+      export default (props) => {
+        return <p>{props.foo}</p>
+      }
+    `,
+    "index.html.jsx": dedent`
+      import React from "react"
+      import ParagraphComponent from "./paragraph-component.html.jsx"
+
+      export default class extends React.Component {
+
+        render() {
+          return (
+            <html><ParagraphComponent foo="bar" /></html>
+          )
+        }
+
+      }
+    `
+  })
+
+  charge.build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    "index.html": "<html><p>bar</p></html>",
+  })
+})
+
 test("loads data from data files and passes it to the JSX template", (t) => {
   let dataDirectory = `${tmpPathPrefix}/data`
   let sourceDirectory = `${tmpPathPrefix}/source`
