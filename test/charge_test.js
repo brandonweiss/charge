@@ -29,7 +29,7 @@ test("copies a file from source to target", (t) => {
   let targetDirectory = `${tmpPathPrefix}/target`
 
   createFiles(sourceDirectory, {
-    "index.css": "styles"
+    "index.html": "<html></html>"
   })
 
   charge.build({
@@ -38,7 +38,7 @@ test("copies a file from source to target", (t) => {
   })
 
   assertFiles(t, targetDirectory, {
-    "index.css": "styles"
+    "index.html": "<html></html>"
   })
 })
 
@@ -180,5 +180,35 @@ test("loads data from data files and passes it to the JSX template", (t) => {
 
   assertFiles(t, targetDirectory, {
     "index.html": "<p>bar</p>",
+  })
+})
+
+test("transpiles stylesheets using cssnext", (t) => {
+  let sourceDirectory = `${tmpPathPrefix}/source`
+  let targetDirectory = `${tmpPathPrefix}/target`
+
+  createFiles(sourceDirectory, {
+    "index.css": dedent`
+      :root {
+        --mainColor: red;
+      }
+
+      a {
+        color: var(--mainColor);
+      }
+    `,
+  })
+
+  charge.build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    "index.css": dedent`
+      a {
+        color: red;
+      }
+    `,
   })
 })
