@@ -146,6 +146,46 @@ test("renders a JSX template as HTML with a component", (t) => {
   })
 })
 
+test("renders a JSX template as HTML with a component as a layout", (t) => {
+  let sourceDirectory = `${tmpPathPrefix}/source`
+  let targetDirectory = `${tmpPathPrefix}/target`
+
+  createFiles(sourceDirectory, {
+    "layout-component.html.jsx": dedent`
+      import React from "react"
+
+      export default (props) => {
+        return <html>{props.children}</html>
+      }
+    `,
+    "index.html.jsx": dedent`
+      import React from "react"
+      import LayoutComponent from "./layout-component.html.jsx"
+
+      export default class extends React.Component {
+
+        render() {
+          return (
+            <LayoutComponent>
+              <p>foobar</p>
+            </LayoutComponent>
+          )
+        }
+
+      }
+    `
+  })
+
+  charge.build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    "index.html": "<html><p>foobar</p></html>",
+  })
+})
+
 test("loads data from data files and passes it to the JSX template", (t) => {
   let dataDirectory = `${tmpPathPrefix}/data`
   let sourceDirectory = `${tmpPathPrefix}/source`
