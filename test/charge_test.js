@@ -102,6 +102,38 @@ test("renders a JSX template as HTML", async (t) => {
   cleanFiles(tmpPathPrefix)
 })
 
+test("renders a JSX template as an HTML file into a Directory Index format for clean URLs", async (t) => {
+  let sourceDirectory = `${tmpPathPrefix}/source`
+  let targetDirectory = `${tmpPathPrefix}/target`
+
+  createFiles(sourceDirectory, {
+    "foobar.html.jsx": dedent`
+      import React from "react"
+
+      export default class extends React.Component {
+
+        render() {
+          return <html></html>
+        }
+
+      }
+    `
+  })
+
+  await charge.build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    foobar: {
+      "index.html": "<html></html>",
+    },
+  })
+
+  cleanFiles(tmpPathPrefix)
+})
+
 test("renders a JSX template as HTML with a component", async (t) => {
   let sourceDirectory = `${tmpPathPrefix}/source`
   let targetDirectory = `${tmpPathPrefix}/target`
