@@ -254,3 +254,42 @@ test("transpiles stylesheets using cssnext", async (t) => {
 
   cleanFiles(tmpPathPrefix)
 })
+
+test("inlines stylesheets referenced via @import statements", async (t) => {
+  let sourceDirectory = `${tmpPathPrefix}/source`
+  let targetDirectory = `${tmpPathPrefix}/target`
+
+  createFiles(sourceDirectory, {
+    "other.css": dedent`
+      p {
+        color: red;
+      }
+    `,
+    "index.css": dedent`
+      @import "./other.css";
+
+      a {
+        color: black;
+      }
+    `,
+  })
+
+  await charge.build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    "index.css": dedent`
+      p {
+        color: red;
+      }
+
+      a {
+        color: black;
+      }
+    `,
+  })
+
+  cleanFiles(tmpPathPrefix)
+})
