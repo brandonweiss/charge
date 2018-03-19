@@ -1,30 +1,16 @@
 import test from "ava"
 import dedent from "dedent"
 import fs from "node-fs-extra"
-import glob from "glob"
-import path from "path"
 import charge from "../lib/charge"
-import { createData, createFiles, assertFiles } from "./helpers/filesystem"
+import { createData, createFiles, assertFiles, cleanFiles } from "./helpers/filesystem"
 
 let tmpPathPrefix = "tmp/tests"
 
-test.afterEach.always(t => {
-  // This bizarre incantation is necessary because after a test JSX file has been created
-  // it is eventually required using `require`, which caches it, so even after the file
-  // has been deleted, when a file with the same name is created in a subsequent test the
-  // next `require` will return the cached version unless we delete it from the cache first.
-  let files = glob.sync(`${tmpPathPrefix}/**/*.{js,jsx}`, {
-    nodir: true,
-  })
-
-  files.forEach((file) => {
-    delete require.cache[path.resolve(file)]
-  })
-
-  fs.removeSync(tmpPathPrefix)
+test.beforeEach((t) => {
+	cleanFiles(tmpPathPrefix)
 })
 
-test("copies a file from source to target", (t) => {
+test("copies a file from source to target", async (t) => {
   let sourceDirectory = `${tmpPathPrefix}/source`
   let targetDirectory = `${tmpPathPrefix}/target`
 
@@ -32,7 +18,7 @@ test("copies a file from source to target", (t) => {
     "index.html": "<html></html>"
   })
 
-  charge.build({
+  await charge.build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -40,9 +26,11 @@ test("copies a file from source to target", (t) => {
   assertFiles(t, targetDirectory, {
     "index.html": "<html></html>"
   })
+
+  cleanFiles(tmpPathPrefix)
 })
 
-test("copies an HTML file into a Directory Index format for clean URLs", (t) => {
+test("copies an HTML file into a Directory Index format for clean URLs", async (t) => {
   let sourceDirectory = `${tmpPathPrefix}/source`
   let targetDirectory = `${tmpPathPrefix}/target`
 
@@ -50,7 +38,7 @@ test("copies an HTML file into a Directory Index format for clean URLs", (t) => 
     "foobar.html": "<html></html>",
   })
 
-  charge.build({
+  await charge.build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -60,9 +48,11 @@ test("copies an HTML file into a Directory Index format for clean URLs", (t) => 
       "index.html": "<html></html>",
     },
   })
+
+  cleanFiles(tmpPathPrefix)
 })
 
-test("does not copy the root index.html file into a Directory Index format for clean URLs", (t) => {
+test("does not copy the root index.html file into a Directory Index format for clean URLs", async (t) => {
   let sourceDirectory = `${tmpPathPrefix}/source`
   let targetDirectory = `${tmpPathPrefix}/target`
 
@@ -70,7 +60,7 @@ test("does not copy the root index.html file into a Directory Index format for c
     "index.html": "<html></html>",
   })
 
-  charge.build({
+  await charge.build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -78,9 +68,11 @@ test("does not copy the root index.html file into a Directory Index format for c
   assertFiles(t, targetDirectory, {
     "index.html": "<html></html>",
   })
+
+  cleanFiles(tmpPathPrefix)
 })
 
-test("renders a JSX template as HTML", (t) => {
+test("renders a JSX template as HTML", async (t) => {
   let sourceDirectory = `${tmpPathPrefix}/source`
   let targetDirectory = `${tmpPathPrefix}/target`
 
@@ -98,7 +90,7 @@ test("renders a JSX template as HTML", (t) => {
     `
   })
 
-  charge.build({
+  await charge.build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -106,9 +98,11 @@ test("renders a JSX template as HTML", (t) => {
   assertFiles(t, targetDirectory, {
     "index.html": "<html></html>",
   })
+
+  cleanFiles(tmpPathPrefix)
 })
 
-test("renders a JSX template as HTML with a component", (t) => {
+test("renders a JSX template as HTML with a component", async (t) => {
   let sourceDirectory = `${tmpPathPrefix}/source`
   let targetDirectory = `${tmpPathPrefix}/target`
 
@@ -136,7 +130,7 @@ test("renders a JSX template as HTML with a component", (t) => {
     `
   })
 
-  charge.build({
+  await charge.build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -144,9 +138,11 @@ test("renders a JSX template as HTML with a component", (t) => {
   assertFiles(t, targetDirectory, {
     "index.html": "<html><p>bar</p></html>",
   })
+
+  cleanFiles(tmpPathPrefix)
 })
 
-test("renders a JSX template as HTML with a component as a layout", (t) => {
+test("renders a JSX template as HTML with a component as a layout", async (t) => {
   let sourceDirectory = `${tmpPathPrefix}/source`
   let targetDirectory = `${tmpPathPrefix}/target`
 
@@ -176,7 +172,7 @@ test("renders a JSX template as HTML with a component as a layout", (t) => {
     `
   })
 
-  charge.build({
+  await charge.build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -184,9 +180,11 @@ test("renders a JSX template as HTML with a component as a layout", (t) => {
   assertFiles(t, targetDirectory, {
     "index.html": "<html><p>foobar</p></html>",
   })
+
+  cleanFiles(tmpPathPrefix)
 })
 
-test("loads data from data files and passes it to the JSX template", (t) => {
+test("loads data from data files and passes it to the JSX template", async (t) => {
   let dataDirectory = `${tmpPathPrefix}/data`
   let sourceDirectory = `${tmpPathPrefix}/source`
   let targetDirectory = `${tmpPathPrefix}/target`
@@ -213,7 +211,7 @@ test("loads data from data files and passes it to the JSX template", (t) => {
     `
   })
 
-  charge.build({
+  await charge.build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -221,9 +219,11 @@ test("loads data from data files and passes it to the JSX template", (t) => {
   assertFiles(t, targetDirectory, {
     "index.html": "<p>bar</p>",
   })
+
+  cleanFiles(tmpPathPrefix)
 })
 
-test("transpiles stylesheets using cssnext", (t) => {
+test("transpiles stylesheets using cssnext", async (t) => {
   let sourceDirectory = `${tmpPathPrefix}/source`
   let targetDirectory = `${tmpPathPrefix}/target`
 
@@ -239,7 +239,7 @@ test("transpiles stylesheets using cssnext", (t) => {
     `,
   })
 
-  charge.build({
+  await charge.build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -251,4 +251,6 @@ test("transpiles stylesheets using cssnext", (t) => {
       }
     `,
   })
+
+  cleanFiles(tmpPathPrefix)
 })

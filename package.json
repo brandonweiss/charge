@@ -12,7 +12,8 @@
   "license": "MIT",
   "repository": "https://github.com/brandonweiss/charge",
   "scripts": {
-    "test": "ava --verbose"
+    "test": "ava --verbose --serial",
+    "test:watch": "yarn run test --watch"
   },
   "devDependencies": {
     "ava": "^0.25.0",
