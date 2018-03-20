@@ -7,7 +7,7 @@ import { createData, createFiles, assertFiles, cleanFiles } from "./helpers/file
 let tmpPathPrefix = "tmp/tests"
 
 test.beforeEach((t) => {
-	cleanFiles(tmpPathPrefix)
+  cleanFiles(tmpPathPrefix)
 })
 
 test("copies a file from source to target", async (t) => {
@@ -326,13 +326,13 @@ test("inlines stylesheets referenced via @import statements", async (t) => {
   cleanFiles(tmpPathPrefix)
 })
 
-test("transpiles JavaScripts using Babel", async (t) => {
+test("bundles JavaScripts into a self-executing function", async (t) => {
   let sourceDirectory = `${tmpPathPrefix}/source`
   let targetDirectory = `${tmpPathPrefix}/target`
 
   createFiles(sourceDirectory, {
     "index.js": dedent`
-      [1, ...[2]]
+      console.log("hey")
     `,
   })
 
@@ -343,9 +343,77 @@ test("transpiles JavaScripts using Babel", async (t) => {
 
   assertFiles(t, targetDirectory, {
     "index.js": dedent`
-      "use strict";
+      (function () {
+        'use strict';
 
-      [1].concat([2]);
+        console.log("hey");
+
+      }());\n
+    `,
+  })
+
+  cleanFiles(tmpPathPrefix)
+})
+
+test("transpiles JavaScripts using Babel", async (t) => {
+  let sourceDirectory = `${tmpPathPrefix}/source`
+  let targetDirectory = `${tmpPathPrefix}/target`
+
+  createFiles(sourceDirectory, {
+    "index.js": dedent`
+      console.log([1, ...[2]])
+    `,
+  })
+
+  await charge.build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    "index.js": dedent`
+      (function () {
+        'use strict';
+
+        console.log([1].concat([2]));
+
+      }());\n
+    `,
+  })
+
+  cleanFiles(tmpPathPrefix)
+})
+
+test("bundles imported JavaScript files", async (t) => {
+  let sourceDirectory = `${tmpPathPrefix}/source`
+  let targetDirectory = `${tmpPathPrefix}/target`
+
+  createFiles(sourceDirectory, {
+    "foo.js": dedent`
+      export default "bar"
+    `,
+    "index.js": dedent`
+      import foo from  "./foo"
+
+      console.log(foo)
+    `,
+  })
+
+  await charge.build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    "index.js": dedent`
+      (function () {
+        'use strict';
+
+        var foo = "bar";
+
+        console.log(foo);
+
+      }());\n
     `,
   })
 

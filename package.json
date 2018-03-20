@@ -32,6 +32,8 @@
     "postcss-import": "^11.1.0",
     "postcss-value-parser": "^3.3.0",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "rollup": "^0.57.1",
+    "rollup-plugin-babel": "^3.0.3"
   }
 }
