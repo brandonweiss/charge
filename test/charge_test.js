@@ -325,3 +325,29 @@ test("inlines stylesheets referenced via @import statements", async (t) => {
 
   cleanFiles(tmpPathPrefix)
 })
+
+test("transpiles JavaScripts using Babel", async (t) => {
+  let sourceDirectory = `${tmpPathPrefix}/source`
+  let targetDirectory = `${tmpPathPrefix}/target`
+
+  createFiles(sourceDirectory, {
+    "index.js": dedent`
+      [1, ...[2]]
+    `,
+  })
+
+  await charge.build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    "index.js": dedent`
+      "use strict";
+
+      [1].concat([2]);
+    `,
+  })
+
+  cleanFiles(tmpPathPrefix)
+})
