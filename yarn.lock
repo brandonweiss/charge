@@ -53,29 +53,17 @@
     pretty-ms "^0.2.1"
     text-table "^0.2.0"
 
-"@types/acorn@^4.0.3":
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/@types/acorn/-/acorn-4.0.3.tgz#d1f3e738dde52536f9aad3d3380d14e448820afd"
-  dependencies:
-    "@types/estree" "*"
+"@types/estree@0.0.39":
+  version "0.0.39"
+  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
 
-"@types/estree@*", "@types/estree@0.0.38":
-  version "0.0.38"
-  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.38.tgz#c1be40aa933723c608820a99a373a16d215a1ca2"
+"@types/node@*":
+  version "10.3.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.3.5.tgz#8423cdf6e6fb83433e489900d7600d3b61c8260c"
 
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
-
-acorn-dynamic-import@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/acorn-dynamic-import/-/acorn-dynamic-import-3.0.0.tgz#901ceee4c7faaef7e07ad2a47e890675da50a278"
-  dependencies:
-    acorn "^5.0.0"
-
-acorn@^5.0.0, acorn@^5.5.3:
-  version "5.5.3"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.5.3.tgz#f473dd47e0277a08e28e9bec5aeeb04751f0b8c9"
 
 ajv@^4.9.1:
   version "4.11.8"
@@ -1433,10 +1421,6 @@ estree-walker@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-0.2.1.tgz#bdafe8095383d8414d5dc2ecf4c9173b6db9412e"
 
-estree-walker@^0.3.0:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-0.3.1.tgz#e6b1a51cf7292524e7237c312e5fe6660c1ce1aa"
-
 esutils@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
@@ -1990,12 +1974,6 @@ is-redirect@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/is-redirect/-/is-redirect-1.0.0.tgz#1d03dded53bd8db0f30c26e4f95d36fc7c87dc24"
 
-is-reference@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/is-reference/-/is-reference-1.1.0.tgz#50e6ef3f64c361e2c53c0416cdc9420037f2685b"
-  dependencies:
-    "@types/estree" "0.0.38"
-
 is-retry-allowed@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/is-retry-allowed/-/is-retry-allowed-1.1.0.tgz#11a060568b67339444033d0125a61a20d564fb34"
@@ -2163,10 +2141,6 @@ load-json-file@^4.0.0:
     pify "^3.0.0"
     strip-bom "^3.0.0"
 
-locate-character@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/locate-character/-/locate-character-2.0.5.tgz#f2d2614d49820ecb3c92d80d193b8db755f74c0f"
-
 locate-path@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-2.0.0.tgz#2b568b265eec944c6d9c0de9c3dbbbca0354cd8e"
@@ -2310,7 +2284,7 @@ meow@^3.7.0:
     redent "^1.0.0"
     trim-newlines "^1.0.0"
 
-micromatch@^2.1.5, micromatch@^2.3.11:
+micromatch@^2.1.5:
   version "2.3.11"
   resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-2.3.11.tgz#86677c97d1720b363431d04d0d15293bd38c1565"
   dependencies:
@@ -2988,7 +2962,7 @@ pretty-ms@^0.2.1:
   dependencies:
     parse-ms "^0.1.0"
 
-pretty-ms@^3.0.0, pretty-ms@^3.1.0:
+pretty-ms@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/pretty-ms/-/pretty-ms-3.1.0.tgz#e9cac9c76bf6ee52fe942dd9c6c4213153b12881"
   dependencies:
@@ -3256,10 +3230,6 @@ require-precompiled@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/require-precompiled/-/require-precompiled-0.1.0.tgz#5a1b52eb70ebed43eb982e974c85ab59571e56fa"
 
-require-relative@^0.8.7:
-  version "0.8.7"
-  resolved "https://registry.yarnpkg.com/require-relative/-/require-relative-0.8.7.tgz#7999539fc9e047a37928fa196f8e1563dabd36de"
-
 resolve-cwd@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/resolve-cwd/-/resolve-cwd-2.0.0.tgz#00a9f7387556e27038eae232caa372a6a59b665a"
@@ -3314,28 +3284,12 @@ rollup-pluginutils@^1.5.0:
     estree-walker "^0.2.1"
     minimatch "^3.0.2"
 
-rollup-pluginutils@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.0.1.tgz#7ec95b3573f6543a46a6461bd9a7c544525d0fc0"
+rollup@^0.61.2:
+  version "0.61.2"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.61.2.tgz#30a953736964683a5b8ea952b137a393d84e6302"
   dependencies:
-    estree-walker "^0.3.0"
-    micromatch "^2.3.11"
-
-rollup@^0.57.1:
-  version "0.57.1"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.57.1.tgz#0bb28be6151d253f67cf4a00fea48fb823c74027"
-  dependencies:
-    "@types/acorn" "^4.0.3"
-    acorn "^5.5.3"
-    acorn-dynamic-import "^3.0.0"
-    date-time "^2.1.0"
-    is-reference "^1.1.0"
-    locate-character "^2.0.5"
-    pretty-ms "^3.1.0"
-    require-relative "^0.8.7"
-    rollup-pluginutils "^2.0.1"
-    signal-exit "^3.0.2"
-    sourcemap-codec "^1.4.1"
+    "@types/estree" "0.0.39"
+    "@types/node" "*"
 
 safe-buffer@^5.0.1, safe-buffer@^5.1.1, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.1"
@@ -3432,10 +3386,6 @@ source-map@^0.5.0, source-map@^0.5.6, source-map@^0.5.7:
 source-map@^0.6.0, source-map@^0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
-
-sourcemap-codec@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/sourcemap-codec/-/sourcemap-codec-1.4.1.tgz#c8fd92d91889e902a07aee392bdd2c5863958ba2"
 
 spdx-correct@^3.0.0:
   version "3.0.0"
