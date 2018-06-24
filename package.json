@@ -34,7 +34,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "rollup": "^0.57.1",
-    "rollup-plugin-babel": "^3.0.3"
+    "rollup-plugin-babel": "^3.0.5"
   },
   "ava": {
     "source": [
