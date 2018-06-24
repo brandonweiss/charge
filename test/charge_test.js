@@ -5,15 +5,14 @@ import charge from "../lib/charge"
 import { createData, createFiles, assertFiles, cleanFiles } from "./helpers/filesystem"
 
 let tmpPathPrefix = "tmp/tests"
+let sourceDirectory = `${tmpPathPrefix}/source`
+let targetDirectory = `${tmpPathPrefix}/target`
 
 test.beforeEach((t) => {
   cleanFiles(tmpPathPrefix)
 })
 
 test("copies a file from source to target", async (t) => {
-  let sourceDirectory = `${tmpPathPrefix}/source`
-  let targetDirectory = `${tmpPathPrefix}/target`
-
   createFiles(sourceDirectory, {
     "index.html": "<html></html>"
   })
@@ -31,9 +30,6 @@ test("copies a file from source to target", async (t) => {
 })
 
 test("copies an HTML file into a Directory Index format for clean URLs", async (t) => {
-  let sourceDirectory = `${tmpPathPrefix}/source`
-  let targetDirectory = `${tmpPathPrefix}/target`
-
   createFiles(sourceDirectory, {
     "foobar.html": "<html></html>",
   })
@@ -53,9 +49,6 @@ test("copies an HTML file into a Directory Index format for clean URLs", async (
 })
 
 test("does not copy the root index.html file into a Directory Index format for clean URLs", async (t) => {
-  let sourceDirectory = `${tmpPathPrefix}/source`
-  let targetDirectory = `${tmpPathPrefix}/target`
-
   createFiles(sourceDirectory, {
     "index.html": "<html></html>",
   })
@@ -73,9 +66,6 @@ test("does not copy the root index.html file into a Directory Index format for c
 })
 
 test("renders a JSX template as HTML", async (t) => {
-  let sourceDirectory = `${tmpPathPrefix}/source`
-  let targetDirectory = `${tmpPathPrefix}/target`
-
   createFiles(sourceDirectory, {
     "index.html.jsx": dedent`
       import React from "react"
@@ -103,9 +93,6 @@ test("renders a JSX template as HTML", async (t) => {
 })
 
 test("renders a JSX template as an HTML file into a Directory Index format for clean URLs", async (t) => {
-  let sourceDirectory = `${tmpPathPrefix}/source`
-  let targetDirectory = `${tmpPathPrefix}/target`
-
   createFiles(sourceDirectory, {
     "foobar.html.jsx": dedent`
       import React from "react"
@@ -135,9 +122,6 @@ test("renders a JSX template as an HTML file into a Directory Index format for c
 })
 
 test("renders a JSX template as HTML with a component", async (t) => {
-  let sourceDirectory = `${tmpPathPrefix}/source`
-  let targetDirectory = `${tmpPathPrefix}/target`
-
   createFiles(sourceDirectory, {
     "paragraph-component.html.jsx": dedent`
       import React from "react"
@@ -175,9 +159,6 @@ test("renders a JSX template as HTML with a component", async (t) => {
 })
 
 test("renders a JSX template as HTML with a component as a layout", async (t) => {
-  let sourceDirectory = `${tmpPathPrefix}/source`
-  let targetDirectory = `${tmpPathPrefix}/target`
-
   createFiles(sourceDirectory, {
     "layout-component.html.jsx": dedent`
       import React from "react"
@@ -218,9 +199,6 @@ test("renders a JSX template as HTML with a component as a layout", async (t) =>
 
 test("loads data from data files and passes it to the JSX template", async (t) => {
   let dataDirectory = `${tmpPathPrefix}/data`
-  let sourceDirectory = `${tmpPathPrefix}/source`
-  let targetDirectory = `${tmpPathPrefix}/target`
-
   createData(dataDirectory, {
     stuff: dedent`
       {
@@ -256,9 +234,6 @@ test("loads data from data files and passes it to the JSX template", async (t) =
 })
 
 test("transpiles stylesheets using cssnext", async (t) => {
-  let sourceDirectory = `${tmpPathPrefix}/source`
-  let targetDirectory = `${tmpPathPrefix}/target`
-
   createFiles(sourceDirectory, {
     "index.css": dedent`
       :root {
@@ -288,9 +263,6 @@ test("transpiles stylesheets using cssnext", async (t) => {
 })
 
 test("inlines stylesheets referenced via @import statements", async (t) => {
-  let sourceDirectory = `${tmpPathPrefix}/source`
-  let targetDirectory = `${tmpPathPrefix}/target`
-
   createFiles(sourceDirectory, {
     "other.css": dedent`
       p {
@@ -327,9 +299,6 @@ test("inlines stylesheets referenced via @import statements", async (t) => {
 })
 
 test("bundles JavaScripts into a self-executing function", async (t) => {
-  let sourceDirectory = `${tmpPathPrefix}/source`
-  let targetDirectory = `${tmpPathPrefix}/target`
-
   createFiles(sourceDirectory, {
     "index.js": dedent`
       console.log("hey")
@@ -356,9 +325,6 @@ test("bundles JavaScripts into a self-executing function", async (t) => {
 })
 
 test("transpiles JavaScripts using Babel", async (t) => {
-  let sourceDirectory = `${tmpPathPrefix}/source`
-  let targetDirectory = `${tmpPathPrefix}/target`
-
   createFiles(sourceDirectory, {
     "index.js": dedent`
       console.log([1, ...[2]])
@@ -385,9 +351,6 @@ test("transpiles JavaScripts using Babel", async (t) => {
 })
 
 test("bundles imported JavaScript files", async (t) => {
-  let sourceDirectory = `${tmpPathPrefix}/source`
-  let targetDirectory = `${tmpPathPrefix}/target`
-
   createFiles(sourceDirectory, {
     "foo.js": dedent`
       export default "bar"
