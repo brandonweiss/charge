@@ -70,12 +70,8 @@ test("renders a JSX template as HTML", async (t) => {
     "index.html.jsx": dedent`
       import React from "react"
 
-      export default class extends React.Component {
-
-        render() {
-          return <html></html>
-        }
-
+      export default () => {
+        return <div></div>
       }
     `
   })
@@ -86,7 +82,7 @@ test("renders a JSX template as HTML", async (t) => {
   })
 
   assertFiles(t, targetDirectory, {
-    "index.html": "<html></html>",
+    "index.html": "<div></div>",
   })
 
   cleanFiles(tmpPathPrefix)
@@ -97,12 +93,8 @@ test("renders a JSX template as an HTML file into a Directory Index format for c
     "foobar.html.jsx": dedent`
       import React from "react"
 
-      export default class extends React.Component {
-
-        render() {
-          return <html></html>
-        }
-
+      export default () => {
+        return <div></div>
       }
     `
   })
@@ -114,7 +106,7 @@ test("renders a JSX template as an HTML file into a Directory Index format for c
 
   assertFiles(t, targetDirectory, {
     foobar: {
-      "index.html": "<html></html>",
+      "index.html": "<div></div>",
     },
   })
 
@@ -134,14 +126,12 @@ test("renders a JSX template as HTML with a JSX component", async (t) => {
       import React from "react"
       import ParagraphComponent from "./paragraph-component.html.jsx"
 
-      export default class extends React.Component {
-
-        render() {
-          return (
-            <html><ParagraphComponent foo="bar" /></html>
-          )
-        }
-
+      export default () => {
+        return (
+          <div>
+            <ParagraphComponent foo="bar" />
+          </div>
+        )
       }
     `
   })
@@ -152,7 +142,7 @@ test("renders a JSX template as HTML with a JSX component", async (t) => {
   })
 
   assertFiles(t, targetDirectory, {
-    "index.html": "<html><p>bar</p></html>",
+    "index.html": "<div><p>bar</p></div>",
   })
 
   cleanFiles(tmpPathPrefix)
@@ -168,11 +158,13 @@ test("renders a JSX template as HTML with an MDX component", async (t) => {
       import Subheading from "./subheading.html.mdx"
 
       export default () => {
-        return <div>
-          <h1>Heading</h1>
+        return (
+          <div>
+            <h1>Heading</h1>
 
-          <Subheading />
-        </div>
+            <Subheading />
+          </div>
+        )
       }
     `
   })
@@ -195,23 +187,19 @@ test("renders a JSX template as HTML with a JSX component as a layout", async (t
       import React from "react"
 
       export default (props) => {
-        return <html>{props.children}</html>
+        return <div>{props.children}</div>
       }
     `,
     "index.html.jsx": dedent`
       import React from "react"
       import LayoutComponent from "./layout-component.html.jsx"
 
-      export default class extends React.Component {
-
-        render() {
-          return (
-            <LayoutComponent>
-              <p>foobar</p>
-            </LayoutComponent>
-          )
-        }
-
+      export default () => {
+        return (
+          <LayoutComponent>
+            <p>foobar</p>
+          </LayoutComponent>
+        )
       }
     `
   })
@@ -222,7 +210,7 @@ test("renders a JSX template as HTML with a JSX component as a layout", async (t
   })
 
   assertFiles(t, targetDirectory, {
-    "index.html": "<html><p>foobar</p></html>",
+    "index.html": "<div><p>foobar</p></div>",
   })
 
   cleanFiles(tmpPathPrefix)
@@ -344,12 +332,8 @@ test("loads data from data files and passes it to the JSX template", async (t) =
     "index.html.jsx": dedent`
       import React from "react"
 
-      export default class extends React.Component {
-
-        render() {
-          return <p>{this.props.data.stuff.foo}</p>
-        }
-
+      export default (props) => {
+        return <p>{props.data.stuff.foo}</p>
       }
     `
   })
