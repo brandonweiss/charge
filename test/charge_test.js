@@ -121,7 +121,7 @@ test("renders a JSX template as an HTML file into a Directory Index format for c
   cleanFiles(tmpPathPrefix)
 })
 
-test("renders a JSX template as HTML with a component", async (t) => {
+test("renders a JSX template as HTML with a JSX component", async (t) => {
   createFiles(sourceDirectory, {
     "paragraph-component.html.jsx": dedent`
       import React from "react"
@@ -158,7 +158,38 @@ test("renders a JSX template as HTML with a component", async (t) => {
   cleanFiles(tmpPathPrefix)
 })
 
-test("renders a JSX template as HTML with a component as a layout", async (t) => {
+test("renders a JSX template as HTML with an MDX component", async (t) => {
+  createFiles(sourceDirectory, {
+    "subheading.html.mdx": dedent`
+      ## Subheading
+    `,
+    "index.html.jsx": dedent`
+      import React from "react"
+      import Subheading from "./subheading.html.mdx"
+
+      export default () => {
+        return <div>
+          <h1>Heading</h1>
+
+          <Subheading />
+        </div>
+      }
+    `
+  })
+
+  await charge.build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    "index.html": "<div><h1>Heading</h1><div><h2>Subheading</h2></div></div>",
+  })
+
+  cleanFiles(tmpPathPrefix)
+})
+
+test("renders a JSX template as HTML with a JSX component as a layout", async (t) => {
   createFiles(sourceDirectory, {
     "layout-component.html.jsx": dedent`
       import React from "react"
@@ -192,6 +223,108 @@ test("renders a JSX template as HTML with a component as a layout", async (t) =>
 
   assertFiles(t, targetDirectory, {
     "index.html": "<html><p>foobar</p></html>",
+  })
+
+  cleanFiles(tmpPathPrefix)
+})
+
+test("renders an MDX template as HTML", async (t) => {
+  createFiles(sourceDirectory, {
+    "index.html.mdx": dedent`
+      # Hello!
+    `
+  })
+
+  await charge.build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    "index.html": "<div><h1>Hello!</h1></div>",
+  })
+
+  cleanFiles(tmpPathPrefix)
+})
+
+test("renders an MDX template as an HTML file into a Directory Index format for clean URLs", async (t) => {
+  createFiles(sourceDirectory, {
+    "foobar.html.mdx": dedent`
+      # Hello!
+    `
+  })
+
+  await charge.build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    foobar: {
+      "index.html": "<div><h1>Hello!</h1></div>",
+    },
+  })
+
+  cleanFiles(tmpPathPrefix)
+})
+
+test("renders an MDX template as HTML with an MDX component", async (t) => {
+  createFiles(sourceDirectory, {
+    "subheading.html.mdx": dedent`
+      ## Subheading
+    `,
+    "index.html.mdx": dedent`
+      import Subheading from "./subheading.html.mdx"
+
+      # Heading
+
+      <Subheading />
+    `
+  })
+
+  await charge.build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    "index.html": dedent`<div>
+      <h1>Heading</h1>
+      <div><h2>Subheading</h2></div></div>
+    `,
+  })
+
+  cleanFiles(tmpPathPrefix)
+})
+
+test("renders an MDX template as HTML with a JSX component", async (t) => {
+  createFiles(sourceDirectory, {
+    "subheading.html.jsx": dedent`
+      import React from "react"
+
+      export default (props) => {
+        return <h2>{props.title}</h2>
+      }
+    `,
+    "index.html.mdx": dedent`
+      import Subheading from "./subheading.html.jsx"
+
+      # Heading
+
+      <Subheading title="Something" />
+    `
+  })
+
+  await charge.build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    "index.html": dedent`<div>
+      <h1>Heading</h1>
+      <h2>Something</h2></div>
+    `,
   })
 
   cleanFiles(tmpPathPrefix)

@@ -54,11 +54,11 @@ export const assertFiles = (t, targetDirectory, expectedTargetFilesystem) => {
 }
 
 export const cleanFiles = (directory) => {
-  // This bizarre incantation is necessary because after a test JSX file has been created
+  // This bizarre incantation is necessary because after a JSX/MDX file has been created
   // it is eventually required using `require`, which caches it, so even after the file
   // has been deleted, when a file with the same name is created in a subsequent test the
   // next `require` will return the cached version unless we delete it from the cache first.
-  let files = glob.sync(`${directory}/**/*.{js,jsx}`, {
+  let files = glob.sync(`${directory}/**/*.{js,jsx,mdx}`, {
     nodir: true,
   })
 
