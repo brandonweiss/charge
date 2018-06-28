@@ -25,6 +25,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babylon": "^6.18.0",
+    "esm": "^3.0.55",
     "glob": "^7.1.2",
     "node-fs-extra": "^0.8.2",
     "object-assign-deep": "^0.4.0",
