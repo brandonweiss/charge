@@ -68,8 +68,6 @@ test("does not copy the root index.html file into a Directory Index format for c
 test("renders a JSX template as HTML", async (t) => {
   createFiles(sourceDirectory, {
     "index.html.jsx": dedent`
-      import React from "react"
-
       export default () => {
         return <div></div>
       }
@@ -91,8 +89,6 @@ test("renders a JSX template as HTML", async (t) => {
 test("renders a JSX template as an HTML file into a Directory Index format for clean URLs", async (t) => {
   createFiles(sourceDirectory, {
     "foobar.html.jsx": dedent`
-      import React from "react"
-
       export default () => {
         return <div></div>
       }
@@ -116,14 +112,11 @@ test("renders a JSX template as an HTML file into a Directory Index format for c
 test("renders a JSX template as HTML with a JSX component", async (t) => {
   createFiles(sourceDirectory, {
     "paragraph-component.html.jsx": dedent`
-      import React from "react"
-
       export default (props) => {
         return <p>{props.foo}</p>
       }
     `,
     "index.html.jsx": dedent`
-      import React from "react"
       import ParagraphComponent from "./paragraph-component.html.jsx"
 
       export default () => {
@@ -154,7 +147,6 @@ test("renders a JSX template as HTML with an MDX component", async (t) => {
       ## Subheading
     `,
     "index.html.jsx": dedent`
-      import React from "react"
       import Subheading from "./subheading.html.mdx"
 
       export default () => {
@@ -184,14 +176,11 @@ test("renders a JSX template as HTML with an MDX component", async (t) => {
 test("renders a JSX template as HTML with a JSX component as a layout", async (t) => {
   createFiles(sourceDirectory, {
     "layout-component.html.jsx": dedent`
-      import React from "react"
-
       export default (props) => {
         return <div>{props.children}</div>
       }
     `,
     "index.html.jsx": dedent`
-      import React from "react"
       import LayoutComponent from "./layout-component.html.jsx"
 
       export default () => {
@@ -288,8 +277,6 @@ test("renders an MDX template as HTML with an MDX component", async (t) => {
 test("renders an MDX template as HTML with a JSX component", async (t) => {
   createFiles(sourceDirectory, {
     "subheading.html.jsx": dedent`
-      import React from "react"
-
       export default (props) => {
         return <h2>{props.title}</h2>
       }
@@ -330,8 +317,6 @@ test("loads data from data files and passes it to the JSX template", async (t) =
 
   createFiles(sourceDirectory, {
     "index.html.jsx": dedent`
-      import React from "react"
-
       export default (props) => {
         return <p>{props.data.stuff.foo}</p>
       }
