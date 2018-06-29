@@ -6,6 +6,7 @@
     "name": "Brandon Weiss",
     "email": "brandon@anti-pattern.com"
   },
+  "bin": "cli.js",
   "engines": {
     "node": ">= 9.7.1"
   },
@@ -28,6 +29,7 @@
     "babylon": "^6.18.0",
     "esm": "^3.0.55",
     "glob": "^7.1.2",
+    "meow": "^5.0.0",
     "node-fs-extra": "^0.8.2",
     "object-assign-deep": "^0.4.0",
     "pirates": "^3.0.2",
