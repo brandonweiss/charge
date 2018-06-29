@@ -5,7 +5,7 @@ import { noMutate as objectAssignDeep } from "object-assign-deep"
 
 let flattenFilePath = (pathPart, directoryOrFileContents) => {
   return Object.entries(directoryOrFileContents).reduce((flattenedFilePaths, [key, value]) => {
-    if (typeof(value) === "object") {
+    if (typeof value === "object") {
       Object.assign(flattenedFilePaths, flattenFilePath(`${pathPart}/${key}`, value))
     } else {
       flattenedFilePaths[`${pathPart}/${key}`] = value
@@ -20,7 +20,7 @@ let expandFilePath = (path, fileContents) => {
 
   return pathParts.reduceRight((directoryOrFileContents, part) => {
     return {
-      [part]: directoryOrFileContents
+      [part]: directoryOrFileContents,
     }
   }, fileContents)
 }

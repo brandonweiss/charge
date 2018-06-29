@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-require = require("esm")(module/*, options*/)
+require = require("esm")(module)
 
 const meow = require("meow")
 const charge = require("./lib/charge")
@@ -24,6 +24,6 @@ switch (command) {
   case "serve":
   case "server":
     return charge.serve({
-      source: cli.input[1]
+      source: cli.input[1],
     })
 }

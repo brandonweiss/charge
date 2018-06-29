@@ -14,7 +14,7 @@ test.beforeEach((t) => {
 
 test("copies a file from source to target", async (t) => {
   createFiles(sourceDirectory, {
-    "index.html": "<html></html>"
+    "index.html": "<html></html>",
   })
 
   await build({
@@ -23,7 +23,7 @@ test("copies a file from source to target", async (t) => {
   })
 
   assertFiles(t, targetDirectory, {
-    "index.html": "<html></html>"
+    "index.html": "<html></html>",
   })
 
   cleanFiles(tmpPathPrefix)
@@ -71,7 +71,7 @@ test("renders a JSX template as HTML", async (t) => {
       export default () => {
         return <div></div>
       }
-    `
+    `,
   })
 
   await build({
@@ -92,7 +92,7 @@ test("renders a JSX template as an HTML file into a Directory Index format for c
       export default () => {
         return <div></div>
       }
-    `
+    `,
   })
 
   await build({
@@ -126,7 +126,7 @@ test("renders a JSX template as HTML with a JSX component", async (t) => {
           </div>
         )
       }
-    `
+    `,
   })
 
   await build({
@@ -158,7 +158,7 @@ test("renders a JSX template as HTML with an MDX component", async (t) => {
           </div>
         )
       }
-    `
+    `,
   })
 
   await build({
@@ -190,7 +190,7 @@ test("renders a JSX template as HTML with a JSX component as a layout", async (t
           </LayoutComponent>
         )
       }
-    `
+    `,
   })
 
   await build({
@@ -209,7 +209,7 @@ test("renders an MDX template as HTML", async (t) => {
   createFiles(sourceDirectory, {
     "index.html.mdx": dedent`
       # Hello!
-    `
+    `,
   })
 
   await build({
@@ -228,7 +228,7 @@ test("renders an MDX template as an HTML file into a Directory Index format for 
   createFiles(sourceDirectory, {
     "foobar.html.mdx": dedent`
       # Hello!
-    `
+    `,
   })
 
   await build({
@@ -256,7 +256,7 @@ test("renders an MDX template as HTML with an MDX component", async (t) => {
       # Heading
 
       <Subheading />
-    `
+    `,
   })
 
   await build({
@@ -287,7 +287,7 @@ test("renders an MDX template as HTML with a JSX component", async (t) => {
       # Heading
 
       <Subheading title="Something" />
-    `
+    `,
   })
 
   await build({
@@ -312,7 +312,7 @@ test("loads data from data files and passes it to the JSX template", async (t) =
       {
         "foo": "bar"
       }
-    `
+    `,
   })
 
   createFiles(sourceDirectory, {
@@ -320,7 +320,7 @@ test("loads data from data files and passes it to the JSX template", async (t) =
       export default (props) => {
         return <p>{props.data.stuff.foo}</p>
       }
-    `
+    `,
   })
 
   await build({
