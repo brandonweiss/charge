@@ -1,7 +1,7 @@
 import test from "ava"
 import dedent from "dedent"
 import fs from "fs-extra"
-import { build } from "../lib/charge"
+import build from "../lib/build"
 import { createData, createFiles, assertFiles, cleanFiles } from "./helpers/filesystem"
 
 let tmpPathPrefix = "tmp/tests"

@@ -3,7 +3,8 @@
 require = require("esm")(module)
 
 const meow = require("meow")
-const charge = require("./lib/charge")
+const build = require("./lib/build").default
+const serve = require("./lib/serve").default
 
 const cli = meow(`
   Usage
@@ -17,13 +18,13 @@ switch (command) {
   case undefined:
     return cli.showHelp()
   case "build":
-    return charge.build({
+    return build({
       source: cli.input[1],
       target: cli.input[2],
     })
   case "serve":
   case "server":
-    return charge.serve({
+    return serve({
       source: cli.input[1],
     })
 }
