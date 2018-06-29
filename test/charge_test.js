@@ -1,6 +1,6 @@
 import test from "ava"
 import dedent from "dedent"
-import fs from "node-fs-extra"
+import fs from "fs-extra"
 import { build } from "../lib/charge"
 import { createData, createFiles, assertFiles, cleanFiles } from "./helpers/filesystem"
 

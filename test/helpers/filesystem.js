@@ -1,6 +1,6 @@
 import glob from "glob"
 import path from "path"
-import fs from "node-fs-extra"
+import fs from "fs-extra"
 import { noMutate as objectAssignDeep } from "object-assign-deep"
 
 let flattenFilePath = (pathPart, directoryOrFileContents) => {
