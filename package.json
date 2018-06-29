@@ -43,6 +43,9 @@
     "rollup-plugin-babel": "^3.0.5"
   },
   "ava": {
+    "require": [
+      "esm"
+    ],
     "source": [
       "!tmp/**/*"
     ]

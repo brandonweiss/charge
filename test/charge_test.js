@@ -1,7 +1,7 @@
 import test from "ava"
 import dedent from "dedent"
 import fs from "node-fs-extra"
-import charge from "../lib/charge"
+import { build } from "../lib/charge"
 import { createData, createFiles, assertFiles, cleanFiles } from "./helpers/filesystem"
 
 let tmpPathPrefix = "tmp/tests"
@@ -17,7 +17,7 @@ test("copies a file from source to target", async (t) => {
     "index.html": "<html></html>"
   })
 
-  await charge.build({
+  await build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -34,7 +34,7 @@ test("copies an HTML file into a Directory Index format for clean URLs", async (
     "foobar.html": "<html></html>",
   })
 
-  await charge.build({
+  await build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -53,7 +53,7 @@ test("does not copy the root index.html file into a Directory Index format for c
     "index.html": "<html></html>",
   })
 
-  await charge.build({
+  await build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -74,7 +74,7 @@ test("renders a JSX template as HTML", async (t) => {
     `
   })
 
-  await charge.build({
+  await build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -95,7 +95,7 @@ test("renders a JSX template as an HTML file into a Directory Index format for c
     `
   })
 
-  await charge.build({
+  await build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -129,7 +129,7 @@ test("renders a JSX template as HTML with a JSX component", async (t) => {
     `
   })
 
-  await charge.build({
+  await build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -161,7 +161,7 @@ test("renders a JSX template as HTML with an MDX component", async (t) => {
     `
   })
 
-  await charge.build({
+  await build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -193,7 +193,7 @@ test("renders a JSX template as HTML with a JSX component as a layout", async (t
     `
   })
 
-  await charge.build({
+  await build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -212,7 +212,7 @@ test("renders an MDX template as HTML", async (t) => {
     `
   })
 
-  await charge.build({
+  await build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -231,7 +231,7 @@ test("renders an MDX template as an HTML file into a Directory Index format for 
     `
   })
 
-  await charge.build({
+  await build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -259,7 +259,7 @@ test("renders an MDX template as HTML with an MDX component", async (t) => {
     `
   })
 
-  await charge.build({
+  await build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -290,7 +290,7 @@ test("renders an MDX template as HTML with a JSX component", async (t) => {
     `
   })
 
-  await charge.build({
+  await build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -323,7 +323,7 @@ test("loads data from data files and passes it to the JSX template", async (t) =
     `
   })
 
-  await charge.build({
+  await build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -348,7 +348,7 @@ test("transpiles stylesheets using cssnext", async (t) => {
     `,
   })
 
-  await charge.build({
+  await build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -380,7 +380,7 @@ test("inlines stylesheets referenced via @import statements", async (t) => {
     `,
   })
 
-  await charge.build({
+  await build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -407,7 +407,7 @@ test("bundles JavaScripts into a self-executing function", async (t) => {
     `,
   })
 
-  await charge.build({
+  await build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -433,7 +433,7 @@ test("transpiles JavaScripts using Babel", async (t) => {
     `,
   })
 
-  await charge.build({
+  await build({
     source: sourceDirectory,
     target: targetDirectory,
   })
@@ -464,7 +464,7 @@ test("bundles imported JavaScript files", async (t) => {
     `,
   })
 
-  await charge.build({
+  await build({
     source: sourceDirectory,
     target: targetDirectory,
   })
