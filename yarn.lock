@@ -2877,7 +2877,7 @@ pixrem@^4.0.0:
     postcss "^6.0.0"
     reduce-css-calc "^1.2.7"
 
-pkg-conf@^2.0.0:
+pkg-conf@^2.0.0, pkg-conf@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/pkg-conf/-/pkg-conf-2.1.0.tgz#2126514ca6f2abfebd168596df18ba57867f0058"
   dependencies:
@@ -3623,6 +3623,14 @@ shebang-regex@^1.0.0:
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
+
+signale@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/signale/-/signale-1.2.1.tgz#fbd4b952603ea3315dbe9e88f4f482f336cee828"
+  dependencies:
+    chalk "^2.3.2"
+    figures "^2.0.0"
+    pkg-conf "^2.1.0"
 
 simple-swizzle@^0.2.2:
   version "0.2.2"

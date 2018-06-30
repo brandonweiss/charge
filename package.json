@@ -45,7 +45,8 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "rollup": "^0.61.2",
-    "rollup-plugin-babel": "^3.0.5"
+    "rollup-plugin-babel": "^3.0.5",
+    "signale": "^1.2.1"
   },
   "ava": {
     "require": [
