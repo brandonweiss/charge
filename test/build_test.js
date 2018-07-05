@@ -80,7 +80,11 @@ test("renders a JSX template as HTML", async (t) => {
   })
 
   assertFiles(t, targetDirectory, {
-    "index.html": "<div></div>",
+    "index.html": dedent`
+      <!DOCTYPE html>
+
+      <div></div>
+    `,
   })
 
   cleanFiles(tmpPathPrefix)
@@ -102,7 +106,11 @@ test("renders a JSX template as an HTML file into a Directory Index format for c
 
   assertFiles(t, targetDirectory, {
     foobar: {
-      "index.html": "<div></div>",
+      "index.html": dedent`
+        <!DOCTYPE html>
+
+        <div></div>
+      `,
     },
   })
 
@@ -135,7 +143,11 @@ test("renders a JSX template as HTML with a JSX component", async (t) => {
   })
 
   assertFiles(t, targetDirectory, {
-    "index.html": "<div><p>bar</p></div>",
+    "index.html": dedent`
+      <!DOCTYPE html>
+
+      <div><p>bar</p></div>
+    `,
   })
 
   cleanFiles(tmpPathPrefix)
@@ -167,7 +179,11 @@ test("renders a JSX template as HTML with an MDX component", async (t) => {
   })
 
   assertFiles(t, targetDirectory, {
-    "index.html": "<div><h1>Heading</h1><div><h2>Subheading</h2></div></div>",
+    "index.html": dedent`
+      <!DOCTYPE html>
+
+      <div><h1>Heading</h1><div><h2>Subheading</h2></div></div>
+    `,
   })
 
   cleanFiles(tmpPathPrefix)
@@ -199,7 +215,11 @@ test("renders a JSX template as HTML with a JSX component as a layout", async (t
   })
 
   assertFiles(t, targetDirectory, {
-    "index.html": "<div><p>foobar</p></div>",
+    "index.html": dedent`
+      <!DOCTYPE html>
+
+      <div><p>foobar</p></div>
+    `,
   })
 
   cleanFiles(tmpPathPrefix)
@@ -218,7 +238,11 @@ test("renders an MDX template as HTML", async (t) => {
   })
 
   assertFiles(t, targetDirectory, {
-    "index.html": "<div><h1>Hello!</h1></div>",
+    "index.html": dedent`
+      <!DOCTYPE html>
+
+      <div><h1>Hello!</h1></div>
+    `,
   })
 
   cleanFiles(tmpPathPrefix)
@@ -238,7 +262,11 @@ test("renders an MDX template as an HTML file into a Directory Index format for 
 
   assertFiles(t, targetDirectory, {
     foobar: {
-      "index.html": "<div><h1>Hello!</h1></div>",
+      "index.html": dedent`
+        <!DOCTYPE html>
+
+        <div><h1>Hello!</h1></div>
+      `,
     },
   })
 
@@ -265,7 +293,10 @@ test("renders an MDX template as HTML with an MDX component", async (t) => {
   })
 
   assertFiles(t, targetDirectory, {
-    "index.html": dedent`<div>
+    "index.html": dedent`
+      <!DOCTYPE html>
+
+      <div>
       <h1>Heading</h1>
       <div><h2>Subheading</h2></div></div>
     `,
@@ -296,7 +327,10 @@ test("renders an MDX template as HTML with a JSX component", async (t) => {
   })
 
   assertFiles(t, targetDirectory, {
-    "index.html": dedent`<div>
+    "index.html": dedent`
+      <!DOCTYPE html>
+
+      <div>
       <h1>Heading</h1>
       <h2>Something</h2></div>
     `,
@@ -329,7 +363,11 @@ test("loads data from data files and passes it to the JSX template", async (t) =
   })
 
   assertFiles(t, targetDirectory, {
-    "index.html": "<p>bar</p>",
+    "index.html": dedent`
+      <!DOCTYPE html>
+
+      <p>bar</p>
+    `,
   })
 
   cleanFiles(tmpPathPrefix)
