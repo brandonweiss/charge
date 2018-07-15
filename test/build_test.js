@@ -373,15 +373,11 @@ test("loads data from data files and passes it to the JSX template", async (t) =
   cleanFiles(tmpPathPrefix)
 })
 
-test("transpiles stylesheets using cssnext", async (t) => {
+test("transpiles stylesheets using Stage 2 features", async (t) => {
   createFiles(sourceDirectory, {
     "index.css": dedent`
-      :root {
-        --mainColor: red;
-      }
-
-      a {
-        color: var(--mainColor);
+      body {
+        font-family: system-ui;
       }
     `,
   })
@@ -393,8 +389,39 @@ test("transpiles stylesheets using cssnext", async (t) => {
 
   assertFiles(t, targetDirectory, {
     "index.css": dedent`
-      a {
-        color: red;
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Droid Sans, Helvetica Neue;
+      }
+    `,
+  })
+
+  cleanFiles(tmpPathPrefix)
+})
+
+test("transpiles stylesheets using thee custom-media-queries feature from Stage 1", async (t) => {
+  createFiles(sourceDirectory, {
+    "index.css": dedent`
+      @custom-media --small-viewport (max-width: 30em);
+
+      @media (--small-viewport) {
+        nav {
+          display: none;
+        }
+      }
+    `,
+  })
+
+  await build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    "index.css": dedent`
+      @media (max-width: 30em) {
+        nav {
+          display: none;
+        }
       }
     `,
   })
