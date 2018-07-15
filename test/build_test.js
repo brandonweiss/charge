@@ -12,6 +12,27 @@ test.beforeEach((t) => {
   cleanFiles(tmpPathPrefix)
 })
 
+test("empties target directory before building", async (t) => {
+  createFiles(sourceDirectory, {
+    "index.html": "<html></html>",
+  })
+
+  createFiles(targetDirectory, {
+    "stale.html": "<html></html>",
+  })
+
+  await build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    "index.html": "<html></html>",
+  })
+
+  cleanFiles(tmpPathPrefix)
+})
+
 test("copies a file from source to target", async (t) => {
   createFiles(sourceDirectory, {
     "index.html": "<html></html>",
