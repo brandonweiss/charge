@@ -39,6 +39,12 @@ export const createFiles = (sourceDirectory, files) => {
   })
 }
 
+export const createPackage = (name, files) => {
+  Object.entries(files).forEach(([filePath, fileContents]) => {
+    fs.outputFileSync(`node_modules/${name}/${filePath}`, fileContents)
+  })
+}
+
 export const assertFiles = (t, targetDirectory, expectedTargetFilesystem) => {
   let files = glob.sync(`${targetDirectory}/**/*`, {
     nodir: true,

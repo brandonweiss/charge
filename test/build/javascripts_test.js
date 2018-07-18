@@ -1,7 +1,13 @@
 import test from "ava"
 import dedent from "dedent"
 import build from "../../lib/build"
-import { createData, createFiles, assertFiles, cleanFiles } from "../helpers/filesystem"
+import {
+  createData,
+  createFiles,
+  createPackage,
+  assertFiles,
+  cleanFiles,
+} from "../helpers/filesystem"
 
 let tmpPathPrefix = "tmp/tests"
 let sourceDirectory = `${tmpPathPrefix}/source`
@@ -70,6 +76,42 @@ test("bundles imported JavaScript files", async (t) => {
     `,
     "index.js": dedent`
       import foo from  "./foo"
+
+      console.log(foo)
+    `,
+  })
+
+  await build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    "index.js": dedent`
+      (function () {
+        'use strict';
+
+        var foo = "bar";
+
+        console.log(foo);
+
+      }());\n
+    `,
+  })
+
+  cleanFiles(tmpPathPrefix)
+})
+
+test("bundles imported NPM packages", async (t) => {
+  createPackage("foo", {
+    "index.js": dedent`
+      export default "bar"
+    `,
+  })
+
+  createFiles(sourceDirectory, {
+    "index.js": dedent`
+      import foo from  "foo"
 
       console.log(foo)
     `,
