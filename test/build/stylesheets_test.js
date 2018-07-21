@@ -73,7 +73,7 @@ test("transpiles stylesheets using thee custom-media-queries feature from Stage 
   cleanFiles(tmpPathPrefix)
 })
 
-test("inlines stylesheets referenced via @import statements", async (t) => {
+test("inlines stylesheets with relative @import statements to current directory", async (t) => {
   createFiles(sourceDirectory, {
     "other.css": dedent`
       p {
@@ -104,6 +104,44 @@ test("inlines stylesheets referenced via @import statements", async (t) => {
         color: black;
       }
     `,
+  })
+
+  cleanFiles(tmpPathPrefix)
+})
+
+test("inlines stylesheets with relative @import statements to parent directory", async (t) => {
+  createFiles(sourceDirectory, {
+    "other.css": dedent`
+      p {
+        color: red;
+      }
+    `,
+    "folder/index.css": dedent`
+      @import "../other.css";
+
+      a {
+        color: black;
+      }
+    `,
+  })
+
+  await build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    folder: {
+      "index.css": dedent`
+        p {
+          color: red;
+        }
+
+        a {
+          color: black;
+        }
+      `,
+    },
   })
 
   cleanFiles(tmpPathPrefix)

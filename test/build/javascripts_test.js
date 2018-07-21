@@ -69,7 +69,7 @@ test("transpiles JavaScripts using Babel", async (t) => {
   cleanFiles(tmpPathPrefix)
 })
 
-test("bundles imported JavaScript files", async (t) => {
+test("bundles imported JavaScript files via relative imports to current directory", async (t) => {
   createFiles(sourceDirectory, {
     "foo.js": dedent`
       export default "bar"
@@ -97,6 +97,41 @@ test("bundles imported JavaScript files", async (t) => {
 
       }());\n
     `,
+  })
+
+  cleanFiles(tmpPathPrefix)
+})
+
+test("bundles imported JavaScript files via relative imports to parent directory", async (t) => {
+  createFiles(sourceDirectory, {
+    "foo.js": dedent`
+      export default "bar"
+    `,
+    "folder/index.js": dedent`
+      import foo from  "../foo"
+
+      console.log(foo)
+    `,
+  })
+
+  await build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    folder: {
+      "index.js": dedent`
+        (function () {
+          'use strict';
+
+          var foo = "bar";
+
+          console.log(foo);
+
+        }());\n
+      `,
+    },
   })
 
   cleanFiles(tmpPathPrefix)
