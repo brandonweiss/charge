@@ -8,8 +8,8 @@ const serve = require("./lib/serve").default
 
 const cli = meow(`
   Usage
-    ❯ charge build <source directory> <target directory>
     ❯ charge serve <source directory>
+    ❯ charge build <source directory> <target directory>
 `)
 
 let command = cli.input[0]
