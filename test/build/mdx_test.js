@@ -124,3 +124,47 @@ test("renders an MDX template as HTML with a JSX component", async (t) => {
 
   cleanFiles(tmpPathPrefix)
 })
+
+test("renders an MDX template as HTML with a JSX component as a layout", async (t) => {
+  createFiles(sourceDirectory, {
+    "layout.html.jsx": dedent`
+      export default (props) => {
+        return (
+          <html>
+          <head>
+            <title>{props.title}</title>
+          </head>
+
+          <body>
+            {props.children}
+          </body>
+          </html>
+        )
+      }
+    `,
+    "index.html.mdx": dedent`
+      import Layout from "./layout.html.jsx"
+
+      export default ({children}) => <Layout title="Title">{children}</Layout>
+
+      # Heading
+    `,
+  })
+
+  await build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    "index.html": dedent`
+      <!DOCTYPE html>
+
+      <html><head><title>Title</title></head><body> <div>
+
+      <h1>Heading</h1></div> </body></html>
+    `,
+  })
+
+  cleanFiles(tmpPathPrefix)
+})
