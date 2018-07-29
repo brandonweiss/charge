@@ -33,7 +33,29 @@ If you want specific details about what I found wrong with the existing static s
 
 ## Installation
 
-TBD
+At the moment, Charge is not released on NPM. I’m working out the right scope/name to release it under. For now you can install it using the git remote URL
+
+Install it globally:
+
+```
+❯ npm install --global https://github.com/brandonweiss/charge.git
+```
+
+```
+❯ yarn global add https://github.com/brandonweiss/charge.git
+```
+
+Or add it to your application’s `package.json`:
+
+```
+❯ npm install --save-dev https://github.com/brandonweiss/charge.git
+```
+
+```
+❯ yarn add --dev https://github.com/brandonweiss/charge.git
+```
+
+**NB**: The `charge` package on NPM is _not_ this package.
 
 ## Usage
 
