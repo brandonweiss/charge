@@ -33,7 +33,7 @@ If you want specific details about what I found wrong with the existing static s
 
 ## Installation
 
-At the moment, Charge is not released on NPM. I’m working out the right scope/name to release it under. For now you can install it using the git remote URL
+At the moment, Charge is not released on NPM. I’m working out the right scope/name to release it under. For now you can install it using the git remote URL.
 
 Install it globally:
 
