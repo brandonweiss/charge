@@ -152,7 +152,7 @@ The naming convention is `name.html.jsx` for JSX files and `name.html.mdx` for M
 
 Clean URLs, or ”Directory Indexes” as they were more commonly called in the old days is a way of structuring static files such that the extensions don’t show in the URL.
 
-For example, if you had a file `projects.html` you might expect the URL to look like `domain.com/projects.html`. The extension in the URL helps you know what type of file is at the URL, be it JavaScript, a stylesheet, or anything else. But, for a variety of reasons, when it comes to HTML the extension has become necessary. If you see a URL like `domain.com/projects` everyone now understands that an HTML file will be returned; the `.html` is implied.
+For example, if you had a file `projects.html` you might expect the URL to look like `domain.com/projects.html`. The extension in the URL helps you know what type of file is at the URL, be it JavaScript, a stylesheet, or anything else. But, for a variety of reasons, when it comes to HTML the extension has become unnecessary. If you see a URL like `domain.com/projects` everyone now understands that an HTML file will be returned; the `.html` is implied.
 
 To make this work, HTML files will have their paths rewritten slightly. Nothing will happen to the `index.html` file at the root of the `source` directory, but a file named `projects.html` will become `projects/index.html`. When someone visit `domain.com/projects` the `projects/index.html` file will be returned.
 
