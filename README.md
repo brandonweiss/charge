@@ -439,6 +439,12 @@ A lot of static site generators written in JavaScript seem to have chosen Handle
 
 This is a relatively common use-case that I was surprised to discover the vast majority of static site generators don’t support.
 
+## Real examples
+
+If you’d like to see everything in practice, check out these sites using Charge.
+
+* [brandonweiss.me](https://github.com/brandonweiss/brandonweiss), a personal site.
+
 ##  Credit
 
 The [lighting bolt icon][lightning-bolt] is from the [Messenger emoji set][messenger-emoji].
