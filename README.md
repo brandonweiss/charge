@@ -99,7 +99,7 @@ If you encounter a file type that doesn’t appear to reload how you would expec
 
 Running `build` will do a single build of your static site to create files to be deployed to production. You run it with:
 
-```
+```shell
 ❯ charge build <source directory> <target directory>
 ```
 
