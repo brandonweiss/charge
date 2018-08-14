@@ -18,8 +18,6 @@ Yeah, I know, another static site generator. Let me be clear, I really did not w
 
 I went on [StaticGen][static-gen] and looked at every JavaScript-based one. I could not find a single one that I thought was simple, well-documented, had the features I needed, was actively maintained, and was designed and worked the way I wanted. So here I am, making a static site generator.
 
-If you want specific details about what I found wrong with the existing static site generators I wrote up my thoughts [at the end](#problems-with-existing-tools-or-approaches).
-
 ### Highlights
 
 - Zero configuration
@@ -418,26 +416,6 @@ Data files are a way of providing structured data to your templates in order to 
 Data files are stored in a `data` folder that must be in the same directory as the `source` folder. They’re siblings. So if the path to `source` is `some/folder/source`, then the path to `data` must be `some/folder/data`.
 
 Data files are JSON files and the name of the file is the object property you use to access that data. So if you have a data file called `albums.json` then you would access the data from the `props` object passed into your template by calling `props.data.albums`.
-
-## Problems with existing tools or approaches
-
-### Static site generators written in languages other than JavaScript
-
-There are some great static site generators out there written in a variety of different languages for a variety of different tastes. However, most static sites are going to need to include some CSS and/or JavaScript, and virtually all of the tooling for asset pipelines and the external libraries you might use are hosted on NPM.
-
-If you’re already using NPM (and thus Node.js) to get and build assets, then I think it makes no sense to add the additional complexity of a whole other language and package manager to build the static site. Especially since only a JavaScript-based static site generator will be able to tightly integrate with a JavaScript-based asset pipeline. There are things that just simply cannot be done if your static site generator is compiling assets by shelling out to another program.
-
-### Gatsby
-
-Gatsby is a really awesome static site generator. If you’re building a large static site and you can use it, you probably should. It’s React-based and the componentized nature of React works really well for managing complexity. It makes things easier to manage and reason about. But Gatsby doesn’t only use React as a templating language to render HTML pages—it serves React to the client and handles the routing for you. For a large site that might be fine, but most of my static sites are just a few pages. It would be slower and way overkill to serve React to the client, take over routing, and render there for small static sites. That’s a non-starter for me. Also, reading their docs it seems really complicated and their use of webpack certainly does not help that. Building a static site just shouldn’t be that complicated.
-
-### Handlebars templates
-
-A lot of static site generators written in JavaScript seem to have chosen Handlebars as a templating language. Logic-less templates might be a useful tool for managing complexity in a large application but I find them to be way more trouble than they’re worth for a simple website. I’d also argue that the extreme prevalence and apparent necessity of including logical helpers to make logic-less templates usable seems to indicate that a lot of the premise behind them might be flawed. Either way it’s just too much unnecessary indirection and complexity for simple static sites.
-
-### Dynamic pages
-
-This is a relatively common use-case that I was surprised to discover the vast majority of static site generators don’t support.
 
 ## Real examples
 
