@@ -37,21 +37,21 @@ At the moment, Charge is not released on NPM. I’m working out the right scope/
 
 Install it globally:
 
-```
+```shell
 ❯ npm install --global https://github.com/brandonweiss/charge.git
 ```
 
-```
+```shell
 ❯ yarn global add https://github.com/brandonweiss/charge.git
 ```
 
 Or add it to your application’s `package.json`:
 
-```
+```shell
 ❯ npm install --save-dev https://github.com/brandonweiss/charge.git
 ```
 
-```
+```shell
 ❯ yarn add --dev https://github.com/brandonweiss/charge.git
 ```
 
@@ -65,7 +65,7 @@ There are only two commands: `serve` and `build`.
 
 Running `serve` will start a live-reloading development server for local development. You run it with:
 
-```
+```shell
 ❯ charge serve <source directory>
 ```
 
