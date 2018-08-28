@@ -31,29 +31,27 @@ I went on [StaticGen][static-gen] and looked at every JavaScript-based one. I co
 
 ## Installation
 
-At the moment, Charge is not released on NPM. I’m working out the right scope/name to release it under. For now you can install it using the git remote URL.
-
 Install it globally:
 
 ```shell
-❯ npm install --global https://github.com/brandonweiss/charge.git
+❯ npm install --global @static/charge
 ```
 
 ```shell
-❯ yarn global add https://github.com/brandonweiss/charge.git
+❯ yarn global add @static/charge
 ```
 
 Or add it to your application’s `package.json`:
 
 ```shell
-❯ npm install --save-dev https://github.com/brandonweiss/charge.git
+❯ npm install --save-dev @static/charge
 ```
 
 ```shell
-❯ yarn add --dev https://github.com/brandonweiss/charge.git
+❯ yarn add --dev @static/charge
 ```
 
-**NB**: The `charge` package on NPM is _not_ this package.
+**NB**: The `charge` package on NPM is _not_ this package. You must use the scoped package name “@static/charge”.
 
 ## Usage
 
