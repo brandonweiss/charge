@@ -46,7 +46,7 @@
     "postcss-preset-env": "^5.2.2",
     "postcss-value-parser": "^3.3.0",
     "react": "^16.4.2",
-    "react-dom": "^16.4.1",
+    "react-dom": "^16.4.2",
     "rollup": "^0.61.2",
     "rollup-plugin-babel": "^3.0.5",
     "rollup-plugin-commonjs": "^9.1.6",
