@@ -8,6 +8,12 @@
 	<br>
 </h1>
 
+[![](https://badgen.net/travis/brandonweiss/charge?icon=travis)](https://www.travis-ci.com/brandonweiss/charge)
+[![](https://badgen.net/npm/v/@static/charge?icon=npm)](https://www.npmjs.com/package/@static/charge)
+![](https://badgen.net/npm/node/@static/charge)
+[![](https://badgen.net/david/dep/brandonweiss/charge)](https://david-dm.org/brandonweiss/charge)
+![](https://badgen.net/badge/documentation/lit/purple)
+
 ### What?
 
 Charge is an opinionated, zero-config static site generator written in JavaScript. It supports a wide variety of common uses and it does it without needing to be configured or customized. It’s fast, it’s simple, and it works the way you probably expect it to. That’s it.
