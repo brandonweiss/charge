@@ -1,7 +1,7 @@
 {
   "name": "charge",
   "version": "0.1.0",
-  "description": "",
+  "description": "An opinionated, zero-config static site generator",
   "author": {
     "name": "Brandon Weiss",
     "email": "brandon@anti-pattern.com"
