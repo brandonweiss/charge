@@ -82,9 +82,7 @@ test("renders an MDX template as HTML with an MDX component", async (t) => {
     "index.html": dedent`
       <!DOCTYPE html>
 
-      <div>
-      <h1>Heading</h1>
-      <div><h2>Subheading</h2></div></div>
+      <div><h1>Heading</h1><div><h2>Subheading</h2></div></div>
     `,
   })
 
@@ -116,9 +114,7 @@ test("renders an MDX template as HTML with a JSX component", async (t) => {
     "index.html": dedent`
       <!DOCTYPE html>
 
-      <div>
-      <h1>Heading</h1>
-      <h2>Something</h2></div>
+      <div><h1>Heading</h1><h2>Something</h2></div>
     `,
   })
 
@@ -160,9 +156,7 @@ test("renders an MDX template as HTML with a JSX component as a layout", async (
     "index.html": dedent`
       <!DOCTYPE html>
 
-      <html><head><title>Title</title></head><body> <div>
-
-      <h1>Heading</h1></div> </body></html>
+      <html><head><title>Title</title></head><body><div><h1>Heading</h1></div></body></html>
     `,
   })
 

@@ -383,7 +383,7 @@ JavaScripts are transformed using [Babel][babel].
 
 ### Features
 
-All features from `es2015`, `es2016`, and `es2017` are included via [`babel-preset-env`][babel-preset-env]. You can see a list of those features in the [ECMAScript compatibility table][ecmascript-compatibility-table].
+All features from `es2015`, `es2016`, and `es2017` are included via [`@babel/preset-env`][babel-preset-env]. You can see a list of those features in the [ECMAScript compatibility table][ecmascript-compatibility-table].
 
 ### Importing
 
