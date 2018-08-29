@@ -10,6 +10,16 @@
   "engines": {
     "node": ">= 9.7.1"
   },
+  "keywords": [
+    "jsx",
+    "markdown",
+    "mdx",
+    "react",
+    "static",
+    "static-site",
+    "static-site-generator",
+    "website"
+  ],
   "license": "MIT",
   "repository": "https://github.com/brandonweiss/charge",
   "scripts": {
