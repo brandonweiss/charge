@@ -1,6 +1,6 @@
 <h1 align="center">
 	<br>
-	<img src="media/logomark.svg?sanitize=true" alt="Charge">
+	<img src="media/logomark.svg?sanitize=true" width="300px" alt="Charge">
 	<br>
 	<br>
   Charge
