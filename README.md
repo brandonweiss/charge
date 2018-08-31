@@ -1,6 +1,6 @@
 <h1 align="center">
 	<br>
-	<img src="./assets/lightning-bolt.png" alt="Charge">
+	<img src="media/logomark.svg?sanitize=true" alt="Charge">
 	<br>
 	<br>
   Charge
@@ -427,10 +427,6 @@ If you’d like to see everything in practice, check out these sites using Charg
 
 * [brandonweiss.me](https://github.com/brandonweiss/brandonweiss), a personal site.
 
-##  Credit
-
-The [lighting bolt icon][lightning-bolt] is from the [Messenger emoji set][messenger-emoji].
-
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at [https://github.com/brandonweiss/charge][github-charge].
@@ -448,7 +444,5 @@ The package is available as open source under the terms of the [MIT License][MIT
 [babel-preset-env]: https://babeljs.io/docs/en/babel-preset-env
 [ecmascript-compatibility-table]: http://kangax.github.io/compat-table/es2016plus/
 [static-gen]: https://www.staticgen.com
-[lightning-bolt]: https://emojipedia.org/messenger/1.0/high-voltage-sign/
-[messenger-emoji]: https://emojipedia.org/messenger/
 [github-charge]: https://github.com/brandonweiss/charge
 [MIT-License]: http://opensource.org/licenses/MIT
