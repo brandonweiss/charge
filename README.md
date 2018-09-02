@@ -57,7 +57,7 @@ Or add it to your application’s `package.json`:
 ❯ yarn add --dev @static/charge
 ```
 
-**NB**: The `charge` package on NPM is _not_ this package. You must use the scoped package name “@static/charge”.
+**NB**: The “charge” package on NPM is _not_ this package. You must use the scoped package name “@static/charge”.
 
 ## Usage
 
@@ -71,7 +71,7 @@ Running `serve` will start a live-reloading development server for local develop
 ❯ charge serve <source directory>
 ```
 
-`<source directory>` is the directory that contains your static files.
+`<source directory>` is the directory that contains the files you want to be built to become your static site.
 
 They’ll be automatically built to `tmp/target`. You might want to add `tmp/target` to your `.gitignore` file or however you exclude files from version control.
 
@@ -107,7 +107,7 @@ Running `build` will do a single build of your static site to create files to be
 ❯ charge build <source directory> <target directory>
 ```
 
-`<source directory>` is the directory that contains your static files and `<target directory>` is the directory you want them to end up in.
+`<source directory>` is the directory that contains the files you want to be built to become your static site and `<target directory>` is the directory you want the static site to end up in.
 
 #### Script
 
