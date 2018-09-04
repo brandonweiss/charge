@@ -62,7 +62,7 @@
     "rollup": "^0.65.0",
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-commonjs": "^9.1.6",
-    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
     "signale": "^1.2.1"
   },
   "ava": {
