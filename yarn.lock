@@ -624,9 +624,9 @@
     pretty-ms "^0.2.1"
     text-table "^0.2.0"
 
-"@mdx-js/mdx@^0.15.0":
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-0.15.0.tgz#34c6516fb28c518e3d8ed388ca282a148e2125d3"
+"@mdx-js/mdx@^0.15.2":
+  version "0.15.2"
+  resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-0.15.2.tgz#e6e5422875bfada10d1c16c07145e3c02f109db2"
   dependencies:
     mdast-util-to-hast "^3.0.0"
     remark-parse "^5.0.0"
