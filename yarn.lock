@@ -2090,9 +2090,9 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.4, escape-string-regexp@^
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
 
-esm@^3.0.82:
-  version "3.0.82"
-  resolved "https://registry.yarnpkg.com/esm/-/esm-3.0.82.tgz#e8c4363a14e30936bedf49a44bf962e2c91866ff"
+esm@^3.0.83:
+  version "3.0.83"
+  resolved "https://registry.yarnpkg.com/esm/-/esm-3.0.83.tgz#a696272b47114dea65d969e4ab87bd39dc88797f"
 
 espower-location-detector@^1.0.0:
   version "1.0.0"
