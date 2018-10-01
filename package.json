@@ -23,14 +23,13 @@
   "license": "MIT",
   "repository": "https://github.com/brandonweiss/charge",
   "scripts": {
-    "precommit": "pretty-quick --staged",
     "test": "ava --verbose --serial",
     "test:watch": "yarn run test --watch"
   },
   "devDependencies": {
     "ava": "^0.25.0",
     "dedent": "^0.7.0",
-    "husky": "^0.14.3",
+    "husky": "^1.1.0",
     "np": "^3.0.4",
     "prettier": "1.14.3",
     "pretty-quick": "^1.7.0"
@@ -72,6 +71,11 @@
     "source": [
       "!tmp/**/*"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "prettier": {
     "arrowParens": "always",
