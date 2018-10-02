@@ -732,10 +732,10 @@
     pretty-ms "^0.2.1"
     text-table "^0.2.0"
 
-"@mdx-js/mdx@^0.15.4":
-  version "0.15.4"
-  resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-0.15.4.tgz#fb1799158e63eacd0dbdecb649b13cea55377ee8"
-  integrity sha512-GK3G6ERW4/KGA6jNe+uB1vx3LUD34PK6UW27dFtojr9Ak0arGzQJItdWjl85t3OCLIt+a8QmfNYjBOlCApLSeQ==
+"@mdx-js/mdx@^0.15.5":
+  version "0.15.5"
+  resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-0.15.5.tgz#a3821a1e0e460ee993437ef3f922482fb67c31d0"
+  integrity sha512-BZQztjePZNLLbtqTdI8ApzUl1I6blY94vCswT/TYvH305Uw86t+p1mzP2R8RNe7SWT3icLkfiwRAIDM9Zp52xw==
   dependencies:
     change-case "^3.0.2"
     mdast-util-to-hast "^3.0.0"
