@@ -58,7 +58,7 @@
     "postcss-value-parser": "^3.3.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "rollup": "^0.66.2",
+    "rollup": "^0.66.3",
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-commonjs": "^9.1.8",
     "rollup-plugin-node-resolve": "^3.4.0",
