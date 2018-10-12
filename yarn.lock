@@ -5714,10 +5714,10 @@ pretty-ms@^3.0.0:
     parse-ms "^1.0.0"
     plur "^2.1.2"
 
-pretty-quick@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/pretty-quick/-/pretty-quick-1.7.0.tgz#6be2a707f874b56a461f6508c9fbd5d1c9234930"
-  integrity sha512-bKoLGOy2rvPKcypkzYqlyqBBAtf0yKV7VK0C/7E4m541dY98rxZsbBt4GDRa/mc74EBPCeuiFe1fkKiyqjUKVg==
+pretty-quick@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/pretty-quick/-/pretty-quick-1.8.0.tgz#067ebe744ddb4e1ed4e1ee1af9648815121f78fc"
+  integrity sha512-qV25sQF/ivJpdZ5efwemQYkQJa7sp3HqT/Vf/7z5vGYMcq1VrT2lDpFKAxJPf6219N1YAdR8mGkIhPAZ1odTmQ==
   dependencies:
     chalk "^2.3.0"
     execa "^0.8.0"
