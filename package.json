@@ -43,7 +43,7 @@
     "@mdx-js/mdx": "^0.15.5",
     "@mdx-js/tag": "^0.15.0",
     "babel-plugin-react-require": "^3.0.1",
-    "browser-sync": "^2.26.0",
+    "browser-sync": "^2.26.2",
     "esm": "^3.0.84",
     "fs-extra": "^7.0.0",
     "glob": "^7.1.3",
