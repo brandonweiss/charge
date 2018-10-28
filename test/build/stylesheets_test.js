@@ -34,7 +34,7 @@ test("transpiles stylesheets using Stage 2 features", async (t) => {
   assertFiles(t, targetDirectory, {
     "index.css": dedent`
       body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Droid Sans, Helvetica Neue;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
       }
     `,
   })
