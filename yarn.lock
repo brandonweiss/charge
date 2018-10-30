@@ -754,10 +754,10 @@
     unified "^6.1.6"
     unist-util-visit "^1.3.0"
 
-"@mdx-js/tag@^0.15.0":
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/@mdx-js/tag/-/tag-0.15.0.tgz#a98949206cc21b27a56a11550b41229631eb8b1c"
-  integrity sha512-W5HVjced5SMJDoV56aVkZjIfTRM/R1RBpdcDdHMdoza0rSU6lorj7xM5VJtD1AMYRRFuDUu2idkuAJaNosO4Gw==
+"@mdx-js/tag@^0.15.6":
+  version "0.15.6"
+  resolved "https://registry.yarnpkg.com/@mdx-js/tag/-/tag-0.15.6.tgz#1a0aa575d5c9ac2b082631ca3e733034272114c1"
+  integrity sha512-u1H93/n7t2XE69fWiKIQIcnSHIHV9LgOew09rrzu+ceF+TK8jMacE2FxW09lQDUyL/Rat3fJDS4dQdTY8g/ZdQ==
   dependencies:
     create-react-context "^0.2.2"
     hoist-non-react-statics "^2.5.5"
