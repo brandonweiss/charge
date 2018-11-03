@@ -40,7 +40,7 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/traverse": "^7.1.4",
-    "@mdx-js/mdx": "^0.15.6",
+    "@mdx-js/mdx": "^0.15.7",
     "@mdx-js/tag": "^0.15.6",
     "babel-plugin-react-require": "^3.0.1",
     "browser-sync": "^2.26.3",
