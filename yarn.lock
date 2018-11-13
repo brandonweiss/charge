@@ -69,17 +69,6 @@
     semver "^5.4.1"
     source-map "^0.5.0"
 
-"@babel/generator@^7.1.5":
-  version "7.1.5"
-  resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.1.5.tgz#615f064d13d95f8f9157c7261f68eddf32ec15b3"
-  integrity sha512-IO31r62xfMI+wBJVmgx0JR9ZOHty8HkoYpQAjRWUGG9vykBTlGHdArZ8zoFtpUu2gs17K7qTl/TtPpiSi6t+MA==
-  dependencies:
-    "@babel/types" "^7.1.5"
-    jsesc "^2.5.1"
-    lodash "^4.17.10"
-    source-map "^0.5.0"
-    trim-right "^1.0.1"
-
 "@babel/generator@^7.1.6":
   version "7.1.6"
   resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.1.6.tgz#001303cf87a5b9d093494a4bf251d7b5d03d3999"
@@ -682,22 +671,7 @@
     "@babel/parser" "^7.1.2"
     "@babel/types" "^7.1.2"
 
-"@babel/traverse@^7.1.0", "@babel/traverse@^7.1.5":
-  version "7.1.5"
-  resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.1.5.tgz#5aafca2039aa058c104cf2bfeb9fc4a857ccbca9"
-  integrity sha512-eU6XokWypl0MVJo+MTSPUtlfPePkrqsF26O+l1qFGlCKWwmiYAYy2Sy44Qw8m2u/LbPCsxYt90rghmqhYMGpPA==
-  dependencies:
-    "@babel/code-frame" "^7.0.0"
-    "@babel/generator" "^7.1.5"
-    "@babel/helper-function-name" "^7.1.0"
-    "@babel/helper-split-export-declaration" "^7.0.0"
-    "@babel/parser" "^7.1.5"
-    "@babel/types" "^7.1.5"
-    debug "^3.1.0"
-    globals "^11.1.0"
-    lodash "^4.17.10"
-
-"@babel/traverse@^7.1.6":
+"@babel/traverse@^7.1.0", "@babel/traverse@^7.1.5", "@babel/traverse@^7.1.6":
   version "7.1.6"
   resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.1.6.tgz#c8db9963ab4ce5b894222435482bd8ea854b7b5c"
   integrity sha512-CXedit6GpISz3sC2k2FsGCUpOhUqKdyL0lqNrImQojagnUMXf8hex4AxYFRuMkNGcvJX5QAFGzB5WJQmSv8SiQ==
