@@ -441,6 +441,7 @@ The package is available as open source under the terms of the [MIT License][MIT
 [postcss]: https://postcss.org
 [browsersync]: https://browsersync.io
 [cssdb]: https://cssdb.org
+[custom-media-queries]: https://cssdb.org/#custom-media-queries
 [babel-preset-env]: https://babeljs.io/docs/en/babel-preset-env
 [ecmascript-compatibility-table]: http://kangax.github.io/compat-table/es2016plus/
 [static-gen]: https://www.staticgen.com
