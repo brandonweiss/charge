@@ -68,7 +68,7 @@
     "require": [
       "esm"
     ],
-    "source": [
+    "sources": [
       "!tmp/**/*"
     ]
   },
