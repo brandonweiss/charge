@@ -1107,10 +1107,10 @@ babel-plugin-espower@^3.0.1:
     espurify "^1.6.0"
     estraverse "^4.1.1"
 
-babel-plugin-react-require@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/babel-plugin-react-require/-/babel-plugin-react-require-3.0.1.tgz#bd052971cc32a3a4450234ae0a252402e7394900"
-  integrity sha512-NAOj+5m+2Y125igiveyBzvSTz8Mv21idmYkmkxFX6aUVRXEmGGaFpuQ347GwSoZgrYmyal3aFw4F6/F6ZmIzUg==
+babel-plugin-react-require@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/babel-plugin-react-require/-/babel-plugin-react-require-3.0.2.tgz#a471f1372a49cefe7c9e251e232e2caa645b4881"
+  integrity sha512-RhJE6QkiiSoSvk3SQ2ty0LMQs8mes0vDDqV+4dwpeI7VGlJawCli2Ejuu+5LZ3Mod/L9+O7dXthDWEuJCZBpzA==
 
 backo2@1.0.2:
   version "1.0.2"
