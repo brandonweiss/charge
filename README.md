@@ -1,11 +1,11 @@
 <h1 align="center">
-	<br>
-	<img src="media/logomark.svg?sanitize=true" width="300px" alt="Charge">
-	<br>
-	<br>
+  <br>
+  <img src="media/logomark.svg?sanitize=true" width="300px" alt="Charge">
+  <br>
+  <br>
   Charge
-	<br>
-	<br>
+  <br>
+  <br>
 </h1>
 
 [![](https://badgen.net/travis/brandonweiss/charge?icon=travis)](https://www.travis-ci.com/brandonweiss/charge)
@@ -265,10 +265,10 @@ import Icon from "./icon.svg"
 
 export default () => {
   return <div>
-		<h1>Heading</h1>
+  <h1>Heading</h1>
 
-		<Icon />
-	</div>
+  <Icon />
+  </div>
 }
 ```
 
@@ -276,11 +276,11 @@ It will be wrapped in a `<span>`, so the markup will look like this.
 
 ```html
 <div>
-	<h1>Heading</h1>
+  <h1>Heading</h1>
 
-	<span>
-		<svg>…</svg>
-	</span>
+  <span>
+    <svg>…</svg>
+  </span>
 </div>
 ```
 
