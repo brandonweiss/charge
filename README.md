@@ -89,9 +89,9 @@ Rather than running `charge serve <source directory>` over and over again, consi
 
 Then run it with `npm start` or `yarn start`.
 
-#### Live reloading
+#### Live-reloading
 
-Charge uses the popular [Browsersync][browsersync] library to handle live reloading. Unfortunately, the documentation is not particularly clear about the details of how live-reloading works or what to expect. Here’s how I think it works:
+Charge uses the popular [Browsersync][browsersync] library to handle live-reloading. Unfortunately, the documentation is not particularly clear about the details of how live-reloading works or what to expect. Here’s how I think it works:
 
 If a stylesheet changes it will be live-reloaded. That is, it will be injected into the page without a full-page refresh. If an image changes it will also be live-reloaded.
 
