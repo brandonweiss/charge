@@ -32,7 +32,8 @@
     "husky": "^1.3.1",
     "np": "^4.0.2",
     "prettier": "1.16.4",
-    "pretty-quick": "^1.10.0"
+    "pretty-quick": "^1.10.0",
+    "supertest": "^3.4.2"
   },
   "dependencies": {
     "@babel/core": "^7.2.2",
