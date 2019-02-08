@@ -255,6 +255,24 @@ export default (props) => {
 }
 ```
 
+#### Plugins
+
+MDX uses [remark](https://github.com/remarkjs/remark) to render Markdown to HTML. remark supports the most common Markdown syntax and features and it provides a plugin system to extend Markdown with less common features.
+
+If there is a Markdown extension you’d like to see added to Charge take a look at the [list of remark plugins](https://github.com/remarkjs/remark/blob/master/doc/plugins.md#list-of-plugins), find the one you need, and [open an issue](https://github.com/brandonweiss/charge/issues/new) requesting it to be added.
+
+##### Syntax highlighting
+
+Syntax highlighting is done via [remark-highlight.js](https://github.com/remarkjs/remark-highlight.js). You can [visually browse](https://highlightjs.org/static/demo/) the various syntax styles (themes) and then [grab the CSS file](https://github.com/highlightjs/highlight.js/tree/master/src/styles) for the one you like.
+
+The Markdown syntax for highlighting code is “fenced code blocks” with the language name appended to the opening “fence”.
+
+    ```javascript
+    let foo = "bar"
+    ```
+
+There is a [list of supported languages and corresponding aliases](https://github.com/highlightjs/highlight.js/blob/master/docs/css-classes-reference.rst#language-names-and-aliases).
+
 ### SVGs
 
 If you want to inline an SVG it will be automagically turned into a React component if you import it.

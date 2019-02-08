@@ -162,3 +162,28 @@ test("renders an MDX template as HTML with a JSX component as a layout", async (
 
   cleanFiles(tmpPathPrefix)
 })
+
+test("renders an MDX template with syntax highlighting", async (t) => {
+  createFiles(sourceDirectory, {
+    "index.html.mdx": dedent`
+      \`\`\`javascript
+        let foo = "bar"
+      \`\`\`
+    `,
+  })
+
+  await build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    "index.html": dedent`
+      <!DOCTYPE html>
+
+      <div><pre><code class="hljs language-javascript">  <span class="hljs-keyword">let</span> foo = <span class="hljs-string">&quot;bar&quot;</span></code></pre></div>
+    `,
+  })
+
+  cleanFiles(tmpPathPrefix)
+})

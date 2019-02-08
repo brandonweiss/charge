@@ -2400,6 +2400,13 @@ fast-diff@^1.1.2:
   resolved "https://registry.yarnpkg.com/fast-diff/-/fast-diff-1.2.0.tgz#73ee11982d86caaf7959828d519cfe927fac5f03"
   integrity sha512-xJuoT5+L99XlZ8twedaRf6Ax2TgQVxvgZOYoPKqZufmJib0tL2tegPBOZb1pVNgIhlqDlA0eO0c3wBvQcmzx4w==
 
+fault@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/fault/-/fault-1.0.2.tgz#c3d0fec202f172a3a4d414042ad2bb5e2a3ffbaa"
+  integrity sha512-o2eo/X2syzzERAtN5LcGbiVQ0WwZSlN3qLtadwAz3X8Bu+XWD16dja/KMsjZLiQr+BLGPDnHGkc4yUJf1Xpkpw==
+  dependencies:
+    format "^0.2.2"
+
 figures@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/figures/-/figures-1.7.0.tgz#cbe1e3affcf1cd44b80cadfed28dc793a9701d2e"
@@ -2508,6 +2515,11 @@ form-data@^2.3.1:
     asynckit "^0.4.0"
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
+
+format@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/format/-/format-0.2.2.tgz#d6170107e9efdc4ed30c9dc39016df942b5cb58b"
+  integrity sha1-1hcBB+nv3E7TDJ3DkBbflCtctYs=
 
 formidable@^1.2.0:
   version "1.2.1"
@@ -2825,6 +2837,11 @@ header-case@^1.0.0:
   dependencies:
     no-case "^2.2.0"
     upper-case "^1.1.3"
+
+highlight.js@~9.13.0:
+  version "9.13.1"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.13.1.tgz#054586d53a6863311168488a0f58d6c505ce641e"
+  integrity sha512-Sc28JNQNDzaH6PORtRLMvif9RSn1mYuOoX3omVjnb0+HbpPygU2ALBI0R/wsiqCb4/fcp07Gdo8g+fhtFrQl6A==
 
 hosted-git-info@^2.1.4, hosted-git-info@^2.7.1:
   version "2.7.1"
@@ -3788,6 +3805,14 @@ lowercase-keys@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/lowercase-keys/-/lowercase-keys-1.0.1.tgz#6f9e30b47084d971a7c820ff15a6c5167b74c26f"
   integrity sha512-G2Lj61tXDnVFFOi8VZds+SoQjtQC3dgokKdDG2mTm1tx4m50NUHBOZSBwQQHyy0V12A0JTG4icfZQH+xPyh8VA==
+
+lowlight@^1.2.0:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/lowlight/-/lowlight-1.11.0.tgz#1304d83005126d4e8b1dc0f07981e9b689ec2efc"
+  integrity sha512-xrGGN6XLL7MbTMdPD6NfWPwY43SNkjf/d0mecSx/CW36fUZTjRHEq0/Cdug3TWKtRXLWi7iMl1eP0olYxj/a4A==
+  dependencies:
+    fault "^1.0.2"
+    highlight.js "~9.13.0"
 
 lru-cache@^4.0.1:
   version "4.1.2"
@@ -5423,6 +5448,14 @@ release-zalgo@^1.0.0:
   integrity sha1-CXALflB0Mpc5Mw5TXFqQ+2eFFzA=
   dependencies:
     es6-error "^4.0.1"
+
+remark-highlight.js@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/remark-highlight.js/-/remark-highlight.js-5.1.0.tgz#0333fa214b409dd78b9935b7afd4a09fe2f4ab3a"
+  integrity sha512-m5d0RreEJ1z1Ug2LUCkCsNJ48Bcc15bx1lO3ZfQfYqMSI+J+bg8qz8p/cblJL1VB3oxqgbfRelj65AJAepn/zg==
+  dependencies:
+    lowlight "^1.2.0"
+    unist-util-visit "^1.0.0"
 
 remark-parse@^6.0.0:
   version "6.0.3"
