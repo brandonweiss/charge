@@ -187,3 +187,28 @@ test("renders an MDX template with syntax highlighting", async (t) => {
 
   cleanFiles(tmpPathPrefix)
 })
+
+test("renders an MDX template with abbreviations", async (t) => {
+  createFiles(sourceDirectory, {
+    "index.html.mdx": dedent`
+      YOLO
+
+      *[YOLO]: You Only Live Once
+    `,
+  })
+
+  await build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertFiles(t, targetDirectory, {
+    "index.html": dedent`
+      <!DOCTYPE html>
+
+      <div><p><abbr title="You Only Live Once">YOLO</abbr></p></div>
+    `,
+  })
+
+  cleanFiles(tmpPathPrefix)
+})

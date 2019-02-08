@@ -261,6 +261,16 @@ MDX uses [remark](https://github.com/remarkjs/remark) to render Markdown to HTML
 
 If there is a Markdown extension you’d like to see added to Charge take a look at the [list of remark plugins](https://github.com/remarkjs/remark/blob/master/doc/plugins.md#list-of-plugins), find the one you need, and [open an issue](https://github.com/brandonweiss/charge/issues/new) requesting it to be added.
 
+##### Abbreviations
+
+Acronyms, initialisms, etc. can be automatically converted to [`<abbr>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr) elements.
+
+```
+HTML is great.
+
+*[HTML]: Hypertext Markup Language
+```
+
 ##### Syntax highlighting
 
 Syntax highlighting is done via [remark-highlight.js](https://github.com/remarkjs/remark-highlight.js). You can [visually browse](https://highlightjs.org/static/demo/) the various syntax styles (themes) and then [grab the CSS file](https://github.com/highlightjs/highlight.js/tree/master/src/styles) for the one you like.
