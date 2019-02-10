@@ -293,9 +293,9 @@ import Icon from "./icon.svg"
 
 export default () => {
   return <div>
-  <h1>Heading</h1>
+    <h1>Heading</h1>
 
-  <Icon />
+    <Icon />
   </div>
 }
 ```
