@@ -141,7 +141,7 @@ test("renders an MDX template as HTML with a JSX component as a layout", async (
     "index.html.mdx": dedent`
       import Layout from "./layout.html.jsx"
 
-      export default ({children}) => <Layout title="Title">{children}</Layout>
+      export const layout = ({children}) => <Layout title="Title">{children}</Layout>
 
       # Heading
     `,

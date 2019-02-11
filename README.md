@@ -227,13 +227,15 @@ Markdown is handled via [MDX][mdx], a clever idea for combining Markdown and [JS
 
 MDX is not the same as JSX, though. For example, there are no expressions. There isn’t a render function either, so there are no props. There are layouts, though.
 
-The default `export` from an MDX file can be used to provide a layout component that will wrap the Markdown.
+A named `layout` export can be used to provide a layout component that will wrap the Markdown. The layout component will receive all the same props a template component will receive.
 
 ```javascript
 // index.html.mdx
 import Layout from "./layout.html.jsx"
 
-export default default ({ children }) => <Layout title="Title">{children}</Layout>
+export const layout = ({ children, data }) => (
+  <Layout data={data} title="Title">{children}</Layout>
+)
 
 # Heading
 ```
@@ -316,18 +318,66 @@ Also keep in mind that when you import an SVG it becomes a dependency and thus w
 
 ### Props
 
-A set of `props` will be passed to your templates. The object looks like this:
+A set of props will be passed to your templates. The object looks like this:
 
 ```javascript
 {
   data: {},
   environment: "development",
+  pages: [
+    {
+      component: <imported-react-component>,
+      meta: {
+        date: "2019/01/28",
+        title: "First post!",
+      },
+      path: "/first-post",
+    },
+  ],
 }
 ```
 
+#### Data
+
 The `data` property will be populated with any data files you create. The section on [data files](#data-files) will explain them.
 
-The `environment` property will be either `"development"` or `"production"`, depending on whether you run `serve` or `build`, respectively.
+#### Environment
+
+The `environment` property will be either `"development"` or `"production"`, depending on whether you run `serve` or `build`, respectively. This is useful for including certain scripts only in production.
+
+#### Pages
+
+The `pages` property will be an array of objects representing the page components of your site (JSX and MDX templates) and will not include regular HTML pages. This is useful for generating sitemaps or other similar dynamic lists of pages.
+
+Each page object has a `component`, `meta`, and `path` property.
+
+##### Component
+
+The `component` property can be used to render the contents of the page. This is useful for creating a page that lists recent blog posts.
+
+**A warning**: the `component` property of a page object that you’re trying to render will expect you to provide whatever of the common props (`data`, `environment`, and `pages`) that you’re using in that component. If the component you’re trying to render makes use of the `pages` property you will have to provide something for the `pages` prop or it won’t render, but you probably can’t provide the actual `pages` prop as that will create an infinite loop. You should pass an empty array instead, although this will necessarily render something different than you expect.
+
+A shorter but perhaps more confusing way of explaining it is, you’re not going to be able to use the `component` property of a page object to render a component that itself uses the `pages` property.
+
+##### Meta
+
+The `meta` property is populated by exporting a named export from the template with an object of whatever data you need.
+
+```javascript
+// first-post.html.mdx
+export const meta = {
+  date: "2019/01/28",
+  title: "First post!"
+}
+
+My first post.
+```
+
+This is useful for filtering pages, annotating a list of pages, etc.
+
+##### Path
+
+The `path` property can be used to link to the page.
 
 ### Organization
 
