@@ -2199,10 +2199,10 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.4, escape-string-regexp@^
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
-esm@^3.1.3, esm@^3.2.9:
-  version "3.2.9"
-  resolved "https://registry.yarnpkg.com/esm/-/esm-3.2.9.tgz#9dca653e3b39f89c3c65c5e84cebfa4af345c10d"
-  integrity sha512-mATFs9dpCjnEyNv27z29UNDmJmBBX8zMdcFip7aIOrBRTpLs8SA+6Ek1QtsWfvecAJVeZy+X5D3Z6xZVtUvYdg==
+esm@^3.1.3, esm@^3.2.10:
+  version "3.2.10"
+  resolved "https://registry.yarnpkg.com/esm/-/esm-3.2.10.tgz#fea61120e0d89b87897756f506f169c2fb0ca78e"
+  integrity sha512-r6v4kFfezz5/Qo6Q5ThaNPPUi7a2E3J4ZWxFuohhxJRAa6X7hg6Ca7GRPaixsi5ALcokhif/04Ys4zAxab4Edw==
 
 espower-location-detector@^1.0.0:
   version "1.0.0"
