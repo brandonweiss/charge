@@ -707,10 +707,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@mdx-js/mdx@^0.20.2":
-  version "0.20.2"
-  resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-0.20.2.tgz#0d67c70f253e7e3e64cd7519c42700cddab4d7fb"
-  integrity sha512-MS93STaYV8MK5c1EbjhF8NHX8WH3/o75729Omp7YMZAcut1VJjUfqvxSafsbHka/Yc4FKfLqNI6SWn2icbGzfQ==
+"@mdx-js/mdx@^0.20.3":
+  version "0.20.3"
+  resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-0.20.3.tgz#1f32b4a4a0cc176a3192ef51a0a3502cdfdca3f0"
+  integrity sha512-IIlssEIPPAqo04krm270ifGjSVPqtTmjlryYGi8/4VXHCdi42l8v2piTJPo2NVc7J+HizY1uxxZb6AeoFsO/Iw==
   dependencies:
     "@babel/plugin-proposal-object-rest-spread" "^7.3.2"
     "@babel/plugin-syntax-jsx" "^7.2.0"
