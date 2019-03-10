@@ -85,7 +85,7 @@ test("does not copy the root index.html file into a Directory Index format for c
   cleanFiles(tmpPathPrefix)
 })
 
-test("summarizes pages and passes them into the template as the `pages` prop", async (t) => {
+test("summarizes pages and passes them into the page as the `pages` prop", async (t) => {
   createFiles(sourceDirectory, {
     "foo.html.jsx": dedent`
       export default ({ pages }) => (
@@ -153,7 +153,7 @@ test("handles the root index page in the `pages` prop", async (t) => {
   cleanFiles(tmpPathPrefix)
 })
 
-test("only includes JSX and MDX templates in the `pages` prop", async (t) => {
+test("only includes JSX and MDX pages in the `pages` prop", async (t) => {
   createFiles(sourceDirectory, {
     "index.html": dedent`
       <p></p>
@@ -249,7 +249,7 @@ test("passes the page component in the `pages` prop", async (t) => {
   cleanFiles(tmpPathPrefix)
 })
 
-test("provides exported meta for a JSX template in the `pages` prop", async (t) => {
+test("provides exported meta for a JSX page in the `pages` prop", async (t) => {
   createFiles(sourceDirectory, {
     "index.html.jsx": dedent`
       export const meta = {
@@ -286,7 +286,7 @@ test("provides exported meta for a JSX template in the `pages` prop", async (t) 
   cleanFiles(tmpPathPrefix)
 })
 
-test("provides exported meta for an MDX template in the `pages` prop", async (t) => {
+test("provides exported meta for an MDX page in the `pages` prop", async (t) => {
   createFiles(sourceDirectory, {
     "mdx.html.mdx": dedent`
       export const meta = {

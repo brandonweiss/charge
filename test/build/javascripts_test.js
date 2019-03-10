@@ -137,7 +137,7 @@ test("bundles imported JavaScript files via relative imports to parent directory
   cleanFiles(tmpPathPrefix)
 })
 
-test("bundles imported NPM packages", async (t) => {
+test("bundles imported npm packages", async (t) => {
   createPackage("foo", {
     "index.js": dedent`
       export default "bar"

@@ -11,7 +11,7 @@ test.beforeEach((t) => {
   cleanFiles(tmpPathPrefix)
 })
 
-test("renders a JSX template as HTML", async (t) => {
+test("renders a JSX page as HTML", async (t) => {
   createFiles(sourceDirectory, {
     "index.html.jsx": dedent`
       export default () => {
@@ -36,7 +36,7 @@ test("renders a JSX template as HTML", async (t) => {
   cleanFiles(tmpPathPrefix)
 })
 
-test("renders a JSX template as an HTML file into a Directory Index format for clean URLs", async (t) => {
+test("renders a JSX page as an HTML file into a Directory Index format for clean URLs", async (t) => {
   createFiles(sourceDirectory, {
     "foobar.html.jsx": dedent`
       export default () => {
@@ -63,7 +63,7 @@ test("renders a JSX template as an HTML file into a Directory Index format for c
   cleanFiles(tmpPathPrefix)
 })
 
-test("renders a JSX template as HTML with a JSX component", async (t) => {
+test("renders a JSX page as HTML with a JSX component", async (t) => {
   createFiles(sourceDirectory, {
     "paragraph-component.html.jsx": dedent`
       export default (props) => {
@@ -99,7 +99,7 @@ test("renders a JSX template as HTML with a JSX component", async (t) => {
   cleanFiles(tmpPathPrefix)
 })
 
-test("renders a JSX template as HTML with an MDX component", async (t) => {
+test("renders a JSX page as HTML with an MDX component", async (t) => {
   createFiles(sourceDirectory, {
     "subheading.html.mdx": dedent`
       ## Subheading
@@ -135,7 +135,7 @@ test("renders a JSX template as HTML with an MDX component", async (t) => {
   cleanFiles(tmpPathPrefix)
 })
 
-test("renders a JSX template as HTML with a JSX component as a layout", async (t) => {
+test("renders a JSX page as HTML with a JSX component as a layout", async (t) => {
   createFiles(sourceDirectory, {
     "layout-component.html.jsx": dedent`
       export default (props) => {
@@ -171,7 +171,7 @@ test("renders a JSX template as HTML with a JSX component as a layout", async (t
   cleanFiles(tmpPathPrefix)
 })
 
-test("loads data from data files and passes it to the JSX template", async (t) => {
+test("loads data from data files and passes it to the JSX page", async (t) => {
   let dataDirectory = `${tmpPathPrefix}/data`
   createData(dataDirectory, {
     stuff: dedent`

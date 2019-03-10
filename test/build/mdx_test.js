@@ -11,7 +11,7 @@ test.beforeEach((t) => {
   cleanFiles(tmpPathPrefix)
 })
 
-test("renders an MDX template as HTML", async (t) => {
+test("renders an MDX page as HTML", async (t) => {
   createFiles(sourceDirectory, {
     "index.html.mdx": dedent`
       # Hello!
@@ -34,7 +34,7 @@ test("renders an MDX template as HTML", async (t) => {
   cleanFiles(tmpPathPrefix)
 })
 
-test("renders an MDX template as an HTML file into a Directory Index format for clean URLs", async (t) => {
+test("renders an MDX page as an HTML file into a Directory Index format for clean URLs", async (t) => {
   createFiles(sourceDirectory, {
     "foobar.html.mdx": dedent`
       # Hello!
@@ -59,7 +59,7 @@ test("renders an MDX template as an HTML file into a Directory Index format for 
   cleanFiles(tmpPathPrefix)
 })
 
-test("renders an MDX template as HTML with an MDX component", async (t) => {
+test("renders an MDX page as HTML with an MDX component", async (t) => {
   createFiles(sourceDirectory, {
     "subheading.html.mdx": dedent`
       ## Subheading
@@ -89,7 +89,7 @@ test("renders an MDX template as HTML with an MDX component", async (t) => {
   cleanFiles(tmpPathPrefix)
 })
 
-test("renders an MDX template as HTML with a JSX component", async (t) => {
+test("renders an MDX page as HTML with a JSX component", async (t) => {
   createFiles(sourceDirectory, {
     "subheading.html.jsx": dedent`
       export default (props) => {
@@ -121,7 +121,7 @@ test("renders an MDX template as HTML with a JSX component", async (t) => {
   cleanFiles(tmpPathPrefix)
 })
 
-test("renders an MDX template as HTML with a JSX component as a layout", async (t) => {
+test("renders an MDX page as HTML with a JSX component as a layout", async (t) => {
   createFiles(sourceDirectory, {
     "layout.html.jsx": dedent`
       export default (props) => {
@@ -163,7 +163,7 @@ test("renders an MDX template as HTML with a JSX component as a layout", async (
   cleanFiles(tmpPathPrefix)
 })
 
-test("renders an MDX template with syntax highlighting", async (t) => {
+test("renders an MDX page with syntax highlighting", async (t) => {
   createFiles(sourceDirectory, {
     "index.html.mdx": dedent`
       \`\`\`javascript
@@ -188,7 +188,7 @@ test("renders an MDX template with syntax highlighting", async (t) => {
   cleanFiles(tmpPathPrefix)
 })
 
-test("renders an MDX template with abbreviations", async (t) => {
+test("renders an MDX page with abbreviations", async (t) => {
   createFiles(sourceDirectory, {
     "index.html.mdx": dedent`
       YOLO

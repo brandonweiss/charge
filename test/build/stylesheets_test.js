@@ -147,7 +147,7 @@ test("inlines stylesheets with relative @import statements to parent directory",
   cleanFiles(tmpPathPrefix)
 })
 
-test("inlines stylesheets from NPM packages", async (t) => {
+test("inlines stylesheets from npm packages", async (t) => {
   createPackage("foo", {
     "index.css": dedent`
       p {
