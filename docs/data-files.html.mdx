@@ -1,0 +1,16 @@
+import Layout from "./layout.html.jsx"
+
+export const meta = {
+  id: "data-files",
+  title: "Data files",
+}
+
+export const layout = (props) => <Layout currentPageID={meta.id} {...props} />
+
+# Data files
+
+Data files are a way of providing structured data to your pages in order to simplify building your site.
+
+Data files are stored in a `data` folder that must be in the same directory as the `source` folder. They’re siblings. So if the path to `source` is `some/folder/source`, then the path to `data` must be `some/folder/data`.
+
+Data files are JSON files and the name of the file is the object property you use to access that data. So if you have a data file called `albums.json` then you would access the data from the `props` object passed into your page by calling `props.data.albums`.

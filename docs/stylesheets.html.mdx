@@ -1,0 +1,46 @@
+import Layout from "./layout.html.jsx"
+
+export const meta = {
+  id: "stylesheets",
+  title: "Stylesheets",
+}
+
+export const layout = (props) => <Layout currentPageID={meta.id} {...props} />
+
+# Stylesheets
+
+Stylesheets are not preprocessed. There is no Sass, Stylus, or alternative CSS syntax. You write normal CSS. You can take advantage of new CSS features that don’t have universal browser support via [PostCSS][postcss]. Much of what you might have used a preprocessor for you can do with PostCSS now. If you can’t do it with PostCSS then my opinion is you probably shouldn’t be doing it.
+
+## Features
+
+All Stage 2 and Stage 3 features are enabled. You can see a list of those features in [cssdb][cssdb]. Stage 1 features are considered too experimental to use. The one exception is [Custom Media Queries][custom-media-queries] which is very widely used and seems likely to progress to Stage 2, so that feature is also enabled.
+
+## Importing
+
+You can import other stylesheets using the `@import` at-rule.
+
+```css
+/* index.css */
+@import "./other.css" p {
+  font-size: 16px;
+}
+```
+
+```css
+/* other.css */
+a {
+  font-size: 16px;
+}
+```
+
+Imported stylesheets will be treated as dependencies and inlined into the files that import them.
+
+Make sure you reference dependencies relatively with `./` or `../` to ensure they’re treated as dependencies.
+
+### npm packages
+
+You can `import` npm packages as you would normally expect. It will look for packages in the `node_modules` folder at the root of your project.
+
+[postcss]: https://postcss.org
+[cssdb]: https://cssdb.org
+[custom-media-queries]: https://cssdb.org/#custom-media-queries

@@ -1,0 +1,44 @@
+import Layout from "./layout.html.jsx"
+
+export const meta = {
+  id: "javascripts",
+  title: "JavaScripts",
+}
+
+export const layout = (props) => <Layout currentPageID={meta.id} {...props} />
+
+# JavaScripts
+
+JavaScripts are transformed using [Babel][babel].
+
+## Features
+
+All features from `es2015`, `es2016`, and `es2017` are included via [`@babel/preset-env`][babel-preset-env]. You can see a list of those features in the [ECMAScript compatibility table][ecmascript-compatibility-table].
+
+## Importing
+
+You can import other JavaScripts using the ES6 module syntax.
+
+```javascript
+// index.js
+import something from "./other.js"
+
+console.log(something)
+```
+
+```js
+// other.js
+export default "something"
+```
+
+Imported JavaScripts will be treated as dependencies and inlined into the files that import them.
+
+Make sure you reference dependencies relatively with `./` or `../` to ensure they’re treated as dependencies.
+
+### npm packages
+
+You can `import` npm packages as you would normally expect. It will look for packages in the `node_modules` folder at the root of your project.
+
+[babel]: https://babeljs.io
+[babel-preset-env]: https://babeljs.io/docs/en/babel-preset-env
+[ecmascript-compatibility-table]: http://kangax.github.io/compat-table/es2016plus/

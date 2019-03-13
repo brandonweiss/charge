@@ -1,0 +1,266 @@
+import Layout from "./layout.html.jsx"
+
+export const meta = {
+  id: "pages",
+  title: "Pages",
+}
+
+export const layout = (props) => <Layout currentPageID={meta.id} {...props} />
+
+# Pages
+
+Pages are written in [JSX][jsx] and [MDX][mdx] use React. If you’re used to thinking about React running in the browser, this is different. These pages are server-side rendered not client-side rendered, meaning React is used to generate static HTML files.
+
+The naming convention is `name.html.jsx` for JSX files and `name.html.mdx` for MDX files. When the site is built the `.jsx` and `.mdx` parts of the extension will be removed.
+
+## React
+
+If you’re new to React I’d recommend reading its [incredible docs](https://reactjs.org/docs/introducing-jsx.html), starting with the section on JSX.
+
+If you want to see what using JSX to write HTML looks like here are two very simple examples for components/partials and layouts, concepts that are usually built into most static site generators.
+
+### Components
+
+React is inherently a component-based system. Any JSX file can export a component that can be included on another page.
+
+```jsx
+// index.html.jsx
+import Component from "./component.html.jsx"
+
+export default () => {
+  return <Component message="Hello!">
+}
+```
+
+```jsx
+// component.html.jsx
+export default (props) => {
+  return <p>{props.message}</p>
+}
+```
+
+### Layouts
+
+Layouts are just another way of using React components. If you wrap a component around your content you can use the `children` property to render that content.
+
+```jsx
+// index.html.jsx
+import Layout from "./layout.html.jsx"
+
+export default () => {
+  return (
+    <Layout title="Title">
+      <p>Hello!</p>
+    </Layout>
+  )
+}
+```
+
+```jsx
+// layout.html.jsx
+export default (props) => {
+  return (
+    <html>
+      <head>
+        <title>{props.title}</title>
+      </head>
+
+      <body>{props.children}</body>
+    </html>
+  )
+}
+```
+
+## Markdown
+
+You can also write pages in Markdown via [MDX][mdx], a clever idea for combining Markdown and [JSX][jsx]. It’s best to read the docs, but you can…
+
+- Import Markdown into JSX
+- Import JSX into Markdown
+- Import Markdown into Markdown
+
+MDX is not the same as JSX, though. For example, there are no expressions. There isn’t a render function either, so there are no props. There are layouts, though.
+
+A named `layout` export can be used to provide a layout component that will wrap the Markdown. The layout component will receive all the same props any other page would receive.
+
+```markdown
+// index.html.mdx
+import Layout from "./layout.html.jsx"
+
+export const layout = (props) => (
+<Layout title="Title">
+{props.children}
+</Layout>
+)
+
+# Heading
+```
+
+```jsx
+// layout.html.jsx
+export default (props) => {
+  return (
+    <html>
+      <head>
+        <title>{props.title}</title>
+      </head>
+
+      <body>{props.children}</body>
+    </html>
+  )
+}
+```
+
+### Plugins
+
+MDX uses [remark](https://github.com/remarkjs/remark) to render Markdown to HTML. remark supports the most common Markdown syntax and features and it provides a plugin system to extend Markdown with less common features.
+
+If there is a Markdown extension you think would make sense to add to Charge take a look at the [list of remark plugins][remark-plugins], find the one you need, and [open an issue][issue] requesting it to be added.
+
+Here are the current plugins:
+
+#### Abbreviations
+
+Acronyms, initialisms, etc. can be automatically converted to [`<abbr>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr) elements.
+
+```plaintext
+HTML is great.
+
+*[HTML]: Hypertext Markup Language
+```
+
+#### Syntax highlighting
+
+Syntax highlighting is done via [remark-highlight.js](https://github.com/remarkjs/remark-highlight.js). You can [visually browse](https://highlightjs.org/static/demo/) the various syntax styles (themes) and then [grab the CSS file](https://github.com/highlightjs/highlight.js/tree/master/src/styles) for the one you like.
+
+The Markdown syntax for highlighting code is “fenced code blocks” with the language name appended to the opening “fence”.
+
+    ```javascript
+    let foo = "bar"
+    ```
+
+There is a [list of supported languages and corresponding aliases](https://github.com/highlightjs/highlight.js/blob/master/docs/css-classes-reference.rst#language-names-and-aliases).
+
+## Props
+
+A set of props will be passed to your pages. The props object looks like this:
+
+```jsx
+{
+  data: {},
+  environment: "development",
+  pages: [
+    {
+      component: <Component />,
+      meta: {
+        date: "2019/01/28",
+        title: "First post!",
+      },
+      path: "/first-post",
+    },
+  ],
+}
+```
+
+### Data
+
+The `data` property will be populated with any data files you create. The section on [data files](/data-files) will explain them.
+
+### Environment
+
+The `environment` property will be either `"development"` or `"production"`, depending on whether you run `serve` or `build`, respectively. This is useful for including certain scripts only in production.
+
+### Pages
+
+The `pages` property will be an array of objects representing the page components of your site (JSX and MDX pages) and will not include regular HTML pages. This is useful for generating sitemaps or other similar dynamic lists of pages.
+
+Each page object has a `component`, `meta`, and `path` property.
+
+#### Component
+
+The `component` property can be used to render the contents of the page. This is useful for creating a page that lists recent blog posts.
+
+**A warning**: the `component` property of a page object that you’re trying to render will expect you to provide whatever of the common props (`data`, `environment`, and `pages`) that you’re using in that component. If the component you’re trying to render makes use of the `pages` property you will have to provide something for the `pages` prop or it won’t render, but you probably can’t provide the actual `pages` prop as that will create an infinite loop. You should pass an empty array instead, although this will necessarily render something different than you expect.
+
+A shorter but perhaps more confusing way of explaining it is, you’re not going to be able to use the `component` property of a page object to render a component that itself uses the `pages` property.
+
+#### Meta
+
+The `meta` property is populated by exporting a named export from the page with an object of whatever data you need.
+
+```markdown
+// first-post.html.mdx
+export const meta = {
+date: "2019/01/28",
+title: "First post!"
+}
+
+My first post.
+```
+
+This is useful for filtering pages, annotating a list of pages, etc.
+
+#### Path
+
+The `path` property can be used to link to the page.
+
+## Organization
+
+If you find that you have a lot of layouts and/or components you can organize them into folders. There are no constraints on how you decide to organize your dependencies.
+
+## Doctype
+
+JSX does not support the DOCTYPE declaration used at the top of HTML documents. Just leave it off and it will be prepended to the top of all JSX and MDX files for you.
+
+## Whitespace
+
+JSX eats whitespace. If you break a line of HTML onto two lines in any other templating language there would be a space between them in the output.
+
+```html
+<p>
+  These should appear on the same line with a space between them.
+</p>
+```
+
+But with JSX they won’t. You’ll need to intentionally insert a space like this.
+
+```html
+<p>
+  These will be on the same line {" "} with a space between them.
+</p>
+```
+
+## Importing React
+
+When using JSX you would normally need to import React just like any other module (even if not explicitly using the `React` constant).
+
+```jsx
+import React from "react"
+
+export default () => {
+  return <div />
+}
+```
+
+Charge automatically prepends the import to JSX files for you so you don’t have to!
+
+```jsx
+export default () => {
+  return <div />
+}
+```
+
+## Clean URLs
+
+Clean URLs, or ”Directory Indexes” as they were more commonly called in the old days is a way of structuring static files such that the file extensions don’t show in the URL.
+
+For example, if you had a file `projects.html` you might expect the URL to look like `domain.com/projects.html`. The extension in the URL helps you know what type of file is at the URL, be it JavaScript, a stylesheet, or anything else. But, for a variety of reasons, when it comes to HTML the extension has become unnecessary. If you see a URL like `domain.com/projects` everyone now understands that an HTML file will be returned; the `.html` is implied.
+
+To make this work, HTML files will have their paths rewritten slightly. Nothing will happen to the `index.html` file at the root of the `source` directory, but a file named `projects.html` will become `projects/index.html`. When someone visit `domain.com/projects` the `projects/index.html` file will be returned.
+
+Wherever you’re hosting your static site will almost certainly support clean URLs.
+
+[jsx]: https://reactjs.org/docs/introducing-jsx.html
+[mdx]: https://github.com/mdx-js/mdx
+[remark-plugins]: https://github.com/remarkjs/remark/blob/master/doc/plugins.md#list-of-plugins
+[issue]: https://github.com/brandonweiss/charge/issues/new

@@ -23,6 +23,7 @@
   "license": "MIT",
   "repository": "https://github.com/brandonweiss/charge",
   "scripts": {
+    "docs": "node cli.js serve docs",
     "test": "ava --verbose --serial",
     "test:watch": "yarn run test --watch"
   },
@@ -33,6 +34,7 @@
     "np": "^4.0.2",
     "prettier": "1.16.4",
     "pretty-quick": "^1.10.0",
+    "react-feather": "^1.1.6",
     "supertest": "^3.4.2"
   },
   "dependencies": {

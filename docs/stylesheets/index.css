@@ -1,0 +1,149 @@
+@import "./modern-normalize.css";
+@import "./atom-one-light.css";
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  line-height: 1.5;
+}
+
+body {
+  background-color: #f7f7f7;
+  color: #666666;
+  display: grid;
+  font-family: "Avenir Next", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  grid-template-areas: "main nav";
+  grid-template-columns: auto;
+  margin: 0;
+}
+
+a {
+  color: #ff8e96;
+}
+
+a:hover {
+  color: #ff0069;
+}
+
+main {
+  grid-area: main;
+  overflow-y: scroll;
+  padding: 4rem 20px;
+  padding-bottom: 0;
+  position: relative;
+}
+
+/* Fixes bottom padding not showing on a scroll container in Firefox */
+main:after {
+  content: "";
+  display: block;
+  height: 4rem;
+}
+
+main h1:first-child,
+main h2:first-child {
+  margin-top: 0;
+}
+
+nav {
+  background-color: #ffffff;
+  display: none;
+  grid-area: nav;
+  padding: 30px 0;
+  overflow-y: scroll;
+}
+
+nav a {
+  display: block;
+  padding: 0.8em 1em 0.8em 2em;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+nav a.active {
+  color: #ff0069;
+}
+
+.logo {
+  font-size: 3rem;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+@media only screen and (min-width: 800px) {
+  body {
+    grid-template-columns: auto minmax(auto, 220px);
+  }
+
+  nav {
+    display: block;
+  }
+}
+
+code {
+  background-color: #f2f2f2;
+  border-radius: 2px;
+  padding: 0.2em;
+}
+
+.hljs {
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  padding: 1em;
+}
+
+pre code {
+  display: block;
+  overflow-x: auto;
+}
+
+.pagination {
+  display: flex;
+  margin-top: 5rem;
+}
+
+.pagination div:first-of-type {
+  flex-grow: 1;
+}
+
+.pagination a {
+  align-items: center;
+  display: inline-flex;
+}
+
+.button {
+  text-decoration: none;
+  border: 1px solid;
+  border-radius: 3px;
+  color: inherit;
+  padding: 0.8em 1em;
+}
+
+.github {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  color: #666666;
+}
+
+.small-logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+@media only screen and (min-width: 800px) {
+  .mobile {
+    display: none;
+  }
+}

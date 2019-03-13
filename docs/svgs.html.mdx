@@ -1,0 +1,41 @@
+import Layout from "./layout.html.jsx"
+
+export const meta = {
+  id: "svgs",
+  title: "SVGs",
+}
+
+export const layout = (props) => <Layout currentPageID={meta.id} {...props} />
+
+# SVGs
+
+If you want to inline an SVG it will be automagically turned into a React component if you import it.
+
+```jsx
+// index.html.jsx
+import Icon from "./icon.svg"
+
+export default () => {
+  return (
+    <div>
+      <h1>Heading</h1>
+
+      <Icon />
+    </div>
+  )
+}
+```
+
+It will be wrapped in a `<span>`, so the markup will look like this.
+
+```html
+<div>
+  <h1>Heading</h1>
+
+  <span>
+    <svg>…</svg>
+  </span>
+</div>
+```
+
+Also keep in mind that when you import an SVG it becomes a dependency and thus will not be copied over into the `target` folder. That means you can either use an SVG as an image (`<img src="path/to/icon.svg" />`) or inline it by importing it, but not both.

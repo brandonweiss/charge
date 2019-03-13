@@ -1,0 +1,35 @@
+import Layout from "./layout.html.jsx"
+
+export const meta = {
+  id: "concepts",
+  title: "Concepts",
+}
+
+export const layout = (props) => <Layout currentPageID={meta.id} {...props} />
+
+# Concepts
+
+## Static
+
+It bears repeating that Charge uses React and JSX to generate static HTML on the _server-side_. It does not render the pages on the client-side in the browser. Charge is especially useful for building small websites where it wouldn’t make sense to serve React to the browser in order to render a simple page.
+
+## Files
+
+How your files are handled depends on what type of file it is. Most files will simply be copied from `source` to `target` without being changed at all. Templates, JavaScripts, and stylesheets will be processed and then written to the `target` directory.
+
+## Entrypoints
+
+Many build systems or asset pipelines have a concept of “entrypoints” or “bundles”. You configure the build system to take many files from different sources and combine them together into one file, which is then referenced in your HTML. For a simple website there might be one bundle for your JavaScript and one bundle for your stylesheet. For a more complex website there might be multiple bundles of each type.
+
+Charge doesn’t really have this concept, or at least there isn’t any configuration around it. Every file is potentially a “bundle” and how files should be combined together is automatically inferred by figuring out what is a “dependency”.
+
+## Dependencies
+
+A dependency is any file that is imported into another file. Let’s use JavaScript files as an example.
+
+If you have `index.js` and `dependency.js` and they don’t reference each other in any way, then they will both be copied over and show up in the `target` directory. But if `index.js` imports `dependency.js`, then `dependency.js` is inferred to be a dependency, which means it will be treated differently in two ways:
+
+1.  `dependency.js` will be bundled/included into `index.js`
+2.  `dependency.js` will not be copied over into the `target` directory
+
+This should probably be what you would expect to happen. It should fit your mental model of how build systems work. The only difference here is that other systems require you to explicitly configure what is an “entrypoint” and what is a dependency, whereas Charge analyzes the files to automatically figure this out for you.
