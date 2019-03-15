@@ -36,33 +36,6 @@ test("renders a JSX page as HTML", async (t) => {
   cleanFiles(tmpPathPrefix)
 })
 
-test("renders a JSX page as an HTML file into a Directory Index format for clean URLs", async (t) => {
-  createFiles(sourceDirectory, {
-    "foobar.html.jsx": dedent`
-      export default () => {
-        return <div></div>
-      }
-    `,
-  })
-
-  await build({
-    source: sourceDirectory,
-    target: targetDirectory,
-  })
-
-  assertFiles(t, targetDirectory, {
-    foobar: {
-      "index.html": dedent`
-        <!DOCTYPE html>
-
-        <div></div>
-      `,
-    },
-  })
-
-  cleanFiles(tmpPathPrefix)
-})
-
 test("renders a JSX page as HTML with a JSX component", async (t) => {
   createFiles(sourceDirectory, {
     "paragraph-component.html.jsx": dedent`

@@ -42,6 +42,10 @@ export const navItems = [
     id: "data-files",
     name: "Data files",
   },
+  {
+    id: "deployment",
+    name: "Deployment",
+  },
 ]
 
 export default ({ currentPageID, pages }) => {

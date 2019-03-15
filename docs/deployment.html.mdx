@@ -1,0 +1,34 @@
+import Layout from "./layout.html.jsx"
+
+export const meta = {
+  id: "deployment",
+  title: "Deployment",
+}
+
+export const layout = (props) => <Layout currentPageID={meta.id} {...props} />
+
+# Deployment
+
+## Amazon S3
+
+[Amazon S3][s3] is a great static site host. It supports custom domains, HTTPS, and has a CDN (Amazon CloudFront). It’s not free, but it’s so cheap that it’s effectively free; you’ll probably pay pennies per month. The one downside is that configuring and deploying to S3 is a nightmare.
+
+I built [Discharge][discharge] as a companion to Charge to simplify and automate configuring and deploying to S3. It synchronizes files, sets up HTTPS, and sets up the CDN.
+
+S3 supports clean URLs but not implicitly. You have to transform your filenames and remove the extensions _as_ you deploy to S3. Discharge will automatically do that for you if you configure it to.
+
+## Netlify
+
+[Netlify][netlify] is a great place to host a static site for free. They support custom domains and HTTPS for free. However, they do not provide a CDN except on the “Enterprise” plan which is very expensive.
+
+Netlify supports clean URLs (which they call “Pretty URLs”) and have [docs on how to enable them][netlify-docs].
+
+## Heroku
+
+You can definitely deploy a static site to [Heroku][heroku] but I wouldn’t recommend it. The free dynos will sleep after 30 minutes and stop working entirely if you run out of your monthly “dyno hours” allotment.
+
+[s3]: https://aws.amazon.com/s3/
+[discharge]: https://github.com/brandonweiss/discharge
+[netlify]: https://www.netlify.com
+[netlify-docs]: https://www.netlify.com/docs/redirects/#trailing-slash
+[heroku]: https://www.heroku.com

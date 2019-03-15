@@ -49,42 +49,6 @@ test("copies a file from source to target", async (t) => {
   cleanFiles(tmpPathPrefix)
 })
 
-test("copies an HTML file into a Directory Index format for clean URLs", async (t) => {
-  createFiles(sourceDirectory, {
-    "foobar.html": "<html></html>",
-  })
-
-  await build({
-    source: sourceDirectory,
-    target: targetDirectory,
-  })
-
-  assertFiles(t, targetDirectory, {
-    foobar: {
-      "index.html": "<html></html>",
-    },
-  })
-
-  cleanFiles(tmpPathPrefix)
-})
-
-test("does not copy the root index.html file into a Directory Index format for clean URLs", async (t) => {
-  createFiles(sourceDirectory, {
-    "index.html": "<html></html>",
-  })
-
-  await build({
-    source: sourceDirectory,
-    target: targetDirectory,
-  })
-
-  assertFiles(t, targetDirectory, {
-    "index.html": "<html></html>",
-  })
-
-  cleanFiles(tmpPathPrefix)
-})
-
 test("summarizes pages and passes them into the page as the `pages` prop", async (t) => {
   createFiles(sourceDirectory, {
     "foo.html.jsx": dedent`
@@ -108,13 +72,11 @@ test("summarizes pages and passes them into the page as the `pages` prop", async
   })
 
   assertFiles(t, targetDirectory, {
-    foo: {
-      "index.html": dedent`
-        <!DOCTYPE html>
+    "foo.html": dedent`
+      <!DOCTYPE html>
 
-        <p>/foo</p>
-      `,
-    },
+      <p>/foo</p>
+    `,
   })
 
   cleanFiles(tmpPathPrefix)
@@ -185,20 +147,16 @@ test("only includes JSX and MDX pages in the `pages` prop", async (t) => {
     "index.html": dedent`
       <p></p>
     `,
-    jsx: {
-      "index.html": dedent`
-        <!DOCTYPE html>
+    "jsx.html": dedent`
+      <!DOCTYPE html>
 
-        <p>/jsx</p><p>/mdx</p>
-      `,
-    },
-    mdx: {
-      "index.html": dedent`
-        <!DOCTYPE html>
+      <p>/jsx</p><p>/mdx</p>
+    `,
+    "mdx.html": dedent`
+      <!DOCTYPE html>
 
-        <div><p>Foobar</p></div>
-      `,
-    },
+      <div><p>Foobar</p></div>
+    `,
   })
 
   cleanFiles(tmpPathPrefix)
@@ -232,13 +190,11 @@ test("passes the page component in the `pages` prop", async (t) => {
   })
 
   assertFiles(t, targetDirectory, {
-    post: {
-      "index.html": dedent`
-        <!DOCTYPE html>
+    "post.html": dedent`
+      <!DOCTYPE html>
 
-        <div><h1>Title</h1></div>
-      `,
-    },
+      <div><h1>Title</h1></div>
+    `,
     "index.html": dedent`
       <!DOCTYPE html>
 
@@ -320,20 +276,16 @@ test("provides exported meta for an MDX page in the `pages` prop", async (t) => 
   })
 
   assertFiles(t, targetDirectory, {
-    jsx: {
-      "index.html": dedent`
-        <!DOCTYPE html>
+    "jsx.html": dedent`
+      <!DOCTYPE html>
 
-        <p>bar</p><p>bar</p>
-      `,
-    },
-    mdx: {
-      "index.html": dedent`
-        <!DOCTYPE html>
+      <p>bar</p><p>bar</p>
+    `,
+    "mdx.html": dedent`
+      <!DOCTYPE html>
 
-        <div><p>Foobar</p></div>
-      `,
-    },
+      <div><p>Foobar</p></div>
+    `,
   })
 
   cleanFiles(tmpPathPrefix)

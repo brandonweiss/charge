@@ -33,3 +33,15 @@ If you have `index.js` and `dependency.js` and they don’t reference each other
 2.  `dependency.js` will not be copied over into the `target` directory
 
 This should probably be what you would expect to happen. It should fit your mental model of how build systems work. The only difference here is that other systems require you to explicitly configure what is an “entrypoint” and what is a dependency, whereas Charge analyzes the files to automatically figure this out for you.
+
+## Clean URLs
+
+Clean URLs is when the `.html` extensions are dropped from URLs because they’re now commonly considered superfluous. If you have a file named `/projects.html` it’s now understood and generally preferred that the URL `domain.com/projects` would serve that file.
+
+Charge does not have a particular opinion about whether you use Clean URLs or not. The development server will serve the right files regardless of if you use URLs with `.html` extensions or without.
+
+However, it’s important to note that “clean URLs” is a deployment and/or hosting concern. That means when you build your site for deployment, Charge does not do anything to try and support clean URLs, because Charge can’t know where you plan to deploy the static site and how they might or might not handle clean URLs. It’s up to you to deploy your site using a service
+
+The section on [Deployment][deployment] covers clean URLs
+
+[deployment]: /deployment

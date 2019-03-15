@@ -250,16 +250,6 @@ export default () => {
 }
 ```
 
-## Clean URLs
-
-Clean URLs, or ”Directory Indexes” as they were more commonly called in the old days is a way of structuring static files such that the file extensions don’t show in the URL.
-
-For example, if you had a file `projects.html` you might expect the URL to look like `domain.com/projects.html`. The extension in the URL helps you know what type of file is at the URL, be it JavaScript, a stylesheet, or anything else. But, for a variety of reasons, when it comes to HTML the extension has become unnecessary. If you see a URL like `domain.com/projects` everyone now understands that an HTML file will be returned; the `.html` is implied.
-
-To make this work, HTML files will have their paths rewritten slightly. Nothing will happen to the `index.html` file at the root of the `source` directory, but a file named `projects.html` will become `projects/index.html`. When someone visit `domain.com/projects` the `projects/index.html` file will be returned.
-
-Wherever you’re hosting your static site will almost certainly support clean URLs.
-
 [jsx]: https://reactjs.org/docs/introducing-jsx.html
 [mdx]: https://github.com/mdx-js/mdx
 [remark-plugins]: https://github.com/remarkjs/remark/blob/master/doc/plugins.md#list-of-plugins

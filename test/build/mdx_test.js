@@ -34,31 +34,6 @@ test("renders an MDX page as HTML", async (t) => {
   cleanFiles(tmpPathPrefix)
 })
 
-test("renders an MDX page as an HTML file into a Directory Index format for clean URLs", async (t) => {
-  createFiles(sourceDirectory, {
-    "foobar.html.mdx": dedent`
-      # Hello!
-    `,
-  })
-
-  await build({
-    source: sourceDirectory,
-    target: targetDirectory,
-  })
-
-  assertFiles(t, targetDirectory, {
-    foobar: {
-      "index.html": dedent`
-        <!DOCTYPE html>
-
-        <div><h1>Hello!</h1></div>
-      `,
-    },
-  })
-
-  cleanFiles(tmpPathPrefix)
-})
-
 test("renders an MDX page as HTML with an MDX component", async (t) => {
   createFiles(sourceDirectory, {
     "subheading.html.mdx": dedent`
