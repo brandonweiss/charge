@@ -35,7 +35,7 @@
     "prettier": "1.16.4",
     "pretty-quick": "^1.10.0",
     "react-feather": "^1.1.6",
-    "supertest": "^3.4.2"
+    "supertest": "^4.0.2"
   },
   "dependencies": {
     "@babel/core": "^7.3.4",
