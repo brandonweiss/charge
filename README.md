@@ -43,6 +43,7 @@ You can find the Charge documentation [on the website][docs].
 
 If you’d like to see everything in practice, check out these sites using Charge.
 
+* [charge.js.org](https://github.com/brandonweiss/charge/tree/master/docs), the documentation for Charge.
 * [brandonweiss.me](https://github.com/brandonweiss/brandonweiss), a personal site.
 
 ## Contributing
