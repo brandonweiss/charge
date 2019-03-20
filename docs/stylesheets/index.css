@@ -16,6 +16,7 @@ body {
   display: grid;
   font-family: "Avenir Next", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
+  grid-auto-rows: 1fr; /* Fixes this weird issue: https://stackoverflow.com/questions/55268747/in-safari-hovering-over-svg-elements-causes-a-scrolled-element-to-reset-its-scr */
   grid-template-areas: "main nav";
   grid-template-columns: auto;
   margin: 0;
