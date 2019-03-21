@@ -70,7 +70,7 @@ The package is available as open source under the terms of the [MIT License][MIT
 [mdx]: https://github.com/mdx-js/mdx
 [babel]: https://babeljs.io
 [postcss]: https://postcss.org
-[docs]: https://brandonweiss.github.io/charge
+[docs]: https://charge.js.org
 [gatsby]: https://www.gatsbyjs.org
 [github-charge]: https://github.com/brandonweiss/charge
 [MIT-License]: http://opensource.org/licenses/MIT
