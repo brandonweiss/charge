@@ -65,6 +65,7 @@ Bug reports and pull requests are welcome on GitHub at [https://github.com/brand
 
 The package is available as open source under the terms of the [MIT License][MIT-license].
 
+[static-gen]: https://www.staticgen.com
 [jsx]: https://reactjs.org/docs/introducing-jsx.html
 [mdx]: https://github.com/mdx-js/mdx
 [babel]: https://babeljs.io
