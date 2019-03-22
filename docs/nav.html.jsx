@@ -35,6 +35,10 @@ export const navItems = [
     name: "JSON",
   },
   {
+    id: "xml",
+    name: "XML",
+  },
+  {
     id: "svgs",
     name: "SVGs",
   },
