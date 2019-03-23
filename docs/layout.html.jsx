@@ -3,8 +3,9 @@ import Pagination from "./pagination.html.jsx"
 import { GitHub } from "react-feather"
 import Logo from "./logo.html.jsx"
 import { resolve as resolveURL } from "url"
+import Tracking from "./tracking.html.jsx"
 
-export default ({ children, currentPageID, pages }) => {
+export default ({ children, currentPageID, environment, pages }) => {
   let currentPage = pages.find((page) => page.meta.id === currentPageID)
   let pageTitle =
     currentPageID === "about"
@@ -87,6 +88,8 @@ export default ({ children, currentPageID, pages }) => {
             <GitHub width="32" height="32" />
           </a>
         </main>
+
+        <Tracking environment={environment} />
       </body>
     </html>
   )
