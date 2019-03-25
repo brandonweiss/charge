@@ -1,7 +1,6 @@
 import glob from "glob"
 import path from "path"
 import fs from "fs-extra"
-import { noMutate as objectAssignDeep } from "object-assign-deep"
 
 let flattenFilePath = (pathPart, directoryOrFileContents) => {
   return Object.entries(directoryOrFileContents).reduce((flattenedFilePaths, [key, value]) => {
@@ -13,16 +12,6 @@ let flattenFilePath = (pathPart, directoryOrFileContents) => {
 
     return flattenedFilePaths
   }, {})
-}
-
-let expandFilePath = (path, fileContents) => {
-  let pathParts = path.split("/")
-
-  return pathParts.reduceRight((directoryOrFileContents, part) => {
-    return {
-      [part]: directoryOrFileContents,
-    }
-  }, fileContents)
 }
 
 export const createData = (dataDirectory, data) => {
@@ -52,11 +41,11 @@ export const assertFiles = (t, targetDirectory, expectedTargetFilesystem) => {
 
   let targetFilesystem = files.reduce((filesystem, file) => {
     let fileContents = fs.readFileSync(file).toString()
-    let newPaths = expandFilePath(file, fileContents)
-    return objectAssignDeep(filesystem, newPaths)
+    filesystem[file] = fileContents
+    return filesystem
   }, {})
 
-  t.deepEqual(targetFilesystem, expandFilePath(targetDirectory, expectedTargetFilesystem))
+  t.deepEqual(targetFilesystem, flattenFilePath(targetDirectory, expectedTargetFilesystem))
 }
 
 export const cleanFiles = (directory) => {
