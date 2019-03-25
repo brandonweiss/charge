@@ -13,9 +13,8 @@ let tmpPathPrefix = "tmp/tests"
 let sourceDirectory = `${tmpPathPrefix}/source`
 let targetDirectory = `${tmpPathPrefix}/target`
 
-test.beforeEach((t) => {
-  cleanFiles(tmpPathPrefix)
-})
+test.beforeEach((t) => cleanFiles(tmpPathPrefix))
+test.after.always((t) => cleanFiles(tmpPathPrefix))
 
 test("transpiles stylesheets using Stage 2 features", async (t) => {
   createFiles(sourceDirectory, {
@@ -38,8 +37,6 @@ test("transpiles stylesheets using Stage 2 features", async (t) => {
       }
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("transpiles stylesheets using thee custom-media-queries feature from Stage 1", async (t) => {
@@ -69,8 +66,6 @@ test("transpiles stylesheets using thee custom-media-queries feature from Stage 
       }
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("inlines stylesheets with relative @import statements to current directory", async (t) => {
@@ -105,8 +100,6 @@ test("inlines stylesheets with relative @import statements to current directory"
       }
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("inlines stylesheets with relative @import statements to parent directory", async (t) => {
@@ -143,8 +136,6 @@ test("inlines stylesheets with relative @import statements to parent directory",
       `,
     },
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("inlines stylesheets from npm packages", async (t) => {
@@ -182,6 +173,4 @@ test("inlines stylesheets from npm packages", async (t) => {
       }
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })

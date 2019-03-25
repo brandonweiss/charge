@@ -13,9 +13,8 @@ let tmpPathPrefix = "tmp/tests"
 let sourceDirectory = `${tmpPathPrefix}/source`
 let targetDirectory = `${tmpPathPrefix}/target`
 
-test.beforeEach((t) => {
-  cleanFiles(tmpPathPrefix)
-})
+test.beforeEach((t) => cleanFiles(tmpPathPrefix))
+test.after.always((t) => cleanFiles(tmpPathPrefix))
 
 test("bundles JavaScripts into a self-executing function", async (t) => {
   createFiles(sourceDirectory, {
@@ -39,8 +38,6 @@ test("bundles JavaScripts into a self-executing function", async (t) => {
       }());\n
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("transpiles JavaScripts using Babel", async (t) => {
@@ -65,8 +62,6 @@ test("transpiles JavaScripts using Babel", async (t) => {
       }());\n
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("bundles imported JavaScript files via relative imports to current directory", async (t) => {
@@ -98,8 +93,6 @@ test("bundles imported JavaScript files via relative imports to current director
       }());\n
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("bundles imported JavaScript files via relative imports to parent directory", async (t) => {
@@ -133,8 +126,6 @@ test("bundles imported JavaScript files via relative imports to parent directory
       `,
     },
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("bundles imported npm packages", async (t) => {
@@ -169,6 +160,4 @@ test("bundles imported npm packages", async (t) => {
       }());\n
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })

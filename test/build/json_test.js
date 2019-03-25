@@ -7,9 +7,8 @@ let tmpPathPrefix = "tmp/tests"
 let sourceDirectory = `${tmpPathPrefix}/source`
 let targetDirectory = `${tmpPathPrefix}/target`
 
-test.beforeEach((t) => {
-  cleanFiles(tmpPathPrefix)
-})
+test.beforeEach((t) => cleanFiles(tmpPathPrefix))
+test.after.always((t) => cleanFiles(tmpPathPrefix))
 
 test("renders a JavaScript function into JSON", async (t) => {
   createFiles(sourceDirectory, {
@@ -32,8 +31,6 @@ test("renders a JavaScript function into JSON", async (t) => {
       }
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("loads data from data files and passes it to the JavaScript function", async (t) => {
@@ -68,6 +65,4 @@ test("loads data from data files and passes it to the JavaScript function", asyn
       }
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })

@@ -7,9 +7,8 @@ let tmpPathPrefix = "tmp/tests"
 let sourceDirectory = `${tmpPathPrefix}/source`
 let targetDirectory = `${tmpPathPrefix}/target`
 
-test.beforeEach((t) => {
-  cleanFiles(tmpPathPrefix)
-})
+test.beforeEach((t) => cleanFiles(tmpPathPrefix))
+test.after.always((t) => cleanFiles(tmpPathPrefix))
 
 test("renders an MDX page as HTML", async (t) => {
   createFiles(sourceDirectory, {
@@ -30,8 +29,6 @@ test("renders an MDX page as HTML", async (t) => {
       <div><h1>Hello!</h1></div>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("renders an MDX page as HTML with an MDX component", async (t) => {
@@ -60,8 +57,6 @@ test("renders an MDX page as HTML with an MDX component", async (t) => {
       <div><h1>Heading</h1><div><h2>Subheading</h2></div></div>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("renders an MDX page as HTML with a JSX component", async (t) => {
@@ -92,8 +87,6 @@ test("renders an MDX page as HTML with a JSX component", async (t) => {
       <div><h1>Heading</h1><h2>Something</h2></div>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("renders an MDX page as HTML with a JSX component as a layout", async (t) => {
@@ -134,8 +127,6 @@ test("renders an MDX page as HTML with a JSX component as a layout", async (t) =
       <html><head><title>Title</title></head><body><div><h1>Heading</h1></div></body></html>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("renders an MDX page with syntax highlighting", async (t) => {
@@ -159,8 +150,6 @@ test("renders an MDX page with syntax highlighting", async (t) => {
       <div><pre><code class="hljs language-javascript">  <span class="hljs-keyword">let</span> foo = <span class="hljs-string">&quot;bar&quot;</span></code></pre></div>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("renders an MDX page with abbreviations", async (t) => {
@@ -184,6 +173,4 @@ test("renders an MDX page with abbreviations", async (t) => {
       <div><p><abbr title="You Only Live Once">YOLO</abbr></p></div>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })

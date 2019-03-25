@@ -7,9 +7,8 @@ let tmpPathPrefix = "tmp/tests"
 let sourceDirectory = `${tmpPathPrefix}/source`
 let targetDirectory = `${tmpPathPrefix}/target`
 
-test.beforeEach((t) => {
-  cleanFiles(tmpPathPrefix)
-})
+test.beforeEach((t) => cleanFiles(tmpPathPrefix))
+test.after.always((t) => cleanFiles(tmpPathPrefix))
 
 test("renders a JSX page as HTML", async (t) => {
   createFiles(sourceDirectory, {
@@ -32,8 +31,6 @@ test("renders a JSX page as HTML", async (t) => {
       <div></div>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("renders a JSX page as HTML with a JSX component", async (t) => {
@@ -68,8 +65,6 @@ test("renders a JSX page as HTML with a JSX component", async (t) => {
       <div><p>bar</p></div>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("renders a JSX page as HTML with an MDX component", async (t) => {
@@ -104,8 +99,6 @@ test("renders a JSX page as HTML with an MDX component", async (t) => {
       <div><h1>Heading</h1><div><h2>Subheading</h2></div></div>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("renders a JSX page as HTML with a JSX component as a layout", async (t) => {
@@ -140,8 +133,6 @@ test("renders a JSX page as HTML with a JSX component as a layout", async (t) =>
       <div><p>foobar</p></div>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("loads data from data files and passes it to the JSX page", async (t) => {
@@ -174,6 +165,4 @@ test("loads data from data files and passes it to the JSX page", async (t) => {
       <p>bar</p>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })

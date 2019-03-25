@@ -8,9 +8,8 @@ let tmpPathPrefix = "tmp/tests"
 let sourceDirectory = `${tmpPathPrefix}/source`
 let targetDirectory = `${tmpPathPrefix}/target`
 
-test.beforeEach((t) => {
-  cleanFiles(tmpPathPrefix)
-})
+test.beforeEach((t) => cleanFiles(tmpPathPrefix))
+test.after.always((t) => cleanFiles(tmpPathPrefix))
 
 test("serves the root page", async (t) => {
   t.plan(3)
@@ -29,7 +28,6 @@ test("serves the root page", async (t) => {
   t.is(response.text, "foo")
 
   browserSyncInstance.publicInstance.exit()
-  cleanFiles(tmpPathPrefix)
 })
 
 test("serves a named page without the extension", async (t) => {
@@ -49,7 +47,6 @@ test("serves a named page without the extension", async (t) => {
   t.is(response.text, "foo")
 
   browserSyncInstance.publicInstance.exit()
-  cleanFiles(tmpPathPrefix)
 })
 
 test("serves a named page with the extension", async (t) => {
@@ -69,7 +66,6 @@ test("serves a named page with the extension", async (t) => {
   t.is(response.text, "foo")
 
   browserSyncInstance.publicInstance.exit()
-  cleanFiles(tmpPathPrefix)
 })
 
 test("redirects a URL with an ending slash", async (t) => {
@@ -84,5 +80,4 @@ test("redirects a URL with an ending slash", async (t) => {
   t.is(response.headers.location, "/named")
 
   browserSyncInstance.publicInstance.exit()
-  cleanFiles(tmpPathPrefix)
 })

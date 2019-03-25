@@ -13,9 +13,8 @@ let tmpPathPrefix = "tmp/tests"
 let sourceDirectory = `${tmpPathPrefix}/source`
 let targetDirectory = `${tmpPathPrefix}/target`
 
-test.beforeEach((t) => {
-  cleanFiles(tmpPathPrefix)
-})
+test.beforeEach((t) => cleanFiles(tmpPathPrefix))
+test.after.always((t) => cleanFiles(tmpPathPrefix))
 
 test("copies an SVG from source to target", async (t) => {
   createFiles(sourceDirectory, {
@@ -38,8 +37,6 @@ test("copies an SVG from source to target", async (t) => {
       </svg>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("imports an SVG into a component", async (t) => {
@@ -70,6 +67,4 @@ test("imports an SVG into a component", async (t) => {
       </svg></span>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })

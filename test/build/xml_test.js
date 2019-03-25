@@ -7,9 +7,8 @@ let tmpPathPrefix = "tmp/tests"
 let sourceDirectory = `${tmpPathPrefix}/source`
 let targetDirectory = `${tmpPathPrefix}/target`
 
-test.beforeEach((t) => {
-  cleanFiles(tmpPathPrefix)
-})
+test.beforeEach((t) => cleanFiles(tmpPathPrefix))
+test.after.always((t) => cleanFiles(tmpPathPrefix))
 
 test("renders a JSX template as XML", async (t) => {
   createFiles(sourceDirectory, {
@@ -32,8 +31,6 @@ test("renders a JSX template as XML", async (t) => {
       <feed></feed>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("loads data from data files and passes it to the JSX template", async (t) => {
@@ -66,6 +63,4 @@ test("loads data from data files and passes it to the JSX template", async (t) =
       <feed>bar</feed>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })

@@ -7,9 +7,8 @@ let tmpPathPrefix = "tmp/tests"
 let sourceDirectory = `${tmpPathPrefix}/source`
 let targetDirectory = `${tmpPathPrefix}/target`
 
-test.beforeEach((t) => {
-  cleanFiles(tmpPathPrefix)
-})
+test.beforeEach((t) => cleanFiles(tmpPathPrefix))
+test.after.always((t) => cleanFiles(tmpPathPrefix))
 
 test("empties target directory before building", async (t) => {
   createFiles(sourceDirectory, {
@@ -28,8 +27,6 @@ test("empties target directory before building", async (t) => {
   assertFiles(t, targetDirectory, {
     "index.html": "<html></html>",
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("copies a file from source to target", async (t) => {
@@ -45,8 +42,6 @@ test("copies a file from source to target", async (t) => {
   assertFiles(t, targetDirectory, {
     "index.html": "<html></html>",
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("summarizes pages and passes them into the page as the `pages` prop", async (t) => {
@@ -78,8 +73,6 @@ test("summarizes pages and passes them into the page as the `pages` prop", async
       <p>/foo</p>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("handles the root index page in the `pages` prop", async (t) => {
@@ -111,8 +104,6 @@ test("handles the root index page in the `pages` prop", async (t) => {
       <p>/</p>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("only includes JSX and MDX pages in the `pages` prop", async (t) => {
@@ -158,8 +149,6 @@ test("only includes JSX and MDX pages in the `pages` prop", async (t) => {
       <div><p>Foobar</p></div>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("passes the page component in the `pages` prop", async (t) => {
@@ -201,8 +190,6 @@ test("passes the page component in the `pages` prop", async (t) => {
       <div><h1>Title</h1></div>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("provides exported meta for a JSX page in the `pages` prop", async (t) => {
@@ -238,8 +225,6 @@ test("provides exported meta for a JSX page in the `pages` prop", async (t) => {
       <p>bar</p>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
 
 test("provides exported meta for an MDX page in the `pages` prop", async (t) => {
@@ -287,6 +272,4 @@ test("provides exported meta for an MDX page in the `pages` prop", async (t) => 
       <div><p>Foobar</p></div>
     `,
   })
-
-  cleanFiles(tmpPathPrefix)
 })
