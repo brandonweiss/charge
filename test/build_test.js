@@ -1,21 +1,22 @@
 import test from "ava"
 import dedent from "dedent"
+import { join as pathJoin } from "path"
 import build from "../lib/build"
 import { createData, createFiles, assertFiles, cleanFiles } from "./helpers/filesystem"
 
-let tmpPathPrefix = "tmp/tests"
-let sourceDirectory = `${tmpPathPrefix}/source`
-let targetDirectory = `${tmpPathPrefix}/target`
+let tmpPathPrefix = pathJoin("tmp", "tests")
+let sourceDirectory = pathJoin(tmpPathPrefix, "source")
+let targetDirectory = pathJoin(tmpPathPrefix, "target")
 
 test.beforeEach((t) => cleanFiles(tmpPathPrefix))
 test.after.always((t) => cleanFiles(tmpPathPrefix))
 
 test("empties target directory before building", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "index.html": "<html></html>",
   })
 
-  createFiles(targetDirectory, {
+  await createFiles(targetDirectory, {
     "stale.html": "<html></html>",
   })
 
@@ -30,7 +31,7 @@ test("empties target directory before building", async (t) => {
 })
 
 test("copies a file from source to target", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "index.html": "<html></html>",
   })
 
@@ -45,7 +46,7 @@ test("copies a file from source to target", async (t) => {
 })
 
 test("summarizes pages and passes them into the page as the `pages` prop", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "foo.html.jsx": dedent`
       export default ({ pages }) => (
         <React.Fragment>
@@ -76,7 +77,7 @@ test("summarizes pages and passes them into the page as the `pages` prop", async
 })
 
 test("handles the root index page in the `pages` prop", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "index.html.jsx": dedent`
       export default ({ pages }) => (
         <React.Fragment>
@@ -107,7 +108,7 @@ test("handles the root index page in the `pages` prop", async (t) => {
 })
 
 test("only includes JSX and MDX pages in the `pages` prop", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "index.html": dedent`
       <p></p>
     `,
@@ -152,7 +153,7 @@ test("only includes JSX and MDX pages in the `pages` prop", async (t) => {
 })
 
 test("passes the page component in the `pages` prop", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "post.html.mdx": dedent`
       # Title
     `,
@@ -193,7 +194,7 @@ test("passes the page component in the `pages` prop", async (t) => {
 })
 
 test("provides exported meta for a JSX page in the `pages` prop", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "index.html.jsx": dedent`
       export const meta = {
         foo: "bar"
@@ -228,7 +229,7 @@ test("provides exported meta for a JSX page in the `pages` prop", async (t) => {
 })
 
 test("provides exported meta for an MDX page in the `pages` prop", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "mdx.html.mdx": dedent`
       export const meta = {
         foo: "bar"

@@ -1,13 +1,17 @@
-import glob from "glob"
-import path from "path"
+import { globSyncNormalize } from "../../lib/utilities"
+import { join as pathJoin, sep as pathSeparator, split as pathSplit } from "path"
 import fs from "fs-extra"
 
 let flattenFilePath = (pathPart, directoryOrFileContents) => {
+  pathPart = pathPart.replace(/\//g, pathSeparator)
+
   return Object.entries(directoryOrFileContents).reduce((flattenedFilePaths, [key, value]) => {
+    let path = pathJoin(pathPart, key)
+
     if (typeof value === "object") {
-      Object.assign(flattenedFilePaths, flattenFilePath(`${pathPart}/${key}`, value))
+      Object.assign(flattenedFilePaths, flattenFilePath(path, value))
     } else {
-      flattenedFilePaths[`${pathPart}/${key}`] = value
+      flattenedFilePaths[path] = value
     }
 
     return flattenedFilePaths
@@ -16,26 +20,30 @@ let flattenFilePath = (pathPart, directoryOrFileContents) => {
 
 export const createData = (dataDirectory, data) => {
   Object.entries(data).forEach(([namespace, contents]) => {
-    fs.outputFileSync(`${dataDirectory}/${namespace}.json`, contents)
+    let path = pathJoin(dataDirectory, `${namespace}.json`)
+    fs.outputFileSync(path, contents)
   })
 }
 
-export const createFiles = (sourceDirectory, files) => {
+export const createFiles = async (sourceDirectory, files) => {
   let flattenedFilePaths = flattenFilePath(sourceDirectory, files)
 
-  Object.entries(flattenedFilePaths).forEach(([filePath, fileContents]) => {
-    fs.outputFileSync(filePath, fileContents)
-  })
+  await Promise.all(
+    Object.entries(flattenedFilePaths).map(([filePath, fileContents]) => {
+      return fs.outputFile(filePath, fileContents)
+    }),
+  )
 }
 
 export const createPackage = (name, files) => {
   Object.entries(files).forEach(([filePath, fileContents]) => {
-    fs.outputFileSync(`node_modules/${name}/${filePath}`, fileContents)
+    let path = pathJoin("node_modules", name, filePath)
+    fs.outputFileSync(path, fileContents)
   })
 }
 
 export const assertFiles = (t, targetDirectory, expectedTargetFilesystem) => {
-  let files = glob.sync(`${targetDirectory}/**/*`, {
+  let files = globSyncNormalize(`${targetDirectory}/**/*`, {
     nodir: true,
   })
 
@@ -48,6 +56,6 @@ export const assertFiles = (t, targetDirectory, expectedTargetFilesystem) => {
   t.deepEqual(targetFilesystem, flattenFilePath(targetDirectory, expectedTargetFilesystem))
 }
 
-export const cleanFiles = (directory) => {
-  fs.removeSync(directory)
+export const cleanFiles = async (directory) => {
+  await fs.remove(directory)
 }

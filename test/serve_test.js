@@ -1,12 +1,13 @@
 import test from "ava"
 import request from "supertest"
+import { join as pathJoin } from "path"
 import serve from "../lib/serve"
 import dedent from "dedent"
 import { createFiles, cleanFiles } from "./helpers/filesystem"
 
-let tmpPathPrefix = "tmp/tests"
-let sourceDirectory = `${tmpPathPrefix}/source`
-let targetDirectory = `${tmpPathPrefix}/target`
+let tmpPathPrefix = pathJoin("tmp", "tests")
+let sourceDirectory = pathJoin(tmpPathPrefix, "source")
+let targetDirectory = pathJoin(tmpPathPrefix, "target")
 
 test.beforeEach((t) => cleanFiles(tmpPathPrefix))
 test.after.always((t) => cleanFiles(tmpPathPrefix))
@@ -14,7 +15,7 @@ test.after.always((t) => cleanFiles(tmpPathPrefix))
 test("serves the root page", async (t) => {
   t.plan(3)
 
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "index.html": "foo",
   })
 
@@ -33,7 +34,7 @@ test("serves the root page", async (t) => {
 test("serves a named page without the extension", async (t) => {
   t.plan(3)
 
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "named.html": "foo",
   })
 
@@ -52,7 +53,7 @@ test("serves a named page without the extension", async (t) => {
 test("serves a named page with the extension", async (t) => {
   t.plan(3)
 
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "named.html": "foo",
   })
 

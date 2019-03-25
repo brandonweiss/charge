@@ -1,5 +1,6 @@
 import test from "ava"
 import dedent from "dedent"
+import { join as pathJoin } from "path"
 import build from "../../lib/build"
 import {
   createData,
@@ -9,15 +10,15 @@ import {
   cleanFiles,
 } from "../helpers/filesystem"
 
-let tmpPathPrefix = "tmp/tests"
-let sourceDirectory = `${tmpPathPrefix}/source`
-let targetDirectory = `${tmpPathPrefix}/target`
+let tmpPathPrefix = pathJoin("tmp", "tests")
+let sourceDirectory = pathJoin(tmpPathPrefix, "source")
+let targetDirectory = pathJoin(tmpPathPrefix, "target")
 
 test.beforeEach((t) => cleanFiles(tmpPathPrefix))
 test.after.always((t) => cleanFiles(tmpPathPrefix))
 
 test("transpiles stylesheets using Stage 2 features", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "index.css": dedent`
       body {
         font-family: system-ui;
@@ -40,7 +41,7 @@ test("transpiles stylesheets using Stage 2 features", async (t) => {
 })
 
 test("transpiles stylesheets using thee custom-media-queries feature from Stage 1", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "index.css": dedent`
       @custom-media --small-viewport (max-width: 30em);
 
@@ -69,7 +70,7 @@ test("transpiles stylesheets using thee custom-media-queries feature from Stage 
 })
 
 test("inlines stylesheets with relative @import statements to current directory", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "other.css": dedent`
       p {
         color: red;
@@ -103,7 +104,7 @@ test("inlines stylesheets with relative @import statements to current directory"
 })
 
 test("inlines stylesheets with relative @import statements to parent directory", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "other.css": dedent`
       p {
         color: red;
@@ -147,7 +148,7 @@ test("inlines stylesheets from npm packages", async (t) => {
     `,
   })
 
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "index.css": dedent`
       @import "foo";
 

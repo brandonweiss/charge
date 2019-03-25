@@ -1,5 +1,6 @@
 import test from "ava"
 import dedent from "dedent"
+import { join as pathJoin } from "path"
 import build from "../../lib/build"
 import {
   createData,
@@ -9,15 +10,15 @@ import {
   cleanFiles,
 } from "../helpers/filesystem"
 
-let tmpPathPrefix = "tmp/tests"
-let sourceDirectory = `${tmpPathPrefix}/source`
-let targetDirectory = `${tmpPathPrefix}/target`
+let tmpPathPrefix = pathJoin("tmp", "tests")
+let sourceDirectory = pathJoin(tmpPathPrefix, "source")
+let targetDirectory = pathJoin(tmpPathPrefix, "target")
 
 test.beforeEach((t) => cleanFiles(tmpPathPrefix))
 test.after.always((t) => cleanFiles(tmpPathPrefix))
 
 test("bundles JavaScripts into a self-executing function", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "index.js": dedent`
       console.log("hey")
     `,
@@ -41,7 +42,7 @@ test("bundles JavaScripts into a self-executing function", async (t) => {
 })
 
 test("transpiles JavaScripts using Babel", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "index.js": dedent`
       console.log([1, ...[2]])
     `,
@@ -65,7 +66,7 @@ test("transpiles JavaScripts using Babel", async (t) => {
 })
 
 test("bundles imported JavaScript files via relative imports to current directory", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "foo.js": dedent`
       export default "bar"
     `,
@@ -96,7 +97,7 @@ test("bundles imported JavaScript files via relative imports to current director
 })
 
 test("bundles imported JavaScript files via relative imports to parent directory", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "foo.js": dedent`
       export default "bar"
     `,
@@ -135,7 +136,7 @@ test("bundles imported npm packages", async (t) => {
     `,
   })
 
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "index.js": dedent`
       import foo from  "foo"
 

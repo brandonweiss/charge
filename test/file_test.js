@@ -1,4 +1,5 @@
 import test from "ava"
+import { join as pathJoin } from "path"
 import File from "../lib/file"
 
 test("#extensions handles one extension", async (t) => {
@@ -22,7 +23,7 @@ test("#extensions handles two extensions", async (t) => {
 test("#extensions handles a path with a period in it", async (t) => {
   let file = new File({
     path: "/",
-    relativePath: "test.com/index.html.jsx",
+    relativePath: pathJoin("test.com", "index.html.jsx"),
   })
 
   t.deepEqual(file.extensions, ["html", "jsx"])
@@ -49,7 +50,7 @@ test("#_extension handles two extensions", async (t) => {
 test("#_extension handles a path with a period in it", async (t) => {
   let file = new File({
     path: "/",
-    relativePath: "test.com/index.html.jsx",
+    relativePath: pathJoin("test.com", "index.html.jsx"),
   })
 
   t.is(file._extension, ".html.jsx")

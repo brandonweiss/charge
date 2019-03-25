@@ -1,17 +1,18 @@
 import test from "ava"
 import dedent from "dedent"
 import build from "../../lib/build"
+import { join as pathJoin } from "path"
 import { createData, createFiles, assertFiles, cleanFiles } from "../helpers/filesystem"
 
-let tmpPathPrefix = "tmp/tests"
-let sourceDirectory = `${tmpPathPrefix}/source`
-let targetDirectory = `${tmpPathPrefix}/target`
+let tmpPathPrefix = pathJoin("tmp", "tests")
+let sourceDirectory = pathJoin(tmpPathPrefix, "source")
+let targetDirectory = pathJoin(tmpPathPrefix, "target")
 
 test.beforeEach((t) => cleanFiles(tmpPathPrefix))
 test.after.always((t) => cleanFiles(tmpPathPrefix))
 
 test("renders a JSX page as HTML", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "index.html.jsx": dedent`
       export default () => {
         return <div></div>
@@ -34,7 +35,7 @@ test("renders a JSX page as HTML", async (t) => {
 })
 
 test("renders a JSX page as HTML with a JSX component", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "paragraph-component.html.jsx": dedent`
       export default (props) => {
         return <p>{props.foo}</p>
@@ -68,7 +69,7 @@ test("renders a JSX page as HTML with a JSX component", async (t) => {
 })
 
 test("renders a JSX page as HTML with an MDX component", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "subheading.html.mdx": dedent`
       ## Subheading
     `,
@@ -102,7 +103,7 @@ test("renders a JSX page as HTML with an MDX component", async (t) => {
 })
 
 test("renders a JSX page as HTML with a JSX component as a layout", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "layout-component.html.jsx": dedent`
       export default (props) => {
         return <div>{props.children}</div>
@@ -136,7 +137,7 @@ test("renders a JSX page as HTML with a JSX component as a layout", async (t) =>
 })
 
 test("loads data from data files and passes it to the JSX page", async (t) => {
-  let dataDirectory = `${tmpPathPrefix}/data`
+  let dataDirectory = pathJoin(tmpPathPrefix, "data")
   createData(dataDirectory, {
     stuff: dedent`
       {
@@ -145,7 +146,7 @@ test("loads data from data files and passes it to the JSX page", async (t) => {
     `,
   })
 
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "index.html.jsx": dedent`
       export default (props) => {
         return <p>{props.data.stuff.foo}</p>

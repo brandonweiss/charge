@@ -1,17 +1,18 @@
 import test from "ava"
 import dedent from "dedent"
+import { join as pathJoin } from "path"
 import build from "../../lib/build"
 import { createData, createFiles, assertFiles, cleanFiles } from "../helpers/filesystem"
 
-let tmpPathPrefix = "tmp/tests"
-let sourceDirectory = `${tmpPathPrefix}/source`
-let targetDirectory = `${tmpPathPrefix}/target`
+let tmpPathPrefix = pathJoin("tmp", "tests")
+let sourceDirectory = pathJoin(tmpPathPrefix, "source")
+let targetDirectory = pathJoin(tmpPathPrefix, "target")
 
 test.beforeEach((t) => cleanFiles(tmpPathPrefix))
 test.after.always((t) => cleanFiles(tmpPathPrefix))
 
 test("renders an MDX page as HTML", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "index.html.mdx": dedent`
       # Hello!
     `,
@@ -32,7 +33,7 @@ test("renders an MDX page as HTML", async (t) => {
 })
 
 test("renders an MDX page as HTML with an MDX component", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "subheading.html.mdx": dedent`
       ## Subheading
     `,
@@ -60,7 +61,7 @@ test("renders an MDX page as HTML with an MDX component", async (t) => {
 })
 
 test("renders an MDX page as HTML with a JSX component", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "subheading.html.jsx": dedent`
       export default (props) => {
         return <h2>{props.title}</h2>
@@ -90,7 +91,7 @@ test("renders an MDX page as HTML with a JSX component", async (t) => {
 })
 
 test("renders an MDX page as HTML with a JSX component as a layout", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "layout.html.jsx": dedent`
       export default (props) => {
         return (
@@ -130,7 +131,7 @@ test("renders an MDX page as HTML with a JSX component as a layout", async (t) =
 })
 
 test("renders an MDX page with syntax highlighting", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "index.html.mdx": dedent`
       \`\`\`javascript
         let foo = "bar"
@@ -153,7 +154,7 @@ test("renders an MDX page with syntax highlighting", async (t) => {
 })
 
 test("renders an MDX page with abbreviations", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "index.html.mdx": dedent`
       YOLO
 

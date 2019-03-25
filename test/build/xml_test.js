@@ -1,17 +1,18 @@
 import test from "ava"
 import dedent from "dedent"
+import { join as pathJoin } from "path"
 import build from "../../lib/build"
 import { createData, createFiles, assertFiles, cleanFiles } from "../helpers/filesystem"
 
-let tmpPathPrefix = "tmp/tests"
-let sourceDirectory = `${tmpPathPrefix}/source`
-let targetDirectory = `${tmpPathPrefix}/target`
+let tmpPathPrefix = pathJoin("tmp", "tests")
+let sourceDirectory = pathJoin(tmpPathPrefix, "source")
+let targetDirectory = pathJoin(tmpPathPrefix, "target")
 
 test.beforeEach((t) => cleanFiles(tmpPathPrefix))
 test.after.always((t) => cleanFiles(tmpPathPrefix))
 
 test("renders a JSX template as XML", async (t) => {
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "feed.xml.jsx": dedent`
       export default () => {
         return <feed></feed>
@@ -34,7 +35,7 @@ test("renders a JSX template as XML", async (t) => {
 })
 
 test("loads data from data files and passes it to the JSX template", async (t) => {
-  let dataDirectory = `${tmpPathPrefix}/data`
+  let dataDirectory = pathJoin(tmpPathPrefix, "data")
   createData(dataDirectory, {
     stuff: dedent`
       {
@@ -43,7 +44,7 @@ test("loads data from data files and passes it to the JSX template", async (t) =
     `,
   })
 
-  createFiles(sourceDirectory, {
+  await createFiles(sourceDirectory, {
     "feed.xml.jsx": dedent`
       export default (props) => {
         return <feed>{props.data.stuff.foo}</feed>
