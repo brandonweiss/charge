@@ -27,8 +27,18 @@ Netlify supports clean URLs (which they call “Pretty URLs”) and have [docs o
 
 You can definitely deploy a static site to [Heroku][heroku] but I wouldn’t recommend it. The free dynos will sleep after 30 minutes and stop working entirely if you run out of your monthly “dyno hours” allotment.
 
+## ZEIT Now
+
+[ZEIT Now][now] enables you to deploy your static site in seconds, completely free of charge. It features built-in CDN support, ensuring your site is rapidly available across the globe.
+
+Deployments can be [aliased][now-aliased] and custom domains are readily supported - you can also trigger deployments from both [GitHub][now-github] and [GitLab][now-gitlab] pushes whilst giving you peace of mind with instant rollbacks.
+
 [s3]: https://aws.amazon.com/s3/
 [discharge]: https://github.com/brandonweiss/discharge
 [netlify]: https://www.netlify.com
 [netlify-docs]: https://www.netlify.com/docs/redirects/#trailing-slash
 [heroku]: https://www.heroku.com
+[now]: https://zeit.co/now
+[now-aliased]: https://zeit.co/docs/v2/domains-and-aliases/aliasing-a-deployment/
+[now-github]: https://zeit.co/docs/v2/integrations/now-for-github/
+[now-gitlab]: https://zeit.co/docs/v2/integrations/now-for-gitlab/
