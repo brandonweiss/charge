@@ -5,7 +5,7 @@ import build from "../../lib/build"
 import {
   createData,
   createFiles,
-  assertFiles,
+  assertTargetFiles,
   cleanFiles,
   dataDirectory,
   sourceDirectory,
@@ -29,7 +29,7 @@ test("renders a JavaScript function into JSON", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "feed.json": dedent`
       {
         "foo": "bar"
@@ -62,7 +62,7 @@ test("loads data from data files and passes it to the JavaScript function", asyn
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "feed.json": dedent`
       {
         "foo": "bar"

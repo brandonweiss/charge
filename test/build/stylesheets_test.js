@@ -5,7 +5,7 @@ import build from "../../lib/build"
 import {
   createFiles,
   createPackage,
-  assertFiles,
+  assertTargetFiles,
   cleanFiles,
   sourceDirectory,
   targetDirectory,
@@ -28,7 +28,7 @@ test("transpiles stylesheets using Stage 2 features", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.css": dedent`
       body {
         font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
@@ -55,7 +55,7 @@ test("transpiles stylesheets using thee custom-media-queries feature from Stage 
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.css": dedent`
       @media (max-width: 30em) {
         nav {
@@ -87,7 +87,7 @@ test("inlines stylesheets with relative @import statements to current directory"
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.css": dedent`
       p {
         color: red;
@@ -121,7 +121,7 @@ test("inlines stylesheets with relative @import statements to parent directory",
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     folder: {
       "index.css": dedent`
         p {
@@ -160,7 +160,7 @@ test("inlines stylesheets from npm packages", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.css": dedent`
       p {
         color: red;

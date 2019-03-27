@@ -5,7 +5,7 @@ import build from "../../lib/build"
 import {
   createFiles,
   createPackage,
-  assertFiles,
+  assertTargetFiles,
   cleanFiles,
   sourceDirectory,
   targetDirectory,
@@ -26,7 +26,7 @@ test("bundles JavaScripts into a self-executing function", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.js": dedent`
       (function () {
         'use strict';
@@ -50,7 +50,7 @@ test("transpiles JavaScripts using Babel", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.js": dedent`
       (function () {
         'use strict';
@@ -79,7 +79,7 @@ test("bundles imported JavaScript files via relative imports to current director
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.js": dedent`
       (function () {
         'use strict';
@@ -110,7 +110,7 @@ test("bundles imported JavaScript files via relative imports to parent directory
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     folder: {
       "index.js": dedent`
         (function () {
@@ -146,7 +146,7 @@ test("bundles imported npm packages", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.js": dedent`
       (function () {
         'use strict';

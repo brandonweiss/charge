@@ -5,7 +5,7 @@ import { join as pathJoin } from "path"
 import {
   createData,
   createFiles,
-  assertFiles,
+  assertTargetFiles,
   cleanFiles,
   dataDirectory,
   sourceDirectory,
@@ -29,7 +29,7 @@ test("renders a JSX page as HTML", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.html": dedent`
       <!DOCTYPE html>
 
@@ -63,7 +63,7 @@ test("renders a JSX page as HTML with a JSX component", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.html": dedent`
       <!DOCTYPE html>
 
@@ -97,7 +97,7 @@ test("renders a JSX page as HTML with an MDX component", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.html": dedent`
       <!DOCTYPE html>
 
@@ -131,7 +131,7 @@ test("renders a JSX page as HTML with a JSX component as a layout", async (t) =>
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.html": dedent`
       <!DOCTYPE html>
 
@@ -162,7 +162,7 @@ test("loads data from data files and passes it to the JSX page", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.html": dedent`
       <!DOCTYPE html>
 

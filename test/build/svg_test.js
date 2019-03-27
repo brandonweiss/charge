@@ -4,7 +4,7 @@ import { join as pathJoin } from "path"
 import build from "../../lib/build"
 import {
   createFiles,
-  assertFiles,
+  assertTargetFiles,
   cleanFiles,
   sourceDirectory,
   targetDirectory,
@@ -27,7 +27,7 @@ test("copies an SVG from source to target", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "icon.svg": dedent`
       <svg>
         <path />
@@ -55,7 +55,7 @@ test("imports an SVG into a component", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.html": dedent`
       <!DOCTYPE html>
 

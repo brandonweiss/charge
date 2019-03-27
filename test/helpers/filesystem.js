@@ -52,7 +52,7 @@ export const createPackage = async (name, files) => {
   )
 }
 
-export const assertFiles = (t, targetDirectory, expectedTargetFilesystem) => {
+export const assertTargetFiles = (t, expectedTargetFilesystem) => {
   let files = globSyncNormalize(`${targetDirectory}/**/*`, {
     nodir: true,
   })

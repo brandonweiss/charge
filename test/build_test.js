@@ -4,7 +4,7 @@ import { join as pathJoin } from "path"
 import build from "../lib/build"
 import {
   createFiles,
-  assertFiles,
+  assertTargetFiles,
   cleanFiles,
   sourceDirectory,
   targetDirectory,
@@ -27,7 +27,7 @@ test("empties target directory before building", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.html": "<html></html>",
   })
 })
@@ -42,7 +42,7 @@ test("copies a file from source to target", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.html": "<html></html>",
   })
 })
@@ -69,7 +69,7 @@ test("summarizes pages and passes them into the page as the `pages` prop", async
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "foo.html": dedent`
       <!DOCTYPE html>
 
@@ -100,7 +100,7 @@ test("handles the root index page in the `pages` prop", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.html": dedent`
       <!DOCTYPE html>
 
@@ -137,7 +137,7 @@ test("only includes JSX and MDX pages in the `pages` prop", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.html": dedent`
       <p></p>
     `,
@@ -181,7 +181,7 @@ test("passes the page component in the `pages` prop", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "post.html": dedent`
       <!DOCTYPE html>
 
@@ -221,7 +221,7 @@ test("provides exported meta for a JSX page in the `pages` prop", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.html": dedent`
       <!DOCTYPE html>
 
@@ -263,7 +263,7 @@ test("provides exported meta for an MDX page in the `pages` prop", async (t) => 
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "jsx.html": dedent`
       <!DOCTYPE html>
 

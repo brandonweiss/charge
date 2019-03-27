@@ -4,7 +4,7 @@ import { join as pathJoin } from "path"
 import build from "../../lib/build"
 import {
   createFiles,
-  assertFiles,
+  assertTargetFiles,
   cleanFiles,
   sourceDirectory,
   targetDirectory,
@@ -25,7 +25,7 @@ test("renders an MDX page as HTML", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.html": dedent`
       <!DOCTYPE html>
 
@@ -53,7 +53,7 @@ test("renders an MDX page as HTML with an MDX component", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.html": dedent`
       <!DOCTYPE html>
 
@@ -83,7 +83,7 @@ test("renders an MDX page as HTML with a JSX component", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.html": dedent`
       <!DOCTYPE html>
 
@@ -123,7 +123,7 @@ test("renders an MDX page as HTML with a JSX component as a layout", async (t) =
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.html": dedent`
       <!DOCTYPE html>
 
@@ -146,7 +146,7 @@ test("renders an MDX page with syntax highlighting", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.html": dedent`
       <!DOCTYPE html>
 
@@ -169,7 +169,7 @@ test("renders an MDX page with abbreviations", async (t) => {
     target: targetDirectory,
   })
 
-  assertFiles(t, targetDirectory, {
+  assertTargetFiles(t, {
     "index.html": dedent`
       <!DOCTYPE html>
 
