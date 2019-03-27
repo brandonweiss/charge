@@ -7,7 +7,3 @@ os:
 node_js:
   - "8.10.0"
   - "10"
-
-matrix:
-  allow_failures:
-    - windows # Just while working on support for Windows
