@@ -128,7 +128,7 @@ test("bundles imported JavaScript files via relative imports to parent directory
 })
 
 test("bundles imported npm packages", async (t) => {
-  createPackage("foo", {
+  await createPackage("foo", {
     "index.js": dedent`
       export default "bar"
     `,

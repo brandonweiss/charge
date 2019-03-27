@@ -138,7 +138,7 @@ test("inlines stylesheets with relative @import statements to parent directory",
 })
 
 test("inlines stylesheets from npm packages", async (t) => {
-  createPackage("foo", {
+  await createPackage("foo", {
     "index.css": dedent`
       p {
         color: red;

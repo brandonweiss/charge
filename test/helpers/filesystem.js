@@ -4,6 +4,7 @@ import fs from "fs-extra"
 
 const tmpPathPrefix = pathJoin("tmp", "tests")
 export const dataDirectory = pathJoin(tmpPathPrefix, "data")
+const packageDirectory = "node_modules"
 export const sourceDirectory = pathJoin(tmpPathPrefix, "source")
 export const targetDirectory = pathJoin(tmpPathPrefix, "target")
 
@@ -40,11 +41,13 @@ export const createFiles = async (sourceDirectory, files) => {
   )
 }
 
-export const createPackage = (name, files) => {
-  Object.entries(files).forEach(([filePath, fileContents]) => {
-    let path = pathJoin("node_modules", name, filePath)
-    fs.outputFileSync(path, fileContents)
-  })
+export const createPackage = async (name, files) => {
+  await Promise.all(
+    Object.entries(files).map(([filePath, fileContents]) => {
+      let path = pathJoin(packageDirectory, name, filePath)
+      return fs.outputFile(path, fileContents)
+    }),
+  )
 }
 
 export const assertFiles = (t, targetDirectory, expectedTargetFilesystem) => {
