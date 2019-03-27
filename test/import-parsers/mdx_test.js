@@ -7,13 +7,12 @@ import {
   createFiles,
   assertFiles,
   cleanFiles,
-  tmpPathPrefix,
   sourceDirectory,
   targetDirectory,
 } from "../helpers/filesystem"
 
-test.beforeEach((t) => cleanFiles(tmpPathPrefix))
-test.after.always((t) => cleanFiles(tmpPathPrefix))
+test.beforeEach((t) => cleanFiles())
+test.after.always((t) => cleanFiles())
 
 test("parses no imports", async (t) => {
   await createFiles(sourceDirectory, {

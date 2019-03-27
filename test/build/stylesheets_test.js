@@ -8,13 +8,12 @@ import {
   createPackage,
   assertFiles,
   cleanFiles,
-  tmpPathPrefix,
   sourceDirectory,
   targetDirectory,
 } from "../helpers/filesystem"
 
-test.beforeEach((t) => cleanFiles(tmpPathPrefix))
-test.after.always((t) => cleanFiles(tmpPathPrefix))
+test.beforeEach((t) => cleanFiles())
+test.after.always((t) => cleanFiles())
 
 test("transpiles stylesheets using Stage 2 features", async (t) => {
   await createFiles(sourceDirectory, {

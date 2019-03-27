@@ -8,13 +8,12 @@ import {
   assertFiles,
   cleanFiles,
   dataDirectory,
-  tmpPathPrefix,
   sourceDirectory,
   targetDirectory,
 } from "../helpers/filesystem"
 
-test.beforeEach((t) => cleanFiles(tmpPathPrefix))
-test.after.always((t) => cleanFiles(tmpPathPrefix))
+test.beforeEach((t) => cleanFiles())
+test.after.always((t) => cleanFiles())
 
 test("renders a JSX template as XML", async (t) => {
   await createFiles(sourceDirectory, {

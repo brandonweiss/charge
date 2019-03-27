@@ -2,7 +2,7 @@ import { globSyncNormalize } from "../../lib/utilities"
 import { join as pathJoin, sep as pathSeparator, split as pathSplit } from "path"
 import fs from "fs-extra"
 
-export const tmpPathPrefix = pathJoin("tmp", "tests")
+const tmpPathPrefix = pathJoin("tmp", "tests")
 export const dataDirectory = pathJoin(tmpPathPrefix, "data")
 export const sourceDirectory = pathJoin(tmpPathPrefix, "source")
 export const targetDirectory = pathJoin(tmpPathPrefix, "target")
@@ -61,6 +61,6 @@ export const assertFiles = (t, targetDirectory, expectedTargetFilesystem) => {
   t.deepEqual(targetFilesystem, flattenFilePath(targetDirectory, expectedTargetFilesystem))
 }
 
-export const cleanFiles = async (directory) => {
-  await fs.remove(directory)
+export const cleanFiles = async () => {
+  await fs.remove(tmpPathPrefix)
 }

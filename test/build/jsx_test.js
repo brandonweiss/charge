@@ -7,14 +7,13 @@ import {
   createFiles,
   assertFiles,
   cleanFiles,
-  tmpPathPrefix,
   dataDirectory,
   sourceDirectory,
   targetDirectory,
 } from "../helpers/filesystem"
 
-test.beforeEach((t) => cleanFiles(tmpPathPrefix))
-test.after.always((t) => cleanFiles(tmpPathPrefix))
+test.beforeEach((t) => cleanFiles())
+test.after.always((t) => cleanFiles())
 
 test("renders a JSX page as HTML", async (t) => {
   await createFiles(sourceDirectory, {

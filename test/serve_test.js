@@ -3,16 +3,10 @@ import request from "supertest"
 import { join as pathJoin } from "path"
 import serve from "../lib/serve"
 import dedent from "dedent"
-import {
-  createFiles,
-  cleanFiles,
-  tmpPathPrefix,
-  sourceDirectory,
-  targetDirectory,
-} from "./helpers/filesystem"
+import { createFiles, cleanFiles, sourceDirectory, targetDirectory } from "./helpers/filesystem"
 
-test.beforeEach((t) => cleanFiles(tmpPathPrefix))
-test.after.always((t) => cleanFiles(tmpPathPrefix))
+test.beforeEach((t) => cleanFiles())
+test.after.always((t) => cleanFiles())
 
 test("serves the root page", async (t) => {
   t.plan(3)
