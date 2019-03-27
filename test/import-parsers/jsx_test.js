@@ -2,14 +2,7 @@ import test from "ava"
 import dedent from "dedent"
 import { join as pathJoin } from "path"
 import jsxImportParser from "../../lib/import-parsers/jsx"
-import {
-  createData,
-  createFiles,
-  assertFiles,
-  cleanFiles,
-  sourceDirectory,
-  targetDirectory,
-} from "../helpers/filesystem"
+import { createFiles, cleanFiles, sourceDirectory, targetDirectory } from "../helpers/filesystem"
 
 test.beforeEach((t) => cleanFiles())
 test.after.always((t) => cleanFiles())

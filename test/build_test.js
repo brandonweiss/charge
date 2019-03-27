@@ -3,7 +3,6 @@ import dedent from "dedent"
 import { join as pathJoin } from "path"
 import build from "../lib/build"
 import {
-  createData,
   createFiles,
   assertFiles,
   cleanFiles,
