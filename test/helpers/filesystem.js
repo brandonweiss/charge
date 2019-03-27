@@ -3,7 +3,7 @@ import { join as pathJoin, sep as pathSeparator, split as pathSplit } from "path
 import fs from "fs-extra"
 
 const tmpPathPrefix = pathJoin("tmp", "tests")
-export const dataDirectory = pathJoin(tmpPathPrefix, "data")
+const dataDirectory = pathJoin(tmpPathPrefix, "data")
 const packageDirectory = "node_modules"
 export const sourceDirectory = pathJoin(tmpPathPrefix, "source")
 export const targetDirectory = pathJoin(tmpPathPrefix, "target")
@@ -24,7 +24,7 @@ let flattenFilePath = (pathPart, directoryOrFileContents) => {
   }, {})
 }
 
-export const createData = async (dataDirectory, data) => {
+export const createData = async (data) => {
   await Promise.all(
     Object.entries(data).map(([namespace, contents]) => {
       let path = pathJoin(dataDirectory, `${namespace}.json`)

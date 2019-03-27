@@ -39,7 +39,7 @@ test("renders a JSX template as XML", async (t) => {
 })
 
 test("loads data from data files and passes it to the JSX template", async (t) => {
-  await createData(dataDirectory, {
+  await createData({
     stuff: dedent`
       {
         "foo": "bar"
