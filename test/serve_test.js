@@ -3,11 +3,13 @@ import request from "supertest"
 import { join as pathJoin } from "path"
 import serve from "../lib/serve"
 import dedent from "dedent"
-import { createFiles, cleanFiles } from "./helpers/filesystem"
-
-let tmpPathPrefix = pathJoin("tmp", "tests")
-let sourceDirectory = pathJoin(tmpPathPrefix, "source")
-let targetDirectory = pathJoin(tmpPathPrefix, "target")
+import {
+  createFiles,
+  cleanFiles,
+  tmpPathPrefix,
+  sourceDirectory,
+  targetDirectory,
+} from "./helpers/filesystem"
 
 test.beforeEach((t) => cleanFiles(tmpPathPrefix))
 test.after.always((t) => cleanFiles(tmpPathPrefix))

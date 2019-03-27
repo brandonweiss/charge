@@ -2,6 +2,11 @@ import { globSyncNormalize } from "../../lib/utilities"
 import { join as pathJoin, sep as pathSeparator, split as pathSplit } from "path"
 import fs from "fs-extra"
 
+export const tmpPathPrefix = pathJoin("tmp", "tests")
+export const dataDirectory = pathJoin(tmpPathPrefix, "data")
+export const sourceDirectory = pathJoin(tmpPathPrefix, "source")
+export const targetDirectory = pathJoin(tmpPathPrefix, "target")
+
 let flattenFilePath = (pathPart, directoryOrFileContents) => {
   pathPart = pathPart.replace(/\//g, pathSeparator)
 

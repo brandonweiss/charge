@@ -8,11 +8,10 @@ import {
   createPackage,
   assertFiles,
   cleanFiles,
+  tmpPathPrefix,
+  sourceDirectory,
+  targetDirectory,
 } from "../helpers/filesystem"
-
-let tmpPathPrefix = pathJoin("tmp", "tests")
-let sourceDirectory = pathJoin(tmpPathPrefix, "source")
-let targetDirectory = pathJoin(tmpPathPrefix, "target")
 
 test.beforeEach((t) => cleanFiles(tmpPathPrefix))
 test.after.always((t) => cleanFiles(tmpPathPrefix))
