@@ -141,7 +141,7 @@ test("renders a JSX page as HTML with a JSX component as a layout", async (t) =>
 })
 
 test("loads data from data files and passes it to the JSX page", async (t) => {
-  createData(dataDirectory, {
+  await createData(dataDirectory, {
     stuff: dedent`
       {
         "foo": "bar"

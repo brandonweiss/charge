@@ -24,11 +24,13 @@ let flattenFilePath = (pathPart, directoryOrFileContents) => {
   }, {})
 }
 
-export const createData = (dataDirectory, data) => {
-  Object.entries(data).forEach(([namespace, contents]) => {
-    let path = pathJoin(dataDirectory, `${namespace}.json`)
-    fs.outputFileSync(path, contents)
-  })
+export const createData = async (dataDirectory, data) => {
+  await Promise.all(
+    Object.entries(data).map(([namespace, contents]) => {
+      let path = pathJoin(dataDirectory, `${namespace}.json`)
+      return fs.outputFile(path, contents)
+    }),
+  )
 }
 
 export const createFiles = async (sourceDirectory, files) => {

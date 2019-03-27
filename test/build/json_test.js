@@ -39,7 +39,7 @@ test("renders a JavaScript function into JSON", async (t) => {
 })
 
 test("loads data from data files and passes it to the JavaScript function", async (t) => {
-  createData(dataDirectory, {
+  await createData(dataDirectory, {
     stuff: dedent`
       {
         "foo": "bar"
