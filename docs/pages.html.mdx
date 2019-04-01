@@ -88,9 +88,9 @@ A named `layout` export can be used to provide a layout component that will wrap
 import Layout from "./layout.html.jsx"
 
 export const layout = (props) => (
-<Layout title="Title">
-{props.children}
-</Layout>
+  <Layout title="Title">
+    {props.children}
+  </Layout>
 )
 
 # Heading
@@ -191,8 +191,8 @@ The `meta` property is populated by exporting a named export from the page with 
 ```markdown
 // first-post.html.mdx
 export const meta = {
-date: "2019/01/28",
-title: "First post!"
+  date: "2019/01/28",
+  title: "First post!"
 }
 
 My first post.
