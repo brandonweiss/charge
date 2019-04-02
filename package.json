@@ -64,7 +64,7 @@
     "remark-highlight.js": "^5.1.0",
     "rollup": "^1.7.4",
     "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-commonjs": "^9.2.2",
+    "rollup-plugin-commonjs": "^9.2.3",
     "rollup-plugin-node-resolve": "^4.0.1",
     "signale": "^1.4.0"
   },
