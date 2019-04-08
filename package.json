@@ -29,13 +29,15 @@
   },
   "devDependencies": {
     "ava": "^1.4.1",
+    "chalk": "^2.4.2",
     "dedent": "^0.7.0",
     "husky": "^1.3.1",
     "np": "^4.0.2",
     "prettier": "1.16.4",
     "pretty-quick": "^1.10.0",
     "react-feather": "^1.1.6",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "test-console": "^1.1.0"
   },
   "dependencies": {
     "@babel/core": "^7.4.3",
@@ -65,8 +67,7 @@
     "rollup": "^1.9.0",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.3.4",
-    "rollup-plugin-node-resolve": "^4.2.1",
-    "signale": "^1.4.0"
+    "rollup-plugin-node-resolve": "^4.2.1"
   },
   "ava": {
     "require": [
