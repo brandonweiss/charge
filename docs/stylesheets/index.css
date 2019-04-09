@@ -13,13 +13,10 @@ html {
 body {
   background-color: #f7f7f7;
   color: #666666;
-  display: grid;
   font-family: "Avenir Next", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
-  grid-auto-rows: 1fr; /* Fixes this weird issue: https://stackoverflow.com/questions/55268747/in-safari-hovering-over-svg-elements-causes-a-scrolled-element-to-reset-its-scr */
-  grid-template-areas: "main nav";
-  grid-template-columns: auto;
   margin: 0;
+  display: flex;
 }
 
 a {
@@ -31,12 +28,13 @@ a:hover {
 }
 
 main {
-  grid-area: main;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   padding: 4rem 20px;
   padding-bottom: 0;
   position: relative;
+  order: 1;
+  flex-grow: 1;
 }
 
 /* Fixes bottom padding not showing on a scroll container in Firefox */
@@ -54,10 +52,11 @@ main h2:first-child {
 nav {
   background-color: #ffffff;
   display: none;
-  grid-area: nav;
   padding: 30px 0;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  width: 220px;
+  order: 2;
 }
 
 nav a {
@@ -83,10 +82,6 @@ nav a.active {
 }
 
 @media only screen and (min-width: 800px) {
-  body {
-    grid-template-columns: auto minmax(auto, 220px);
-  }
-
   nav {
     display: block;
   }
