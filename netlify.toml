@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/stylesheets"
+  to = "/styling"
+  status = 301

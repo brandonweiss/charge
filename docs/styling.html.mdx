@@ -1,0 +1,74 @@
+import Layout from "./layout.html.jsx"
+
+export const meta = {
+  id: "styling",
+  title: "Styling",
+}
+
+export const layout = (props) => <Layout currentPageID={meta.id} {...props} />
+
+# Styling
+
+## Stylesheets
+
+Stylesheets are not pre-processed. There is no Sass, Stylus, or alternative CSS syntax. You write normal CSS. You can take advantage of new CSS features that don’t have universal browser support via [PostCSS][postcss]. Most of what you might have used a pre-processor for you can do with PostCSS now.
+
+### Features
+
+All Stage 2 and Stage 3 features are enabled. You can see a list of those features in [cssdb][cssdb]. Stage 1 features are considered too experimental to use. The one exception is [Custom Media Queries][custom-media-queries] which is very widely used and seems likely to progress to Stage 2, so that feature is also enabled.
+
+### Importing
+
+You can import other stylesheets using the `@import` at-rule.
+
+```css
+/* index.css */
+@import "./other.css"
+
+p {
+  font-size: 16px;
+}
+```
+
+```css
+/* other.css */
+a {
+  font-size: 16px;
+}
+```
+
+Imported stylesheets will be treated as dependencies and inlined into the files that import them.
+
+Make sure you reference dependencies relatively with `./` or `../` to ensure they’re treated as dependencies.
+
+#### npm packages
+
+You can `import` npm packages as you would normally expect. It will look for packages in the `node_modules` folder at the root of your project.
+
+## CSS in JS
+
+Styling components directly in JavaScript is becoming ever more popular. Co-locating styles with the components they’re styling is great ergonomically and avoiding the cascade and the issues it can cause is attractive, so Charge should support this method of styling. The only question is how?
+
+Ideally there would be one main CSS in JS library, similar to how [PostCSS][postcss] is the de facto standard for CSS post-processing. Unfortunately that’s not the case. There are dozens and dozens of CSS in JS libraries and each of them works differently from one another, both in terms of the interface for styling components and in how to integrate with the library.
+
+Picking one library to integrate with seems too prescriptive, even for an opinionated framework. But adding multiple libraries and integrating with them all is too complicated and confusing.
+
+I think the best thing to do at the moment is to punt on the problem and integrate with none of them. For now, Charge is BYOCSSIJS. That means if you want to use a CSS in JS library you’ll have to ensure you’re picking one that hooks into React in such a way that the styles will be correctly applied.
+
+To help, I’ll try to keep a list of the most popular libraries and whether or not they work. Feel free to help me add to this list!
+
+### styled-components ❌
+
+[styled-components][styled-components] is probably the most popular library but as far as I can tell it doesn’t work with Charge. It combines styles together and inserts them into the `<head>` tag of the document, which in order to work with server-side rendering seems to require a specific intgration.
+
+### Emotion ✅
+
+[Emotion][emotion] is probably the second most popular library and it works with Charge! Emotion inserts `<style>` tags right next to the component being rendered and so doesn’t seem to require a specific integration.
+
+[postcss]: https://postcss.org
+[cssdb]: https://cssdb.org
+[custom-media-queries]: https://cssdb.org/#custom-media-queries
+[styled-components]: https://www.styled-components.com
+[emotion]: https://emotion.sh/docs/introduction
+
+*[BYOCSSIJS]: Bring Your Own CSS In JS

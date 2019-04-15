@@ -23,8 +23,8 @@ export const navItems = [
     name: "Pages",
   },
   {
-    id: "stylesheets",
-    name: "Stylesheets",
+    id: "styling",
+    name: "Styling",
   },
   {
     id: "javascripts",
