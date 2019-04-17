@@ -29,7 +29,7 @@ test("renders an MDX page as HTML", async (t) => {
     "index.html": dedent`
       <!DOCTYPE html>
 
-      <div><h1>Hello!</h1></div>
+      <h1>Hello!</h1>
     `,
   })
 })
@@ -57,7 +57,7 @@ test("renders an MDX page as HTML with an MDX component", async (t) => {
     "index.html": dedent`
       <!DOCTYPE html>
 
-      <div><h1>Heading</h1><div><h2>Subheading</h2></div></div>
+      <h1>Heading</h1><h2>Subheading</h2>
     `,
   })
 })
@@ -87,7 +87,7 @@ test("renders an MDX page as HTML with a JSX component", async (t) => {
     "index.html": dedent`
       <!DOCTYPE html>
 
-      <div><h1>Heading</h1><h2>Something</h2></div>
+      <h1>Heading</h1><h2>Something</h2>
     `,
   })
 })
@@ -127,7 +127,7 @@ test("renders an MDX page as HTML with a JSX component as a layout", async (t) =
     "index.html": dedent`
       <!DOCTYPE html>
 
-      <html><head><title>Title</title></head><body><div><h1>Heading</h1></div></body></html>
+      <html><head><title>Title</title></head><body><h1>Heading</h1></body></html>
     `,
   })
 })
@@ -150,7 +150,7 @@ test("renders an MDX page with syntax highlighting", async (t) => {
     "index.html": dedent`
       <!DOCTYPE html>
 
-      <div><pre><code class="hljs language-javascript">  <span class="hljs-keyword">let</span> foo = <span class="hljs-string">&quot;bar&quot;</span></code></pre></div>
+      <pre><code class="hljs language-javascript">  <span class="hljs-keyword">let</span> foo = <span class="hljs-string">&quot;bar&quot;</span></code></pre>
     `,
   })
 })
@@ -173,7 +173,7 @@ test("renders an MDX page with abbreviations", async (t) => {
     "index.html": dedent`
       <!DOCTYPE html>
 
-      <div><p><abbr title="You Only Live Once">YOLO</abbr></p></div>
+      <p><abbr title="You Only Live Once">YOLO</abbr></p>
     `,
   })
 })

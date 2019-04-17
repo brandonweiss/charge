@@ -149,7 +149,7 @@ test("only includes JSX and MDX pages in the `pages` prop", async (t) => {
     "mdx.html": dedent`
       <!DOCTYPE html>
 
-      <div><p>Foobar</p></div>
+      <p>Foobar</p>
     `,
   })
 })
@@ -185,12 +185,12 @@ test("passes the page component in the `pages` prop", async (t) => {
     "post.html": dedent`
       <!DOCTYPE html>
 
-      <div><h1>Title</h1></div>
+      <h1>Title</h1>
     `,
     "index.html": dedent`
       <!DOCTYPE html>
 
-      <div><h1>Title</h1></div>
+      <h1>Title</h1>
     `,
   })
 })
@@ -272,7 +272,7 @@ test("provides exported meta for an MDX page in the `pages` prop", async (t) => 
     "mdx.html": dedent`
       <!DOCTYPE html>
 
-      <div><p>Foobar</p></div>
+      <p>Foobar</p>
     `,
   })
 })

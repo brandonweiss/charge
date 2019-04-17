@@ -101,7 +101,7 @@ test("renders a JSX page as HTML with an MDX component", async (t) => {
     "index.html": dedent`
       <!DOCTYPE html>
 
-      <div><h1>Heading</h1><div><h2>Subheading</h2></div></div>
+      <div><h1>Heading</h1><h2>Subheading</h2></div>
     `,
   })
 })
