@@ -1,9 +1,11 @@
-import Nav, { navItems } from "./nav.html.jsx"
-import Pagination from "./pagination.html.jsx"
-import { GitHub } from "react-feather"
-import Logo from "./logo.html.jsx"
+import Main from "./components/main.html.jsx"
+import Nav, { navItems } from "./components/nav.html.jsx"
+import Pagination from "./components/pagination.html.jsx"
+import GitHubLink from "./components/github-link.html.jsx"
+import Logomark from "./components/logomark.html.jsx"
+import Logo from "./components/logo.html.jsx"
 import { resolve as resolveURL } from "url"
-import Tracking from "./tracking.html.jsx"
+import Tracking from "./components/tracking.html.jsx"
 
 export default ({ children, currentPageID, environment, pages }) => {
   let currentPage = pages.find((page) => page.meta.id === currentPageID)
@@ -52,19 +54,15 @@ export default ({ children, currentPageID, environment, pages }) => {
       <body>
         <Nav currentPageID={currentPageID} pages={pages} />
 
-        <main>
+        <Main>
           {currentPageID === "about" ? (
             <div className="container" style={{ textAlign: "center" }}>
-              <Logo size={260} />
+              <Logomark size={260} />
             </div>
           ) : (
             <div className="mobile">
-              <div className="small-logo">
-                <div style={{ alignItems: "center", display: "flex" }}>
-                  <Logo size={32} />
-
-                  <span style={{ fontWeight: "bold", marginLeft: "0.5em" }}>Charge</span>
-                </div>
+              <div style={{ position: "absolute", top: "20px", left: "20px" }}>
+                <Logo markSize="32" />
               </div>
 
               <div style={{ height: "2rem" }} />
@@ -84,10 +82,10 @@ export default ({ children, currentPageID, environment, pages }) => {
             </div>
           </footer>
 
-          <a href="https://github.com/brandonweiss/charge" className="github mobile">
-            <GitHub width="32" height="32" />
-          </a>
-        </main>
+          <div className="mobile" style={{ position: "absolute", top: "20px", right: "20px" }}>
+            <GitHubLink size="32" />
+          </div>
+        </Main>
 
         <Tracking environment={environment} />
       </body>

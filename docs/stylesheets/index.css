@@ -27,64 +27,9 @@ a:hover {
   color: #ff0069;
 }
 
-main {
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  padding: 4rem 20px;
-  padding-bottom: 0;
-  position: relative;
-  order: 1;
-  flex-grow: 1;
-}
-
-/* Fixes bottom padding not showing on a scroll container in Firefox */
-main:after {
-  content: "";
-  display: block;
-  height: 4rem;
-}
-
-main h1:first-child,
-main h2:first-child {
-  margin-top: 0;
-}
-
-nav {
-  background-color: #ffffff;
-  display: none;
-  padding: 30px 0;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  width: 220px;
-  order: 2;
-}
-
-nav a {
-  display: block;
-  padding: 0.8em 1em 0.8em 2em;
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-nav a.active {
-  color: #ff0069;
-}
-
-.logo {
-  font-size: 3rem;
-}
-
 .container {
   margin: 0 auto;
   max-width: 700px;
-}
-
-@media only screen and (min-width: 800px) {
-  nav {
-    display: block;
-  }
 }
 
 code {
@@ -102,42 +47,6 @@ code {
 pre code {
   display: block;
   overflow-x: auto;
-}
-
-.pagination {
-  display: flex;
-  margin-top: 5rem;
-}
-
-.pagination div:first-of-type {
-  flex-grow: 1;
-}
-
-.pagination a {
-  align-items: center;
-  display: inline-flex;
-}
-
-.button {
-  text-decoration: none;
-  border: 1px solid;
-  border-radius: 3px;
-  color: inherit;
-  padding: 0.8em 1em;
-}
-
-.github {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-
-  color: #666666;
-}
-
-.small-logo {
-  position: absolute;
-  top: 20px;
-  left: 20px;
 }
 
 @media only screen and (min-width: 800px) {

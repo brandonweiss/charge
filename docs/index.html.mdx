@@ -1,5 +1,5 @@
 import Layout from "./layout.html.jsx"
-import Logo from "./logo.html.jsx"
+import Logotype from "./components/logotype.html.jsx"
 
 export const meta = {
   id: "about",
@@ -9,7 +9,7 @@ export const meta = {
 export const layout = (props) => <Layout currentPageID={meta.id} {...props} />
 
 <div className="container" style={{ textAlign: "center" }}>
-  <h1 className="logo">Charge</h1>
+  <Logotype as="h1" style={{ fontSize: "3rem" }} />
 </div>
 
 <div style={{ height: "2rem" }} />

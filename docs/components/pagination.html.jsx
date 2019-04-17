@@ -1,5 +1,16 @@
+import Button from "./button.html.jsx"
 import { ArrowLeft, ArrowRight } from "react-feather"
 import { navItems } from "./nav.html.jsx"
+import styled from "@emotion/styled"
+
+const Pagination = styled.div`
+  display: flex;
+  margin-top: 5rem;
+
+  div:first-of-type {
+    flex-grow: 1;
+  }
+`
 
 export default ({ currentPageID, pages }) => {
   let sortedPages = navItems.reduce((array, navItem) => {
@@ -15,24 +26,24 @@ export default ({ currentPageID, pages }) => {
   let nextPage = sortedPages[currentPageIndex + 1]
 
   return (
-    <div className="pagination">
+    <Pagination>
       <div>
         {previousPage && (
-          <a href={previousPage.path} className="button">
+          <Button href={previousPage.path}>
             <ArrowLeft style={{ marginRight: "0.5em" }} />
             {previousPage.meta.title}
-          </a>
+          </Button>
         )}
       </div>
 
       <div>
         {nextPage && (
-          <a href={nextPage.path} className="button">
+          <Button href={nextPage.path}>
             {nextPage.meta.title}
             <ArrowRight style={{ marginLeft: "0.5em" }} />
-          </a>
+          </Button>
         )}
       </div>
-    </div>
+    </Pagination>
   )
 }
