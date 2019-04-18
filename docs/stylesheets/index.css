@@ -49,6 +49,12 @@ pre code {
   overflow-x: auto;
 }
 
+@media only screen and (max-width: 799px) {
+  .desktop {
+    display: none;
+  }
+}
+
 @media only screen and (min-width: 800px) {
   .mobile {
     display: none;

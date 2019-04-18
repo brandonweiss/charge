@@ -5,6 +5,8 @@ import GitHubLink from "./components/github-link.html.jsx"
 import Logomark from "./components/logomark.html.jsx"
 import Logo from "./components/logo.html.jsx"
 import { resolve as resolveURL } from "url"
+import SearchInput from "./components/SearchInput.html.jsx"
+import SearchScript from "./components/SearchScript.html.jsx"
 import Tracking from "./components/tracking.html.jsx"
 
 export default ({ children, currentPageID, environment, pages }) => {
@@ -50,6 +52,10 @@ export default ({ children, currentPageID, environment, pages }) => {
         <link rel="icon" type="image/png" href="/images/favicon.png" />
 
         <link rel="stylesheet" href="/stylesheets/index.css" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+        />
       </head>
       <body>
         <Nav currentPageID={currentPageID} pages={pages} />
@@ -82,12 +88,21 @@ export default ({ children, currentPageID, environment, pages }) => {
             </div>
           </footer>
 
-          <div className="mobile" style={{ position: "absolute", top: "20px", right: "20px" }}>
-            <GitHubLink size="32" />
+          <div style={{ position: "absolute", top: "20px", right: "20px" }}>
+            <div className="desktop">
+              <div style={{ height: "0.45rem" }} />
+
+              <SearchInput />
+            </div>
+
+            <div className="mobile">
+              <GitHubLink size="32" />
+            </div>
           </div>
         </Main>
 
         <Tracking environment={environment} />
+        <SearchScript />
       </body>
     </html>
   )
