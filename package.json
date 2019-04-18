@@ -32,7 +32,7 @@
     "chalk": "^2.4.2",
     "dedent": "^0.7.0",
     "husky": "^1.3.1",
-    "np": "^4.0.2",
+    "np": "^5.0.0",
     "prettier": "1.17.0",
     "pretty-quick": "^1.10.0",
     "react-feather": "^1.1.6",
