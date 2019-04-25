@@ -9,6 +9,7 @@ const Search = styled.div`
 const Icon = styled(SearchIcon)`
   color: #a9a9a9;
   margin-right: -1.8em;
+  pointer-events: none;
   position: relative;
   z-index: 2;
 `
