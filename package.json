@@ -46,7 +46,7 @@
     "@babel/parser": "^7.4.3",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
-    "@babel/traverse": "^7.4.3",
+    "@babel/traverse": "^7.4.5",
     "@mdx-js/mdx": "^1.0.19",
     "@mdx-js/react": "^1.0.16",
     "babel-plugin-react-require": "^3.1.1",
