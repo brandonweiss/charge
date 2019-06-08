@@ -30,7 +30,7 @@
   "devDependencies": {
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.11",
-    "ava": "^1.4.1",
+    "ava": "^2.0.0",
     "chalk": "^2.4.2",
     "dedent": "^0.7.0",
     "husky": "^2.4.0",
