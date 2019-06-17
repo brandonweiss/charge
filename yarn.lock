@@ -6045,10 +6045,10 @@ remark-abbr@^1.3.1:
   dependencies:
     unist-util-visit "^1.3.1"
 
-remark-highlight.js@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/remark-highlight.js/-/remark-highlight.js-5.1.0.tgz#0333fa214b409dd78b9935b7afd4a09fe2f4ab3a"
-  integrity sha512-m5d0RreEJ1z1Ug2LUCkCsNJ48Bcc15bx1lO3ZfQfYqMSI+J+bg8qz8p/cblJL1VB3oxqgbfRelj65AJAepn/zg==
+remark-highlight.js@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/remark-highlight.js/-/remark-highlight.js-5.1.1.tgz#4045b915200238278839d91d41be01258211703a"
+  integrity sha512-e8iD5SMw94rjAHxQTGdJn/RzNYt0zpQ6+nVJ1ZX9GqDWhgOm0pm+bVlABsTkZbtoM3GKQ187vbHQ+nTs4Fl9vQ==
   dependencies:
     lowlight "^1.2.0"
     unist-util-visit "^1.0.0"
