@@ -25,7 +25,7 @@
   "scripts": {
     "docs": "node cli.js serve docs",
     "test": "ava --verbose --serial",
-    "test:watch": "yarn run test --watch"
+    "test:watch": "npm test --watch"
   },
   "devDependencies": {
     "@emotion/core": "^10.0.15",

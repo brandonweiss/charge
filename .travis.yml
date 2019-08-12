@@ -1,12 +1,4 @@
-before_install:
-  - npm install -g yarn
-
 language: node_js
-
-env:
-  # Fix Windows build never ending in Travis CI
-  # https://travis-ci.community/t/timeout-after-build-finished-and-succeeded/1336
-  - YARN_GPG=no
 
 os:
   - linux
