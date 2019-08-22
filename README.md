@@ -8,7 +8,7 @@
   <br>
 </h1>
 
-[![](https://badgen.net/travis/brandonweiss/charge?icon=travis)](https://www.travis-ci.com/brandonweiss/charge)
+[![](https://badgen.net/github/status/brandonweiss/charge/master/Tests?icon=github)](https://github.com/brandonweiss/charge/actions)
 [![](https://badgen.net/npm/v/@static/charge?icon=npm)](https://www.npmjs.com/package/@static/charge)
 ![](https://badgen.net/npm/node/@static/charge)
 [![](https://badgen.net/david/dep/brandonweiss/charge)](https://david-dm.org/brandonweiss/charge)
