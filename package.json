@@ -1,6 +1,6 @@
 {
   "name": "@static/charge",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "An opinionated, zero-config static site generator",
   "author": {
     "name": "Brandon Weiss",
