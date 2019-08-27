@@ -47,6 +47,21 @@ test("copies a file from source to target", async (t) => {
   })
 })
 
+test("handles a file with no extension", async (t) => {
+  await createFiles(sourceDirectory, {
+    CNAME: "foobar.com",
+  })
+
+  await build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  assertTargetFiles(t, {
+    CNAME: "foobar.com",
+  })
+})
+
 test("summarizes pages and passes them into the page as the `pages` prop", async (t) => {
   await createFiles(sourceDirectory, {
     "foo.html.jsx": dedent`
