@@ -24,7 +24,32 @@ switch (command) {
     })
   case "serve":
   case "server":
-    return serve({
-      source: cli.input[1],
-    })
+    let serveCLI = meow(
+      `
+      Usage
+        ❯ charge serve <source directory>
+
+      Options
+        --port
+
+      Examples
+        ❯ charge serve <source directory> --port 2468
+    `,
+      {
+        flags: {
+          port: {
+            type: "number",
+          },
+        },
+      },
+    )
+
+    if (cli.input[1]) {
+      return serve({
+        source: cli.input[1],
+        port: cli.flags.port,
+      })
+    }
+
+    serveCLI.showHelp()
 }

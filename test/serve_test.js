@@ -15,7 +15,7 @@ test("serves the root page", async (t) => {
     "index.html": "foo",
   })
 
-  let browserSyncInstance = await serve({ source: sourceDirectory, openBrowser: false })
+  let browserSyncInstance = await serve({ source: sourceDirectory, openBrowser: false, port: 3000 })
   let server = browserSyncInstance.server
 
   let response = await request(server).get("/")
@@ -34,7 +34,7 @@ test("serves a named page without the extension", async (t) => {
     "named.html": "foo",
   })
 
-  let browserSyncInstance = await serve({ source: sourceDirectory, openBrowser: false })
+  let browserSyncInstance = await serve({ source: sourceDirectory, openBrowser: false, port: 3000 })
   let server = browserSyncInstance.server
 
   let response = await request(server).get("/named")
@@ -53,7 +53,7 @@ test("serves a named page with the extension", async (t) => {
     "named.html": "foo",
   })
 
-  let browserSyncInstance = await serve({ source: sourceDirectory, openBrowser: false })
+  let browserSyncInstance = await serve({ source: sourceDirectory, openBrowser: false, port: 3000 })
   let server = browserSyncInstance.server
 
   let response = await request(server).get("/named.html")
@@ -68,7 +68,7 @@ test("serves a named page with the extension", async (t) => {
 test("redirects a URL with an ending slash", async (t) => {
   t.plan(2)
 
-  let browserSyncInstance = await serve({ source: sourceDirectory, openBrowser: false })
+  let browserSyncInstance = await serve({ source: sourceDirectory, openBrowser: false, port: 3000 })
   let server = browserSyncInstance.server
 
   let response = await request(server).get("/named/")
