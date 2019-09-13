@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.6.0",
-    "@babel/parser": "^7.4.3",
+    "@babel/parser": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/traverse": "^7.6.0",
