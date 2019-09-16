@@ -3,7 +3,7 @@ import dedent from "dedent"
 import { join as pathJoin } from "path"
 import build from "../../lib/build"
 import {
-  createFiles,
+  createSourceFiles,
   cleanFiles,
   snapshotFilesystem,
   sourceDirectory,
@@ -14,7 +14,7 @@ test.beforeEach((t) => cleanFiles())
 test.after.always((t) => cleanFiles())
 
 test("renders an MDX page as HTML", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "index.html.mdx": dedent`
       # Hello!
     `,
@@ -29,7 +29,7 @@ test("renders an MDX page as HTML", async (t) => {
 })
 
 test("renders an MDX page as HTML with an MDX component", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "subheading.html.mdx": dedent`
       ## Subheading
     `,
@@ -51,7 +51,7 @@ test("renders an MDX page as HTML with an MDX component", async (t) => {
 })
 
 test("renders an MDX page as HTML with a JSX component", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "subheading.html.jsx": dedent`
       export default (props) => {
         return <h2>{props.title}</h2>
@@ -75,7 +75,7 @@ test("renders an MDX page as HTML with a JSX component", async (t) => {
 })
 
 test("renders an MDX page as HTML with a JSX component as a layout", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "layout.html.jsx": dedent`
       export default (props) => {
         return (
@@ -109,7 +109,7 @@ test("renders an MDX page as HTML with a JSX component as a layout", async (t) =
 })
 
 test("renders an MDX page with syntax highlighting", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "index.html.mdx": dedent`
       \`\`\`javascript
         let foo = "bar"
@@ -126,7 +126,7 @@ test("renders an MDX page with syntax highlighting", async (t) => {
 })
 
 test("renders an MDX page with abbreviations", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "index.html.mdx": dedent`
       YOLO
 

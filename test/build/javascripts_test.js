@@ -3,7 +3,7 @@ import dedent from "dedent"
 import { join as pathJoin } from "path"
 import build from "../../lib/build"
 import {
-  createFiles,
+  createSourceFiles,
   createPackage,
   cleanFiles,
   snapshotFilesystem,
@@ -15,7 +15,7 @@ test.beforeEach((t) => cleanFiles())
 test.after.always((t) => cleanFiles())
 
 test("bundles JavaScripts into a self-executing function", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "index.js": dedent`
       console.log("hey")
     `,
@@ -30,7 +30,7 @@ test("bundles JavaScripts into a self-executing function", async (t) => {
 })
 
 test("transpiles JavaScripts using Babel", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "index.js": dedent`
       console.log([1, ...[2]])
     `,
@@ -45,7 +45,7 @@ test("transpiles JavaScripts using Babel", async (t) => {
 })
 
 test("bundles imported JavaScript files via relative imports to current directory", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "foo.js": dedent`
       export default "bar"
     `,
@@ -65,7 +65,7 @@ test("bundles imported JavaScript files via relative imports to current director
 })
 
 test("bundles imported JavaScript files via relative imports to parent directory", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "foo.js": dedent`
       export default "bar"
     `,
@@ -91,7 +91,7 @@ test("bundles imported npm packages", async (t) => {
     `,
   })
 
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "index.js": dedent`
       import foo from  "foo"
 

@@ -2,13 +2,18 @@ import test from "ava"
 import dedent from "dedent"
 import { join as pathJoin } from "path"
 import jsxImportParser from "../../lib/import-parsers/mdx"
-import { createFiles, cleanFiles, sourceDirectory, targetDirectory } from "../helpers/filesystem"
+import {
+  createSourceFiles,
+  cleanFiles,
+  sourceDirectory,
+  targetDirectory,
+} from "../helpers/filesystem"
 
 test.beforeEach((t) => cleanFiles())
 test.after.always((t) => cleanFiles())
 
 test("parses no imports", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "index.html.mdx": dedent`
       # Heading
     `,
@@ -21,7 +26,7 @@ test("parses no imports", async (t) => {
 })
 
 test("parses imports", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "index.html.mdx": dedent`
       import Subheading from "./subheading.html.mdx"
 

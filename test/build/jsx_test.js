@@ -4,7 +4,7 @@ import build from "../../lib/build"
 import { join as pathJoin } from "path"
 import {
   createData,
-  createFiles,
+  createSourceFiles,
   cleanFiles,
   dataDirectory,
   snapshotFilesystem,
@@ -16,7 +16,7 @@ test.beforeEach((t) => cleanFiles())
 test.after.always((t) => cleanFiles())
 
 test("renders a JSX page as HTML", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "index.html.jsx": dedent`
       export default () => {
         return <div></div>
@@ -33,7 +33,7 @@ test("renders a JSX page as HTML", async (t) => {
 })
 
 test("renders a JSX page as HTML with a JSX component", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "paragraph-component.html.jsx": dedent`
       export default (props) => {
         return <p>{props.foo}</p>
@@ -61,7 +61,7 @@ test("renders a JSX page as HTML with a JSX component", async (t) => {
 })
 
 test("renders a JSX page as HTML with an MDX component", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "subheading.html.mdx": dedent`
       ## Subheading
     `,
@@ -89,7 +89,7 @@ test("renders a JSX page as HTML with an MDX component", async (t) => {
 })
 
 test("renders a JSX page as HTML with a JSX component as a layout", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "layout-component.html.jsx": dedent`
       export default (props) => {
         return <div>{props.children}</div>
@@ -125,7 +125,7 @@ test("loads data from data files and passes it to the JSX page", async (t) => {
     `,
   })
 
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "index.html.jsx": dedent`
       export default (props) => {
         return <p>{props.data.stuff.foo}</p>

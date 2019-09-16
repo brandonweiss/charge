@@ -3,7 +3,7 @@ import dedent from "dedent"
 import { join as pathJoin } from "path"
 import build from "../../lib/build"
 import {
-  createFiles,
+  createSourceFiles,
   createPackage,
   cleanFiles,
   snapshotFilesystem,
@@ -15,7 +15,7 @@ test.beforeEach((t) => cleanFiles())
 test.after.always((t) => cleanFiles())
 
 test("transpiles stylesheets using Stage 2 features", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "index.css": dedent`
       body {
         font-family: system-ui;
@@ -32,7 +32,7 @@ test("transpiles stylesheets using Stage 2 features", async (t) => {
 })
 
 test("transpiles stylesheets using thee custom-media-queries feature from Stage 1", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "index.css": dedent`
       @custom-media --small-viewport (max-width: 30em);
 
@@ -53,7 +53,7 @@ test("transpiles stylesheets using thee custom-media-queries feature from Stage 
 })
 
 test("inlines stylesheets with relative @import statements to current directory", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "other.css": dedent`
       p {
         color: red;
@@ -77,7 +77,7 @@ test("inlines stylesheets with relative @import statements to current directory"
 })
 
 test("inlines stylesheets with relative @import statements to parent directory", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "other.css": dedent`
       p {
         color: red;
@@ -109,7 +109,7 @@ test("inlines stylesheets from npm packages", async (t) => {
     `,
   })
 
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "index.css": dedent`
       @import "foo";
 

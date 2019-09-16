@@ -4,7 +4,7 @@ import { join as pathJoin } from "path"
 import build from "../../lib/build"
 import {
   createData,
-  createFiles,
+  createSourceFiles,
   cleanFiles,
   dataDirectory,
   snapshotFilesystem,
@@ -16,7 +16,7 @@ test.beforeEach((t) => cleanFiles())
 test.after.always((t) => cleanFiles())
 
 test("renders a JavaScript function into JSON", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "feed.json.js": dedent`
       export default () => {
         return { foo: "bar" }
@@ -41,7 +41,7 @@ test("loads data from data files and passes it to the JavaScript function", asyn
     `,
   })
 
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "feed.json.js": dedent`
       export default (props) => {
         return {

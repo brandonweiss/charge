@@ -4,7 +4,7 @@ import { join as pathJoin } from "path"
 import build from "../../lib/build"
 import {
   createData,
-  createFiles,
+  createSourceFiles,
   cleanFiles,
   dataDirectory,
   snapshotFilesystem,
@@ -16,7 +16,7 @@ test.beforeEach((t) => cleanFiles())
 test.after.always((t) => cleanFiles())
 
 test("renders a JSX template as XML", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "feed.xml.jsx": dedent`
       export default () => {
         return <feed></feed>
@@ -41,7 +41,7 @@ test("loads data from data files and passes it to the JSX template", async (t) =
     `,
   })
 
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "feed.xml.jsx": dedent`
       export default (props) => {
         return <feed>{props.data.stuff.foo}</feed>

@@ -33,14 +33,22 @@ export const createData = async (data) => {
   )
 }
 
-export const createFiles = async (sourceDirectory, files) => {
-  let flattenedFilePaths = flattenFilePath(sourceDirectory, files)
+const createFiles = async (directory, files) => {
+  let flattenedFilePaths = flattenFilePath(directory, files)
 
   await Promise.all(
     Object.entries(flattenedFilePaths).map(([filePath, fileContents]) => {
       return fs.outputFile(filePath, fileContents)
     }),
   )
+}
+
+export const createSourceFiles = async (files) => {
+  await createFiles(sourceDirectory, files)
+}
+
+export const createTargetFiles = async (files) => {
+  await createFiles(targetDirectory, files)
 }
 
 export const createPackage = async (name, files) => {

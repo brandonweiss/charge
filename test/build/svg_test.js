@@ -3,7 +3,7 @@ import dedent from "dedent"
 import { join as pathJoin } from "path"
 import build from "../../lib/build"
 import {
-  createFiles,
+  createSourceFiles,
   cleanFiles,
   snapshotFilesystem,
   sourceDirectory,
@@ -14,7 +14,7 @@ test.beforeEach((t) => cleanFiles())
 test.after.always((t) => cleanFiles())
 
 test("copies an SVG from source to target", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "icon.svg": dedent`
       <svg>
         <path />
@@ -31,7 +31,7 @@ test("copies an SVG from source to target", async (t) => {
 })
 
 test("imports an SVG into a component", async (t) => {
-  await createFiles(sourceDirectory, {
+  await createSourceFiles({
     "icon.svg": dedent`
       <svg>
         <path />
