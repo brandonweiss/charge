@@ -1,6 +1,7 @@
 import { globSyncNormalize } from "../../lib/utilities"
 import { join as pathJoin, sep as pathSeparator, split as pathSplit } from "path"
 import fs from "fs-extra"
+import build from "../../lib/build"
 
 const tmpPathPrefix = pathJoin("tmp", "tests")
 const dataDirectory = pathJoin(tmpPathPrefix, "data")
@@ -86,7 +87,18 @@ const snapshotFileContents = (t) => {
   t.snapshot(targetFilesystem)
 }
 
-export const snapshotFilesystem = (t) => {
+const snapshotFilesystem = (t) => {
   snapshotDirectoryStructure(t)
   snapshotFileContents(t)
+}
+
+export const buildAndSnapshotFilesystem = async (t, setup) => {
+  await setup()
+
+  await build({
+    source: sourceDirectory,
+    target: targetDirectory,
+  })
+
+  snapshotFilesystem(t)
 }
