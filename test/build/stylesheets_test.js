@@ -5,8 +5,8 @@ import build from "../../lib/build"
 import {
   createFiles,
   createPackage,
-  assertTargetFiles,
   cleanFiles,
+  snapshotFilesystem,
   sourceDirectory,
   targetDirectory,
 } from "../helpers/filesystem"
@@ -28,13 +28,7 @@ test("transpiles stylesheets using Stage 2 features", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.css": dedent`
-      body {
-        font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
-      }
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("transpiles stylesheets using thee custom-media-queries feature from Stage 1", async (t) => {
@@ -55,15 +49,7 @@ test("transpiles stylesheets using thee custom-media-queries feature from Stage 
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.css": dedent`
-      @media (max-width: 30em) {
-        nav {
-          display: none;
-        }
-      }
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("inlines stylesheets with relative @import statements to current directory", async (t) => {
@@ -87,17 +73,7 @@ test("inlines stylesheets with relative @import statements to current directory"
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.css": dedent`
-      p {
-        color: red;
-      }
-
-      a {
-        color: black;
-      }
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("inlines stylesheets with relative @import statements to parent directory", async (t) => {
@@ -121,19 +97,7 @@ test("inlines stylesheets with relative @import statements to parent directory",
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    folder: {
-      "index.css": dedent`
-        p {
-          color: red;
-        }
-
-        a {
-          color: black;
-        }
-      `,
-    },
-  })
+  snapshotFilesystem(t)
 })
 
 test("inlines stylesheets from npm packages", async (t) => {
@@ -160,15 +124,5 @@ test("inlines stylesheets from npm packages", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.css": dedent`
-      p {
-        color: red;
-      }
-
-      a {
-        color: black;
-      }
-    `,
-  })
+  snapshotFilesystem(t)
 })

@@ -4,8 +4,8 @@ import { join as pathJoin } from "path"
 import build from "../../lib/build"
 import {
   createFiles,
-  assertTargetFiles,
   cleanFiles,
+  snapshotFilesystem,
   sourceDirectory,
   targetDirectory,
 } from "../helpers/filesystem"
@@ -25,13 +25,7 @@ test("renders an MDX page as HTML", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.html": dedent`
-      <!DOCTYPE html>
-
-      <h1>Hello!</h1>
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("renders an MDX page as HTML with an MDX component", async (t) => {
@@ -53,13 +47,7 @@ test("renders an MDX page as HTML with an MDX component", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.html": dedent`
-      <!DOCTYPE html>
-
-      <h1>Heading</h1><h2>Subheading</h2>
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("renders an MDX page as HTML with a JSX component", async (t) => {
@@ -83,13 +71,7 @@ test("renders an MDX page as HTML with a JSX component", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.html": dedent`
-      <!DOCTYPE html>
-
-      <h1>Heading</h1><h2>Something</h2>
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("renders an MDX page as HTML with a JSX component as a layout", async (t) => {
@@ -123,13 +105,7 @@ test("renders an MDX page as HTML with a JSX component as a layout", async (t) =
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.html": dedent`
-      <!DOCTYPE html>
-
-      <html><head><title>Title</title></head><body><h1>Heading</h1></body></html>
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("renders an MDX page with syntax highlighting", async (t) => {
@@ -146,13 +122,7 @@ test("renders an MDX page with syntax highlighting", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.html": dedent`
-      <!DOCTYPE html>
-
-      <pre><code class="hljs language-javascript">  <span class="hljs-keyword">let</span> foo = <span class="hljs-string">&quot;bar&quot;</span></code></pre>
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("renders an MDX page with abbreviations", async (t) => {
@@ -169,11 +139,5 @@ test("renders an MDX page with abbreviations", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.html": dedent`
-      <!DOCTYPE html>
-
-      <p><abbr title="You Only Live Once">YOLO</abbr></p>
-    `,
-  })
+  snapshotFilesystem(t)
 })

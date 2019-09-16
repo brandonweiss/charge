@@ -5,8 +5,8 @@ import build from "../../lib/build"
 import {
   createFiles,
   createPackage,
-  assertTargetFiles,
   cleanFiles,
+  snapshotFilesystem,
   sourceDirectory,
   targetDirectory,
 } from "../helpers/filesystem"
@@ -26,16 +26,7 @@ test("bundles JavaScripts into a self-executing function", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.js": dedent`
-      (function () {
-        'use strict';
-
-        console.log("hey");
-
-      }());\n
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("transpiles JavaScripts using Babel", async (t) => {
@@ -50,16 +41,7 @@ test("transpiles JavaScripts using Babel", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.js": dedent`
-      (function () {
-        'use strict';
-
-        console.log([1].concat([2]));
-
-      }());\n
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("bundles imported JavaScript files via relative imports to current directory", async (t) => {
@@ -79,18 +61,7 @@ test("bundles imported JavaScript files via relative imports to current director
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.js": dedent`
-      (function () {
-        'use strict';
-
-        var foo = "bar";
-
-        console.log(foo);
-
-      }());\n
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("bundles imported JavaScript files via relative imports to parent directory", async (t) => {
@@ -110,20 +81,7 @@ test("bundles imported JavaScript files via relative imports to parent directory
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    folder: {
-      "index.js": dedent`
-        (function () {
-          'use strict';
-
-          var foo = "bar";
-
-          console.log(foo);
-
-        }());\n
-      `,
-    },
-  })
+  snapshotFilesystem(t)
 })
 
 test("bundles imported npm packages", async (t) => {
@@ -146,16 +104,5 @@ test("bundles imported npm packages", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.js": dedent`
-      (function () {
-        'use strict';
-
-        var foo = "bar";
-
-        console.log(foo);
-
-      }());\n
-    `,
-  })
+  snapshotFilesystem(t)
 })

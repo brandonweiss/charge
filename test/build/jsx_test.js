@@ -5,9 +5,9 @@ import { join as pathJoin } from "path"
 import {
   createData,
   createFiles,
-  assertTargetFiles,
   cleanFiles,
   dataDirectory,
+  snapshotFilesystem,
   sourceDirectory,
   targetDirectory,
 } from "../helpers/filesystem"
@@ -29,13 +29,7 @@ test("renders a JSX page as HTML", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.html": dedent`
-      <!DOCTYPE html>
-
-      <div></div>
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("renders a JSX page as HTML with a JSX component", async (t) => {
@@ -63,13 +57,7 @@ test("renders a JSX page as HTML with a JSX component", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.html": dedent`
-      <!DOCTYPE html>
-
-      <div><p>bar</p></div>
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("renders a JSX page as HTML with an MDX component", async (t) => {
@@ -97,13 +85,7 @@ test("renders a JSX page as HTML with an MDX component", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.html": dedent`
-      <!DOCTYPE html>
-
-      <div><h1>Heading</h1><h2>Subheading</h2></div>
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("renders a JSX page as HTML with a JSX component as a layout", async (t) => {
@@ -131,13 +113,7 @@ test("renders a JSX page as HTML with a JSX component as a layout", async (t) =>
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.html": dedent`
-      <!DOCTYPE html>
-
-      <div><p>foobar</p></div>
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("loads data from data files and passes it to the JSX page", async (t) => {
@@ -162,11 +138,5 @@ test("loads data from data files and passes it to the JSX page", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.html": dedent`
-      <!DOCTYPE html>
-
-      <p>bar</p>
-    `,
-  })
+  snapshotFilesystem(t)
 })

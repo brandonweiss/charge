@@ -4,8 +4,8 @@ import { join as pathJoin } from "path"
 import build from "../lib/build"
 import {
   createFiles,
-  assertTargetFiles,
   cleanFiles,
+  snapshotFilesystem,
   sourceDirectory,
   targetDirectory,
 } from "./helpers/filesystem"
@@ -27,9 +27,7 @@ test("empties target directory before building", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.html": "<html></html>",
-  })
+  snapshotFilesystem(t)
 })
 
 test("copies a file from source to target", async (t) => {
@@ -42,9 +40,7 @@ test("copies a file from source to target", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.html": "<html></html>",
-  })
+  snapshotFilesystem(t)
 })
 
 test("handles a file with no extension", async (t) => {
@@ -57,9 +53,7 @@ test("handles a file with no extension", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    CNAME: "foobar.com",
-  })
+  snapshotFilesystem(t)
 })
 
 test("summarizes pages and passes them into the page as the `pages` prop", async (t) => {
@@ -84,13 +78,7 @@ test("summarizes pages and passes them into the page as the `pages` prop", async
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "foo.html": dedent`
-      <!DOCTYPE html>
-
-      <p>/foo</p>
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("handles the root index page in the `pages` prop", async (t) => {
@@ -115,13 +103,7 @@ test("handles the root index page in the `pages` prop", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.html": dedent`
-      <!DOCTYPE html>
-
-      <p>/</p>
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("only includes JSX and MDX pages in the `pages` prop", async (t) => {
@@ -152,21 +134,7 @@ test("only includes JSX and MDX pages in the `pages` prop", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.html": dedent`
-      <p></p>
-    `,
-    "jsx.html": dedent`
-      <!DOCTYPE html>
-
-      <p>/jsx</p><p>/mdx</p>
-    `,
-    "mdx.html": dedent`
-      <!DOCTYPE html>
-
-      <p>Foobar</p>
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("passes the page component in the `pages` prop", async (t) => {
@@ -196,18 +164,7 @@ test("passes the page component in the `pages` prop", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "post.html": dedent`
-      <!DOCTYPE html>
-
-      <h1>Title</h1>
-    `,
-    "index.html": dedent`
-      <!DOCTYPE html>
-
-      <h1>Title</h1>
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("provides exported meta for a JSX page in the `pages` prop", async (t) => {
@@ -236,13 +193,7 @@ test("provides exported meta for a JSX page in the `pages` prop", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "index.html": dedent`
-      <!DOCTYPE html>
-
-      <p>bar</p>
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("provides exported meta for an MDX page in the `pages` prop", async (t) => {
@@ -278,16 +229,5 @@ test("provides exported meta for an MDX page in the `pages` prop", async (t) => 
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "jsx.html": dedent`
-      <!DOCTYPE html>
-
-      <p>bar</p><p>bar</p>
-    `,
-    "mdx.html": dedent`
-      <!DOCTYPE html>
-
-      <p>Foobar</p>
-    `,
-  })
+  snapshotFilesystem(t)
 })

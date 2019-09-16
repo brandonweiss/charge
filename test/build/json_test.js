@@ -5,9 +5,9 @@ import build from "../../lib/build"
 import {
   createData,
   createFiles,
-  assertTargetFiles,
   cleanFiles,
   dataDirectory,
+  snapshotFilesystem,
   sourceDirectory,
   targetDirectory,
 } from "../helpers/filesystem"
@@ -29,13 +29,7 @@ test("renders a JavaScript function into JSON", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "feed.json": dedent`
-      {
-        "foo": "bar"
-      }
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("loads data from data files and passes it to the JavaScript function", async (t) => {
@@ -62,11 +56,5 @@ test("loads data from data files and passes it to the JavaScript function", asyn
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "feed.json": dedent`
-      {
-        "foo": "bar"
-      }
-    `,
-  })
+  snapshotFilesystem(t)
 })

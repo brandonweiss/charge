@@ -5,9 +5,9 @@ import build from "../../lib/build"
 import {
   createData,
   createFiles,
-  assertTargetFiles,
   cleanFiles,
   dataDirectory,
+  snapshotFilesystem,
   sourceDirectory,
   targetDirectory,
 } from "../helpers/filesystem"
@@ -29,13 +29,7 @@ test("renders a JSX template as XML", async (t) => {
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "feed.xml": dedent`
-      <?xml version="1.0" encoding="UTF-8"?>
-
-      <feed></feed>
-    `,
-  })
+  snapshotFilesystem(t)
 })
 
 test("loads data from data files and passes it to the JSX template", async (t) => {
@@ -60,11 +54,5 @@ test("loads data from data files and passes it to the JSX template", async (t) =
     target: targetDirectory,
   })
 
-  assertTargetFiles(t, {
-    "feed.xml": dedent`
-      <?xml version="1.0" encoding="UTF-8"?>
-
-      <feed>bar</feed>
-    `,
-  })
+  snapshotFilesystem(t)
 })

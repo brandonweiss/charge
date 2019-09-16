@@ -52,7 +52,19 @@ export const createPackage = async (name, files) => {
   )
 }
 
-export const assertTargetFiles = (t, expectedTargetFilesystem) => {
+export const cleanFiles = async () => {
+  await fs.remove(tmpPathPrefix)
+}
+
+const snapshotDirectoryStructure = (t) => {
+  let files = globSyncNormalize(`${targetDirectory}/**/*`, {
+    nodir: true,
+  })
+
+  t.snapshot(files)
+}
+
+const snapshotFileContents = (t) => {
   let files = globSyncNormalize(`${targetDirectory}/**/*`, {
     nodir: true,
   })
@@ -63,9 +75,10 @@ export const assertTargetFiles = (t, expectedTargetFilesystem) => {
     return filesystem
   }, {})
 
-  t.deepEqual(targetFilesystem, flattenFilePath(targetDirectory, expectedTargetFilesystem))
+  t.snapshot(targetFilesystem)
 }
 
-export const cleanFiles = async () => {
-  await fs.remove(tmpPathPrefix)
+export const snapshotFilesystem = (t) => {
+  snapshotDirectoryStructure(t)
+  snapshotFileContents(t)
 }
