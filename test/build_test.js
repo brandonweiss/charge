@@ -1,5 +1,4 @@
 import test from "ava"
-import dedent from "dedent"
 import {
   buildAndSnapshotFilesystem,
   createSourceFiles,
@@ -41,7 +40,7 @@ test("handles a file with no extension", async (t) => {
 test("summarizes pages and passes them into the page as the `pages` prop", async (t) => {
   await buildAndSnapshotFilesystem(t, async () => {
     await createSourceFiles({
-      "foo.html.jsx": dedent`
+      "foo.html.jsx": `
         export default ({ pages }) => (
           <React.Fragment>
             {
@@ -61,7 +60,7 @@ test("summarizes pages and passes them into the page as the `pages` prop", async
 test("handles the root index page in the `pages` prop", async (t) => {
   await buildAndSnapshotFilesystem(t, async () => {
     await createSourceFiles({
-      "index.html.jsx": dedent`
+      "index.html.jsx": `
         export default ({ pages }) => (
           <React.Fragment>
             {
@@ -81,10 +80,10 @@ test("handles the root index page in the `pages` prop", async (t) => {
 test("only includes JSX and MDX pages in the `pages` prop", async (t) => {
   await buildAndSnapshotFilesystem(t, async () => {
     await createSourceFiles({
-      "index.html": dedent`
+      "index.html": `
         <p></p>
       `,
-      "jsx.html.jsx": dedent`
+      "jsx.html.jsx": `
         export default ({ pages }) => (
           <React.Fragment>
             {
@@ -97,7 +96,7 @@ test("only includes JSX and MDX pages in the `pages` prop", async (t) => {
           </React.Fragment>
         )
       `,
-      "mdx.html.mdx": dedent`
+      "mdx.html.mdx": `
         Foobar
       `,
     })
@@ -107,10 +106,10 @@ test("only includes JSX and MDX pages in the `pages` prop", async (t) => {
 test("passes the page component in the `pages` prop", async (t) => {
   await buildAndSnapshotFilesystem(t, async () => {
     await createSourceFiles({
-      "post.html.mdx": dedent`
+      "post.html.mdx": `
         # Title
       `,
-      "index.html.jsx": dedent`
+      "index.html.jsx": `
         export default ({ pages }) => (
           <React.Fragment>
             {
@@ -132,7 +131,7 @@ test("passes the page component in the `pages` prop", async (t) => {
 test("provides exported meta for a JSX page in the `pages` prop", async (t) => {
   await buildAndSnapshotFilesystem(t, async () => {
     await createSourceFiles({
-      "index.html.jsx": dedent`
+      "index.html.jsx": `
         export const meta = {
           foo: "bar"
         }
@@ -156,14 +155,14 @@ test("provides exported meta for a JSX page in the `pages` prop", async (t) => {
 test("provides exported meta for an MDX page in the `pages` prop", async (t) => {
   await buildAndSnapshotFilesystem(t, async () => {
     await createSourceFiles({
-      "mdx.html.mdx": dedent`
+      "mdx.html.mdx": `
         export const meta = {
           foo: "bar"
         }
 
         Foobar
       `,
-      "jsx.html.jsx": dedent`
+      "jsx.html.jsx": `
         export const meta = {
           foo: "bar"
         }

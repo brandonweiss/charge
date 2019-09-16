@@ -1,5 +1,4 @@
 import test from "ava"
-import dedent from "dedent"
 import {
   buildAndSnapshotFilesystem,
   createData,
@@ -14,7 +13,7 @@ test.after.always((t) => cleanFiles())
 test("renders a JSX page as HTML", async (t) => {
   await buildAndSnapshotFilesystem(t, async () => {
     await createSourceFiles({
-      "index.html.jsx": dedent`
+      "index.html.jsx": `
         export default () => {
           return <div></div>
         }
@@ -26,12 +25,12 @@ test("renders a JSX page as HTML", async (t) => {
 test("renders a JSX page as HTML with a JSX component", async (t) => {
   await buildAndSnapshotFilesystem(t, async () => {
     await createSourceFiles({
-      "paragraph-component.html.jsx": dedent`
+      "paragraph-component.html.jsx": `
         export default (props) => {
           return <p>{props.foo}</p>
         }
       `,
-      "index.html.jsx": dedent`
+      "index.html.jsx": `
         import ParagraphComponent from "./paragraph-component.html.jsx"
 
         export default () => {
@@ -49,10 +48,10 @@ test("renders a JSX page as HTML with a JSX component", async (t) => {
 test("renders a JSX page as HTML with an MDX component", async (t) => {
   await buildAndSnapshotFilesystem(t, async () => {
     await createSourceFiles({
-      "subheading.html.mdx": dedent`
+      "subheading.html.mdx": `
         ## Subheading
       `,
-      "index.html.jsx": dedent`
+      "index.html.jsx": `
         import Subheading from "./subheading.html.mdx"
 
         export default () => {
@@ -72,12 +71,12 @@ test("renders a JSX page as HTML with an MDX component", async (t) => {
 test("renders a JSX page as HTML with a JSX component as a layout", async (t) => {
   await buildAndSnapshotFilesystem(t, async () => {
     await createSourceFiles({
-      "layout-component.html.jsx": dedent`
+      "layout-component.html.jsx": `
         export default (props) => {
           return <div>{props.children}</div>
         }
       `,
-      "index.html.jsx": dedent`
+      "index.html.jsx": `
         import LayoutComponent from "./layout-component.html.jsx"
 
         export default () => {
@@ -95,7 +94,7 @@ test("renders a JSX page as HTML with a JSX component as a layout", async (t) =>
 test("loads data from data files and passes it to the JSX page", async (t) => {
   await buildAndSnapshotFilesystem(t, async () => {
     await createData({
-      stuff: dedent`
+      stuff: `
         {
           "foo": "bar"
         }
@@ -103,7 +102,7 @@ test("loads data from data files and passes it to the JSX page", async (t) => {
     })
 
     await createSourceFiles({
-      "index.html.jsx": dedent`
+      "index.html.jsx": `
         export default (props) => {
           return <p>{props.data.stuff.foo}</p>
         }

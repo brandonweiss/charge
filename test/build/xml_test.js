@@ -1,5 +1,4 @@
 import test from "ava"
-import dedent from "dedent"
 import {
   buildAndSnapshotFilesystem,
   createData,
@@ -14,7 +13,7 @@ test.after.always((t) => cleanFiles())
 test("renders a JSX template as XML", async (t) => {
   await buildAndSnapshotFilesystem(t, async () => {
     await createSourceFiles({
-      "feed.xml.jsx": dedent`
+      "feed.xml.jsx": `
         export default () => {
           return <feed></feed>
         }
@@ -26,7 +25,7 @@ test("renders a JSX template as XML", async (t) => {
 test("loads data from data files and passes it to the JSX template", async (t) => {
   await buildAndSnapshotFilesystem(t, async () => {
     await createData({
-      stuff: dedent`
+      stuff: `
         {
           "foo": "bar"
         }
@@ -34,7 +33,7 @@ test("loads data from data files and passes it to the JSX template", async (t) =
     })
 
     await createSourceFiles({
-      "feed.xml.jsx": dedent`
+      "feed.xml.jsx": `
         export default (props) => {
           return <feed>{props.data.stuff.foo}</feed>
         }
