@@ -73,7 +73,7 @@ const snapshotDirectoryStructure = (t) => {
 
   files = files.map((file) => {
     if (pathSeparator === "\\") {
-      return file.replace(/\//g, pathSeparator)
+      return file.replace(/${pathSeparator}/g, "/")
     }
 
     return file
@@ -89,7 +89,7 @@ const snapshotFileContents = (t) => {
 
   files = files.map((file) => {
     if (pathSeparator === "\\") {
-      return file.replace(/\//g, pathSeparator)
+      return file.replace(/${pathSeparator}/g, "/")
     }
 
     return file
