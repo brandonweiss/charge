@@ -71,12 +71,28 @@ const snapshotDirectoryStructure = (t) => {
     nodir: true,
   })
 
+  files = files.map((file) => {
+    if (pathSeparator === "\\") {
+      return file.replace(new RegExp(`\\${pathSeparator}`, "g"), "/")
+    }
+
+    return file
+  })
+
   t.snapshot(files)
 }
 
 const snapshotFileContents = (t) => {
   let files = globSyncNormalize(`${targetDirectory}/**/*`, {
     nodir: true,
+  })
+
+  files = files.map((file) => {
+    if (pathSeparator === "\\") {
+      return file.replace(new RegExp(`\\${pathSeparator}`, "g"), "/")
+    }
+
+    return file
   })
 
   let targetFilesystem = files.reduce((filesystem, file) => {
