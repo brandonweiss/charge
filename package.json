@@ -42,7 +42,7 @@
     "test-console": "^1.1.0"
   },
   "dependencies": {
-    "@babel/core": "^7.7.4",
+    "@babel/core": "^7.7.5",
     "@babel/parser": "^7.7.5",
     "@babel/preset-env": "^7.7.4",
     "@babel/preset-react": "^7.7.4",
