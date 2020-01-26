@@ -1,5 +1,5 @@
 import { globSyncNormalize } from "../../lib/utilities"
-import { join as pathJoin, sep as pathSeparator, split as pathSplit } from "path"
+import { join as pathJoin, sep as pathSeparator } from "path"
 import fs from "fs-extra"
 import dedent from "dedent"
 import build from "../../lib/build"

@@ -28,6 +28,7 @@
     "test:watch": "npm test --watch"
   },
   "devDependencies": {
+    "@ava/babel": "^1.0.0",
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
     "ava": "^3.0.0",
@@ -70,17 +71,6 @@
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0"
-  },
-  "ava": {
-    "helpers": [
-      "**/helpers/**/*"
-    ],
-    "require": [
-      "esm"
-    ],
-    "sources": [
-      "!tmp/**/*"
-    ]
   },
   "husky": {
     "hooks": {
