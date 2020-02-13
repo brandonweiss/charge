@@ -51,6 +51,10 @@ export const navItems = [
     id: "deployment",
     name: "Deployment",
   },
+  {
+    id: "examples",
+    name: "Examples",
+  },
 ]
 
 const Nav = styled.nav`
