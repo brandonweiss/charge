@@ -16,7 +16,7 @@ jobs:
       - name: Run actions/setup-node@v1 with node@${{ matrix.node }}
         uses: actions/setup-node@v1
         with:
-          version: ${{ matrix.node }}
+          node-version: ${{ matrix.node }}
       - name: npm install
         run: npm install
       - name: npm test
