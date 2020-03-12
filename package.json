@@ -8,7 +8,7 @@
   },
   "bin": "cli.js",
   "engines": {
-    "node": ">= 8.10.0"
+    "node": ">= 10.9.0"
   },
   "keywords": [
     "jsx",
