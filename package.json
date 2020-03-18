@@ -67,7 +67,7 @@
     "react-dom": "^16.13.0",
     "remark-abbr": "^1.4.0",
     "remark-highlight.js": "^5.2.0",
-    "rollup": "^2.0.6",
+    "rollup": "^2.1.0",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0"
