@@ -46,7 +46,7 @@
     "@babel/core": "^7.9.0",
     "@babel/parser": "^7.9.3",
     "@babel/preset-env": "^7.9.0",
-    "@babel/preset-react": "^7.9.1",
+    "@babel/preset-react": "^7.9.4",
     "@babel/traverse": "^7.9.0",
     "@mdx-js/mdx": "^1.5.7",
     "@mdx-js/react": "^1.5.7",
