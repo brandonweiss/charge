@@ -38,7 +38,7 @@
     "np": "^6.2.1",
     "prettier": "2.0.4",
     "pretty-quick": "^2.0.1",
-    "react-feather": "^2.0.4",
+    "react-feather": "^2.0.5",
     "supertest": "^4.0.2",
     "test-console": "^1.1.0"
   },
