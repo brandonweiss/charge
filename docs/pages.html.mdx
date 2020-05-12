@@ -214,16 +214,28 @@ JSX does not support the DOCTYPE declaration used at the top of HTML documents. 
 
 ## Whitespace
 
-JSX eats whitespace. If you break a line of HTML onto two lines in any other templating language there would be a space between them in the output.
+JSX eats whitespace, which can be a bit confusing. You might be used to breaking HTML onto multiple lines and them being rendered with a space between them.
 
 ```html
 <p>
-  These should render on the same
-  line with a space between them.
+  First line
+  second line.
 </p>
 ```
 
-But with JSX they won’t. You’ll need to intentionally insert a space like this.
+You would expect it would render like this.
+
+```text
+First line second line.
+```
+
+But with JSX it would actually render like this.
+
+```text
+First linesecond line.
+```
+
+You’ll need to intentionally insert a space like this.
 
 ```html
 <p>
