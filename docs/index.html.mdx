@@ -52,9 +52,20 @@ Gatsby renders pages client-side. That means it serves React and some related li
 
 More practically, Gatsby is great if you’re building a large, complex website and want lots of control over how you build it. Charge is probably better if you’re building a small website and don’t want to waste time fiddling with configurations and cobbling different tools together.
 
+## Blogging
+
+Charge can be used for blogging, but it’s not a tool specifically _for_ blogging, if that makes sense.
+
+A blog is really just a set of patterns around how content is displayed. There is typically a list of posts, possibly paginated. Permalink pages. An archive. RSS and JSON feeds. A sitemap. Etc. You can do all of that with Charge, but it doesn’t have any specific patterns or configuration around that, which is what many people are looking for when they want a blog.
+
+Put another way, if you’re looking to make a simple blog and don’t mind a little work, you can use Charge to build a blog in the same way you can use a static site generator to build any website, but if your blog is complex or you’re looking for something that just works right out of the box then you’d probably want to look for a tool specifically for blogging.
+
+If you’d like to see what a simple blog with Charge might look like, here’s an [example of a switch from Middleman to Charge][blog-switch].
+
 [static-gen]: https://www.staticgen.com
 [jsx]: https://reactjs.org/docs/introducing-jsx.html
 [mdx]: https://github.com/mdx-js/mdx
 [babel]: https://babeljs.io
 [postcss]: https://postcss.org
 [gatsby]: https://www.gatsbyjs.org
+[blog-switch]: https://github.com/brandonweiss/anti-pattern/commit/bf3e91ebb8211a7b22183e165ce8cc287b40b729
