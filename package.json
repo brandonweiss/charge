@@ -35,7 +35,7 @@
     "chalk": "^4.1.0",
     "dedent": "^0.7.0",
     "husky": "^4.2.5",
-    "np": "^6.2.4",
+    "np": "^6.2.5",
     "prettier": "2.0.5",
     "pretty-quick": "^2.0.1",
     "react-feather": "^2.0.8",
