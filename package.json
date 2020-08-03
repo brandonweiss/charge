@@ -31,7 +31,7 @@
     "@ava/babel": "^1.0.1",
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
-    "ava": "^3.11.0",
+    "ava": "^3.11.1",
     "chalk": "^4.1.0",
     "dedent": "^0.7.0",
     "husky": "^4.2.5",
