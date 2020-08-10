@@ -57,7 +57,7 @@
     "glob": "^7.1.6",
     "lodash.flatmap": "^4.5.0",
     "lodash.uniqby": "^4.7.0",
-    "meow": "^7.0.1",
+    "meow": "^7.1.0",
     "pirates": "^4.0.1",
     "postcss": "^7.0.32",
     "postcss-import": "^12.0.1",
