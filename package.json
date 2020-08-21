@@ -37,7 +37,7 @@
     "husky": "^4.2.5",
     "np": "^6.3.2",
     "prettier": "2.0.5",
-    "pretty-quick": "^2.0.1",
+    "pretty-quick": "^2.0.2",
     "react-feather": "^2.0.8",
     "supertest": "^4.0.2",
     "test-console": "^1.1.0"
