@@ -59,7 +59,7 @@
     "lodash.uniqby": "^4.7.0",
     "meow": "^7.1.0",
     "pirates": "^4.0.1",
-    "postcss": "^7.0.32",
+    "postcss": "^8.2.10",
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.7.0",
     "postcss-value-parser": "^4.1.0",
